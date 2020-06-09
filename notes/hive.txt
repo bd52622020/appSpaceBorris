@@ -1,0 +1,49 @@
+				Hive
+
+
+Hive data warehouse software enables reading, writing, and managing large
+datasets in distributed storage.
+
+HiveQL: Using the Hive query language, similar to SQL, queries are converted
+	into a series of jobs that execute on a Hadoop cluster through 
+	MapReduce or Apache Spark.
+
+Users can run batch processing workloads with Hive while also analysing the
+same data for interactive SQL or machine-learning workloads using tools like
+Apache Impala or Apache Spark.
+
+* The underlying MapReduce interface with HDFS is hard to program directly, but 
+Hive provides an SQL interface. Hive on MapReduce or Spark is best-suited for batch 
+data preparation or ETL:
+	
+	-Running scheduled batch jobs with very large ETL sorts with joins
+	 to prepare data for Hadoop. 
+
+	-Transfering data or conversion jobs take many hours, Hive recovers 
+	 and continues
+
+Hive Components 
+---------------
+
+1) The Metastore Database:
+
+Its a separate database, relying on a traditional RDMBS such as MySQL or PostgreSQL,
+holding metadata about Hive databases, tables, columns, partitions, and Haddop-
+specific information such as the underlying data files and HDFS block locations.
+
+* The metastore is shared by other components. The same tables can be inserted into,
+  queried, altered by:
+	-Hive 
+	-Impala
+
+* The metastore database is relatively compact, with fast-changing data. Backup, 
+  replication and other kinds of management operations affect this database.
+
+
+2) HiveServer2:
+
+HiveServer2 is a server interface that enables remote clients to submit queries to 
+Hive and retrieve the results.
+
+* HiveServer2 is a container for the Hive execution engine. For each client connection,
+it creates a new execution context that serves Hive SQL requests from the client.

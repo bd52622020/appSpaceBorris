@@ -1,0 +1,125 @@
+               Multithreading / Multiprocessing 
+
+How does a process work: When a program starts
+    
+    -It's loaded and given an address space in the main memory (RAM)
+    -Scheduled into an available CPU
+    -Process instructions are executed sequentially by CPU
+
+* Program counter: Keeps track of which instructions
+                   are about to be executed and is part 
+                   of the execution context.
+
+* Execution context: Represents the state of a running process
+    
+    - Stores data instructions the CPU is executing
+    - In case of multiple CPUs, there are multiple execution contexts
+    - Execution context is an abstract data structure called a THREAD
+    
+* A process can have one or more threads, but has at least ONE 
+thread execution.
+
+* Threads can execute simultaneously on multiprocessor/multicore systems
+    - target different areas of a program
+    - target the same portion in parallel
+
+
+* A process has its own address space.
+* Threads share the parent process address space along 
+  with any other thread.
+
+* Threads are lightweight data structures compared to processes
+    - Consume less memory 
+  
+* No control over when and which thread accesses a variable in the process
+
+
+Operating System Scheduler 
+Runs according to it's own scheduling algorithm depending on OS
+    - processes
+    - threads 
+
+IMPLEMENTATION
+Synchronization construct: Enforces syncronization in between threads:
+    - Mutexes
+    - Semaphores
+
+* Multiprocessing: Running on multiple CPUs
+    - Avoid the problem of synchronization between threads in 
+      a multithreaded process.
+    - Each process has it's own address space that other processes
+      don't have to access to.
+    - Address spaces can be very large.
+    - Using many processes to perform parallel computing can take 
+      too much memory
+
+**********************************************************************
+
+Conclusion:
+- The benefits of multithreading parallelization and the ability to
+  effectively utilize system resources outweights the cost of
+  syncronization most of the time.
+  
+**********************************************************************  
+ 
+                         Python
+                          
+                Threading vs Multiprocessing 
+
+* Aim to do the same time, do a number of things at the same time 
+
+Threading:
+    - A new thread is spawned within the existing process
+    - Faster than starting a process
+    - Memory is shared between all threads
+    - Mutexes often necessary to control access to shared data 
+    - One GIL (Global interprete lock) for all threads
+
+Multiprocessing:
+    - A new process is started independent from the first process,
+      like having two python programs running at the same time
+    - Memory is not shared between processes
+    - Mutexes not necessary (unless threading in the new process)
+    - One GIL for each process
+    
+Threading GIL: Mechanism in python that ensures that there is never more than 
+     one thread of execution for the python interpreter in any 
+     given moment. Cannot do two things at once. 
+     
+Multiprocessing GIL: One for every process, thus it is possible to do
+    things in parallel because there are multiple processes.    
+    
+    
+*********************************************************************
+
+Conclusion:
+- While python threading can't do multiple things at once, in parallel,
+  it can run concurently. It can go back and forth between processes
+  whenever it has time. Usually best suited in requests based processes.
+  
+- In the python multiprocessing side, it's more suited to deal with 
+  large, complex processes. It is able to divide and process the data
+  independantly, depending on the amount of cores available.
+  
+*********************************************************************       
+    
+    
+    
+    
+    
+       
+      
+      
+      
+       
+
+
+
+
+
+
+
+
+
+
+ 

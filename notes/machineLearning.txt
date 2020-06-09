@@ -1,0 +1,37 @@
+                         Introduction
+
+Aim: This is indended to be a practical and useful guide to machine learning
+     and it's application to real-world prolbems. Essential principles for
+     understanding and effective application of machine learning.
+
+
+1: Linear algebra for machine learning 
+
+   intro: Exploration of algorithms
+        - K-Nearest neighbors algorithm, basis of a technique for simulating 
+          observations within a data set 
+
+   * Most algorithms are extremely flexible, these algorithms are not applied
+     to data, they are applied to vector spaces.
+   
+   * The model was able to be applied to the data, because the data set was
+     given an abstract representation as a vector space.
+   
+   * The limit of applying a machine learning aproach, is the ability to 
+     represent  the data within an appropriate vector space.
+
+   * Some data sets, require extremely high-dimensional spaces to provide 
+     adequate representation. Requiring a great deal of creativity, 
+     understanding the concept of a vectors space:
+        - Dimensionality of a vector space
+        - How vectors can have the same algebraic form as other objects
+        - How a vector space is an "appropriate" representation of the data
+        
+   Linear algebra is the study of vector spaces, linear transformations between
+   vector spaces, and the representation and properties of spaces and 
+   transformations. Providing the theoratical basis for giving the necessary
+   abstract representations of data.
+   
+   Architecture of modern computers  
+
+   *

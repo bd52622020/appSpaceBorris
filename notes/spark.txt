@@ -1,0 +1,301 @@
+				Spark 
+
+Spark is the cluster computing framework for large-scale data processing.
+Used for processing and analysing data in a distributed manner and process
+the data in parallel.
+
+*OLAP: Online Analytical processing.
+
+Unified: There is no need to piece together an application out of multiple
+	APIs or systems. Spark provides built-in APIs.
+
+Computing Engine: Spark handles the loading of data from various file systems
+	and runs computations on it, but does not store any data permanently.
+	Spark operates entirely in memory.
+	-Performance
+	-Speed
+
+The spark Application
+---------------------
+
+Every Spark application consists of a Driver and set of destributed 
+worker processes (Executors)
+
+1) Spark Driver: The driver runs the main() method of our application
+   and is where the SparkContext is created.
+
+	-Runs on a node in the cluster or on a client, and schedules
+	 the job execution with a cluster manager.
+	
+	-Responds to user's program or input.
+	
+	-Analyzes, schedules, and distributes work across the executors.
+	
+	-Stores metadata about the running application and conveniently
+	 exposes it in a webUI.
+
+2) Spark Executors: An executor is a distributed process, reponsible for 
+   the execution of tasks. Each spark application has its own set of 
+   executors, which stay alive for the life cycle of a single application.
+
+	-Perform all the data processing of a Spark job.
+
+	-Stores results in memory, only persisting to disk when 
+	 specifically instructed by the driver program.
+
+	-Returns results to the driver once they have been completed.
+
+	-Each node can have anywhere from one executor per node to 
+	 one executor per core.
+
+
+Spark Application Workflow
+--------------------------
+
+1) The standalone application is kicked off, and initializes its SparkContext.
+   Only after having a SparkContext can an app be referred to as a driver.
+
+2) Our driver program asks the cluster manager for resources to launch its 
+   executors.
+
+3) The cluster manager launches the executors.
+
+4) The driver runs the actual Spark code.
+
+5) Executors run tasks and send their results back to the driver.
+
+6) SparkContext is stopped and all executors are shut down, returning 
+   resources back to the cluster.
+
+Spark Architecture Overview
+---------------------------
+
+Spark has a well-defined layered architecture, with loosely coupled
+components, based on two primary abstractions:
+
+-RDDs: Resilient Distributed Datasets
+-DAG: Directed Acyclic Graph
+
+* Resilient Distributed Datasets(RDD)
+
+RRDs are essentially the building blocks of Spark, even Sparks higher-level
+APIs (DataFrames, Datasets) are composed of RDDs under the hood.
+
+	-Resilient: Running a cluster of machines, data-loss from hardware
+	 failure is a real concern, RDDs are fault tolerant and can rebuild
+	 themselves in the event of failure.
+
+	-Distriburted: A single RDD is stored on a series of different nodes
+	 in the cluster, belonging to no single source and no simple point
+	 of failure. Enabling the cluster to operate on the RDD in parallel.
+
+	-Dataset: A collection of values.
+
+
+How does it work:
+
+All data in Spark will be stored inside some form of RDD
+Spark offers a slew of "High Level" APIs built on top of RDDs
+designed to abstract away complexity, namely the DataFrame and Dataset.
+
+A JavaRDD<string> is essentially just a list<string> dispersed amongst each
+node in the cluster, with each node getting several different chunks of the
+list.
+
+RDDs work by splitting up their data into a series of partitions to be stored
+on each executor node. Each node will then perform its owrk only on its own
+partitions. If an executor fails, Spark can rebuild the partition needed from
+the original source and re-submit the task for completion.
+
+
+Operations:
+
+RDDs are immutable, once created, they cannot be altered in any way. They can
+only be transformed. Spark jobs can be composed of:
+	-Loading data into an RDD.
+	-Tranforming an RDD.
+	-Performing an action on an RDD.
+
+Spark defines a set of APIs for working with RDDs that can be broken down into
+two large groups.
+	-Transformations: Create new RDD from existing one.
+	-Actions: Return a value to the driver program after computation
+	 on its RDD through a function.
+
+
+Lazy Evaluation:
+
+All transformations in Spark are lazy. When an RDD is created in Spark by 
+transformation of an existing RDD, it won't generate that dataset until a
+specific action is performaed on it or one of its children.
+
+Spark will then perform the transformation and the action that triggered it.
+
+
+* Directed Acyclic Graph(DAG)
+
+Whenever an action is performed on an RDD, Spark creates a DAG, a finite
+direct graph with no directed cycles.
+
+Graph: A series of connected vertices and edges
+
+Each vertex in the DAG is a Spark function, some operation performed on a RDD.
+E.g. map, mapToPair, reduceByKey, etc.
+
+In MapReduce, the DAG consists of two vertices: Map --> Reduce.
+
+
+Latency
+-------
+
+*Operations made in memory
+*Operations that require sending data over the network
+
+
+Shuffling
+---------
+
+Distributed data: when applying a groupBy or a groupByKey
+-ShuffleRDD
+
+groupByKey: Collects all of the values associated with the given key and stores
+	    them in that single collection. Meaning the data has moved around the
+	    network.
+
+* Moving the data on the network is called shuffling.
+	-Enormous hit to performance
+	-Moving the data around the network-latency
+
+To do a distributed groupByKey, you move data between nodes so that the data can
+be collected together with its key in a regular, normal single machine Scala 
+collection 
+
+* Reduce on the mapper before doing the shuffle: Reduce the amount of data that it
+needs to send over the network. 
+ 
+Benefits: By reducing the dataset first, the amount of data sent over the network 
+during the shuffle is greatly reduced.
+
+
+Partitioning
+------------
+
+Comes into play when shuffling data around your cluster, partitioning your data 
+intelligently can save time when running computations. It's important to understand
+in general with distributed systems and in particular with park RDDs
+
+The data within an RDD is split into several partitions:
+	-Partitions are very rigid
+	-Partitions never span multiple machines
+	-Each machine in the cluster contains one or more partitions
+	-The number of partitions to use is configurable. By default
+	 is the total number of cores on all executor nodes.
+
+Two kinds of partitions:
+	-Hash partitioning
+	-Range partitioning
+	-Custom partitioning
+
+* Only possible when working with Pair RDDs, since partitioning is done based on keys
+
+1) Hash partitioning: Evenly distributed, computes partitions for every tuple in the
+		      pair RDD. Start by getting the key's hashs code and modulo with
+		      the default number of partitions
+
+	- P = K.hashCode() % numPartitions
+
+2) Range partitioning: Important when some kind of order is defined on the key.
+	e.g. Int, Char, String.
+	When working with pair RDDs that had keys that were integers, keys are
+	partitioned according to two things.
+	-Ordering for keys
+	-Set of sorted ranges of keys
+
+* Tuples with keys in the same range appear on the same machine
+
+3) Custom partitioning: There are two ways to create RDDs with specific partitionings
+	-PartitionBy creates an RDD, providing an explicit partitioner
+	-Using transformations that return RDDs with specific partitioners
+
+*Certain transformation use certain kinds of partitioners.
+
+
+Spark functions
+---------------
+
+*reduceByKey: Combination of first groupByKey and then reduce-ing on all the values 
+	grouped per key. Operates on the values that you assume are already grouped by 
+	some key.
+
+	-def reduceByKey(func: (V, V) => V): RDD[(K, V)]
+	- .reduceByKey((v1, v2) => (v1._1 + v2._1, v1._2 + v2._2))
+
+
+*groupByKey: Results in one key-value pair per key, and this single key-value pair
+	cannot span across multiple worker nodes.
+
+
+*partitioning data: Invoking partitionBy creates an RDD with a specified partitioner.
+	-val pairs		= purchasedRdd.map(p => (p.cuntomerId, p.price))
+	-val tunedPartitioner	= new RangePatitioner(8, pairs) ----> reference to RDD
+	-val partitioned        = pairs.partitionBy(tunedPartitioner).persist()
+
+*persist(): Due to Spark semantics and tendency to reevaluate chains of transformations
+	    again and again, the data would be shuffled over the network and partitioned
+	    again. Keeping it in memory
+
+*Operations on pair RDDs that hold to and propagate a partitioner:
+	-cogroup		-foldByKey
+	-groupWith		-combineByKey
+	-join			-partitionBy
+	-leftOuterJoin		-sort
+	-rightOuterJoin		-mapValues (if parent has a patitioner)
+	-groupByKey		-flatMapValues (..)
+	-reduceByKey		-filter (..)
+
+
+* If you use map or flatMap on a partitioned RDD, that RDD will lose its partitioner 
+
+* Organized data in a certain way across your cluster will lose its organization
+
+* Its possible for map to change the keys in a pair RDD
+
+* Hence MAPVALUES, enables to still do map transformations without changing the keys,
+  preserving the partitioner.
+
+
+Wide vs Narrow Dependencies
+---------------------------
+
+Dictates relationships between RDDs in graphs of computation,
+which has alot to do with shuffling.
+
+Not all Transformations are Equal:
+Some transformations are more expensive in terms of latency than others.
+E.g. Requiring lots of data to be transferred over the network
+
+
+
+** wide transformations vs narrow transformations
+** Shuffling-minimize
+** Disk spilling
+** partitions
+** Catalize optimizer??
+
+
+
+* map: is a tranformation for a sequence
+* Reduce By key:  
+* mapvalues: apply a function only on the values not the key
+
+
+
+* spark-submit  name.py
+
+* spark-submit ----> in hdp
+
+- 4 different functions: to read and parse data 
+	- u.data
+	- u.time
+	- u.user
+	- u.genre

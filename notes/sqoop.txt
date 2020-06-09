@@ -1,0 +1,67 @@
+				Sqoop
+
+Data from a RDBMS(Relational Database Management System) needs to be imported
+and exported. Sqoop internally converts a command into MapReduce task which 
+is then executed over HDFS.
+	-Uses yarm framework to import and export the data
+	-Fault tolerance and parallelism 
+	-Data analysis, command line interface and high performance
+
+
+What is Sqoop:
+
+Tool used for data transfer between RDBMS systems such as mySql, Oracle, SQL
+and Haddop such as Hive, HDFS, H-Base, etc.
+
+Information needed:
+-Database authentication
+-Source
+-Destination
+-Operations
+
+
+Features:
+
+*Full load: Sqoop can load tables by a single command
+
+*Incremental load: Sqoop provides a facility of incremental load where you 
+	can load the paths of a table wherever it is updated.
+
+*Parallel import/Export: Sqoop uses YARM framework to import and export data,
+	which provides fault tolerance and parallelism.
+
+*Compesion: Compress data by using gzip algorithm with compress argument, or
+	by specifying compression codec argument.
+
+*Kerberos security: Computer network authentication protocol, which work on 
+	the basis of tickets to allow the nodes that are communicating over
+	a non secure network to prove their identity to one another.
+
+*Data load directly: Directly into HIVE for analysis also dump data in HBase
+	which is not a relational database.
+
+Sqoop Architecture
+------------------
+
+1) When a job or a command is sumbited throught Sqoop, it is mapped into mapped
+into map tasks which brings the chunks of data from HDFS.
+
+2) These chunks are exported to a structured data destination.
+
+3) Combining all these exported chunks of data into a RDBMS server.
+
+4) Reduce phase is required in case of aggregations but Sqoop only
+   inputs and exports data.
+
+5) Map job launch multiple mappers: Sqoop import/Export
+
+	*Each mapper task will be assigned with the part of data
+	 has to be imported abd Sqoop distributes the input data
+	 among all the mappers equally.
+	
+	*Each mapper creates a connection with the database 
+         using JDBC and fetches the part of the data and then
+	 writes the data to HDFS/HIVE/ HBase.
+
+
+Gather metadata --> Sqoop job(I/E) --> HDFS Storage

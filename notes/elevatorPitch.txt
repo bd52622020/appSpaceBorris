@@ -1,0 +1,32 @@
+			Elevator pitch
+
+
+Introduction:
+
+My name is Boris, I have studient architecture from Newcastle University,
+where I learned a creative approach towards solving problems. I began my 
+technology carrer as an RPA developer, automating data pipelines such as
+data tranfer from a database in excel to a CRM system using a secured
+genereted password. Culminating in getting my advanced certificate in UiPath.
+
+My experience as a developer improved by learning the .NET framework, 
+I took part in developing the back-end application of a website by using 
+ADO.net, allowing data access from a SQL database to the application.
+
+I have developed a test driven development when writing code, focusing on
+the reliability and quality of code. As a developer I have learned to 
+write code using the SOLID principles to achieve low coupling and high cohesion.
+
+
+As a big data engineer, I value a reliable infrastructure meaning data is 
+checked, validated and stored correctly.  
+
+
+why are you a good fit for the role?
+
+* Architecture taught me to look at systems, as a cluster of layers, each for a
+different purpose but all of them working together as a whole. 
+
+* Architecture taught me to make the best use of resources weather 
+that is the sun, CPU memory, efficient code, worker nodes.
+
