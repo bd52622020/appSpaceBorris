@@ -1,0 +1,7 @@
+pattern="^W.*a"
+txt="We love programming with Big Data"
+if re.search(pattern,txt):
+    print(pattern, " Match found!")
+    
+x=re.findall(pattern,txt)
+print(x)
