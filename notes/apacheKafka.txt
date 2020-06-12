@@ -1,0 +1,68 @@
+					ApacheKafka
+
+Horizontally scalable, fault-tolerant, distributed streaming platform.
+
+with muliple chanels, in order to store data and chanel it for others to consume
+Kafka is a broker, the middle man to facilitate information transfer.
+
+-Information is received, managed with fault tolerance capabilities
+
+Broker:
+-------
+-Sits between the source and the producer, acknowledges the successful receipt.
+-Stores the messages in a log file to safeguard from potential loss. 
+-Delivers the message to the consumer when they require it.
+
+Data is partitioned       
+- Data is stored in physical directories 
+- Until the time of the log retention period ends 
+
+
+Duration of the messages stored?
+By replicating the messages, would the volume be an issue?
+
+Topic:
+------
+When receiving information, data is transformed into a topic, a table like structure.
+
+topic -> log file
+topic -> table
+table -> data file
+
+Replicator Factor: 
+------------------
+When we configure the broker, how many topics and partions of topics will be created.
+aim: Coordinate data across partitions.
+
+1) Leader partitions: 
+
+
+2) Follower Partitions: Data from leader is replicated into follower partitions, the 
+   broker talks with the follower partitions to coordinate data.
+
+Offset number / id: Keepstrack of the files to delete/update partitions 
+
+
+Kafka Cluster Architecture:
+---------------------------
+Not Master slave architecture, Zookeeper microservice elects one leader to: 
+-Elect master broker, where first data will be placed
+-Every other broker will follow, storing parts of data of master broker
+-Publish tasks to a topic
+-Commiting logs messages
+-Dont have to build a recilient master-slave architecture
+
+
+-Multiple brokers: Parallelism
+
+
+REST API: Client sends request to a server using a HTTPS connection, information is
+transfered if successful. One request and one response.
+
+Stream API: Client sends request to connect, if successfull the port sends streams 
+of information from the server. One request and information flows until another
+request to stop the information flow.
+	-As big data engineers, we are able to take the information and process
+	 only relevant data.
+
+

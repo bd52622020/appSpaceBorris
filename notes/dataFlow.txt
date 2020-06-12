@@ -1,0 +1,28 @@
+				Data Flow
+- Data pipeline
+- ETL: Extract, transform, load
+
+*Volume and frequency has increased exponentially
+-Batch data
+-Stream data
+
+Data Flow: Moving data from one source to a destination, data can be csv,json, ect.
+Data Pipeline: Movement and transformation of data/content from source to destination
+
+Why framework for data flow?
+* Once code deployment is set, monitoring of pipeline becomes easier.
+
+Considerations
+-Support for multiple data formats- CSV, JSON, plaintext, images, videos
+-Support for vari
+
+Apache NiFi
+* Flow-Based programming(FBP): Defines applications as networks of "black box" 
+  processes, which exchange data across predefined connections by essage passsing.
+
+-Processor
+-Process groups
+
+Flow file
+every processor after executes task, produces a flow file
+* Flow file = actual data -> CSV, JSON, XML, plaintext, SQL

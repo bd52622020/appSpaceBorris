@@ -1,0 +1,17 @@
+					Scala
+
+* Integrates features of functional and object-oriented languages
+-Syntactic flexibility
+-For comprehension
+-Unified type system: Everything is an inherited object of Any:
+-Uses singleton instead of static
+ 
+
+
+
+OOP
+-Every values is an object
+-Types and behavior of objects are described by classes and traits
+-Class abstractions are extended by subclassing 
+
+

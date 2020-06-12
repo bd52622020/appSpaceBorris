@@ -1,0 +1,14 @@
+				DataFrame
+
+StructType: Built in data type and is a collection of StructField. Used to 
+	define schema or its part.
+
+StructField: A field inside a StructType with 4 parameters.
+	-Name
+	-Data Type
+	-Nullable flag
+	-Metadata
+
+* Add StructFields to StructType by passing sequence of the start field as 
+	- Seq[StructField]
+	- Invoking add methods which are available to StructType
