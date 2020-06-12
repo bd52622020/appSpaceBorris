@@ -1,0 +1,98 @@
+				Task 9
+
+
+1) What are RDD operations in Spark?
+
+RDDs, resilient distributed datasets, are the building blocks and the basic
+abstraction in Spark. RRDs represent immutable, partitioned collection of 
+elements.
+
+They can operate in parallel and have five main properties:
+	-A list of partitions 
+	-A function for computing each split
+	-A list of dependencies on other RDs
+	- Optionally a partitioner for key-value pairs 
+
+2) What do you understand by Lazy Evaluation?
+
+Lazy evaluation is tied together with the implementation of RDDs, meanings
+that the execution of transformations will not start until an action is 
+triggered.
+
+Transformations are "lazy" meaning when we call some operations in RDD, it 
+does not immediately execute.
+
+3) What is a DAG in spark?
+
+Whenever an action is performed on an RDD, Spark creates a DAG, a finite
+direct graph with no directed cycles, and submits it to the DAG scheduler 
+
+At high level, there are two transformations that can be applied onto the RDDs,
+narrow transformations and wide transformations. This sequence of commands
+implicitly defines a DAG of an RDD object that will used later when an action
+is called.
+
+
+4) What is the role of a spark Driver?
+
+The spark driver program declares the transformations and actions on RRDs
+of data and submits the requests to the master.
+
+Creating the sparkContext, connecting to a given Spark master.
+
+
+5) What is Shuffling in Spark?
+
+Each map task in Spark writes out a shuffle file, when data is distributed 
+accross the network, there is certain amount of data that travels across the
+network. 
+
+Shuffling essential is data traveling across partitions in the network,
+however if there's a lot of information traveling across the network it can
+result in latency problems.
+
+6) What are the deploy modes in Spark?
+
+When a Spark job is submitted, the behavior of Spark job depends on one 
+parameter, the "Driver" component. Where the driver componenet will reside,
+defines the behavior of the spark job.
+
+two types:
+-Client mode: The sparkContext and driver program run externally, to the cluster.
+	Local mode is only when the cluster is not used and everything runs on 
+	a single machine. Thus the driver application and spark application are 
+	both on the same machine as the user.
+
+-Cluster mode: Driver runs on one of the cluster's worked nodes. It runs as a
+	dedicated, standalone process inside the worker. When working in 
+	cluster mode, all JARs related to the execution of the application
+	need to be publicly available
+
+7) What is the difference between RDD and dataframe?
+
+A dataframe is a table, two dimensional array structure and has additional metadata
+due to its tabular format, which allows Spark to run certain optimizations on the
+finalized query. Only works on structured and semi-structured data.
+
+An RDD is the building blocks of Spark. Internal computation is always done on RDDs
+no matter which of the abstractions Dataframe or Dataset is used.
+
+-RDD provides more familiar OPP type programming style with compile time safely,
+Dataframes detect attribute errors only at runtime.
+-No inbuilt optimizations for RDDs
+-No data serialization using Java, when data from RRDs are distributed
+
+
+
+8) How does spark achieve fault tolerance?
+RDD is logically partitioned and each node is operataing on a partition at any 
+given point in time. DAG keeps track of operations performed, in case of a crash
+the cluster manager assigns the same partition of RDD to a new Node.
+
+Since RDDs are immutable in nature. To create each RRD we need to memorize the 
+lineage of operations.Thus it might be used  on fault-tolerant input dataset
+for its creation purpose.
+
+IF any partition of an RDD may be lost due to wroked node failure, using lineage 
+we can recompute it.
+
