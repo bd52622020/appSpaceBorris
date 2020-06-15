@@ -1,0 +1,774 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark\nimport org.apache.spark.sql.types.{StructType, StructField, StringType, IntegerType}\n\nval ratings_schema \u003d new StructType()\n        .add(\"user_id\", IntegerType, true)\n        .add(\"item_id\", IntegerType, true)\n        .add(\"rating\", IntegerType, true)\n        .add(\"timestamp\", IntegerType, true)\n        \nval movies_schema \u003d new StructType()\n        .add(\"item_id\", IntegerType, true)\n        .add(\"movie_title\", StringType, true)\n        .add(\"release_date\", StringType, true)\n        .add(\"video_release_date\", StringType, true)\n        .add(\"IMBd_URL\", StringType , true)\n        .add(\"unknown\", IntegerType, true)\n        .add(\"action\", IntegerType, true)\n        .add(\"adventure\", IntegerType, true)\n        .add(\"animation\", IntegerType, true)\n        .add(\"comedy\", IntegerType, true)\n        .add(\"crime\", IntegerType, true)\n        .add(\"documentary\", IntegerType, true)\n        .add(\"drama\", IntegerType, true)\n        .add(\"fantasy\", IntegerType, true)\n        .add(\"film_noir\", IntegerType, true)\n        .add(\"horror\", IntegerType, true)\n        .add(\"musical\", IntegerType, true)\n        .add(\"mystery\", IntegerType, true)\n        .add(\"romance\", IntegerType, true)\n        .add(\"sci_fi\", IntegerType, true)\n        .add(\"thriller\", IntegerType, true)\n        .add(\"war\", IntegerType, true)\n        .add(\"western\", IntegerType, true)\n        \nval users_schema \u003d new StructType()\n        .add(\"user_id\", IntegerType, true)\n        .add(\"age\", IntegerType, true)\n        .add(\"gender\", StringType, true)\n        .add(\"occupation\", StringType, true)\n        .add(\"zip_code\", IntegerType, true)\n        ",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.331",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 12.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.types.{StructType, StructField, StringType, IntegerType}\n\u001b[1m\u001b[34mratings_schema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(user_id,IntegerType,true), StructField(item_id,IntegerType,true), StructField(rating,IntegerType,true), StructField(timestamp,IntegerType,true))\n\u001b[1m\u001b[34mmovies_schema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(item_id,IntegerType,true), StructField(movie_title,StringType,true), StructField(release_date,StringType,true), StructField(video_release_date,StringType,true), StructField(IMBd_URL,StringType,true), StructField(unknown,IntegerType,true), StructField(action,IntegerType,true), StructField(adventure,IntegerType,true), StructField(animation,IntegerType,true),..."
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066330_1103376399",
+      "id": "paragraph_1592054586894_1781820968",
+      "dateCreated": "2020-06-14 16:04:26.330",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nval ratings_df \u003d spark.read.options(Map(\"sep\"-\u003e\"\\t\")).schema(ratings_schema).csv(\"/home/blarico/work/u.data\")\nval movies_df \u003d spark.read.options(Map(\"sep\"-\u003e\"|\")).schema(movies_schema).csv(\"/home/blarico/work/u.item\")\nval users_df \u003d spark.read.options(Map(\"sep\"-\u003e\"|\")).schema(users_schema).csv(\"/home/blarico/work/u.user\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.331",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 8.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mratings_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, item_id: int ... 2 more fields]\n\u001b[1m\u001b[34mmovies_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, movie_title: string ... 21 more fields]\n\u001b[1m\u001b[34musers_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, age: int ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066331_-2130684017",
+      "id": "paragraph_1592046801230_-1533162325",
+      "dateCreated": "2020-06-14 16:04:26.331",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nusers_df.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.332",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+---+------+-------------+--------+\n|user_id|age|gender|   occupation|zip_code|\n+-------+---+------+-------------+--------+\n|      1| 24|     M|   technician|   85711|\n|      2| 53|     F|        other|   94043|\n|      3| 23|     M|       writer|   32067|\n|      4| 24|     M|   technician|   43537|\n|      5| 33|     F|        other|   15213|\n|      6| 42|     M|    executive|   98101|\n|      7| 57|     M|administrator|   91344|\n|      8| 36|     M|administrator|    5201|\n|      9| 29|     M|      student|    1002|\n|     10| 53|     M|       lawyer|   90703|\n|     11| 39|     F|        other|   30329|\n|     12| 28|     F|        other|    6405|\n|     13| 47|     M|     educator|   29206|\n|     14| 45|     M|    scientist|   55106|\n|     15| 49|     F|     educator|   97301|\n|     16| 21|     M|entertainment|   10309|\n|     17| 30|     M|   programmer|    6355|\n|     18| 35|     F|        other|   37212|\n|     19| 40|     M|    librarian|    2138|\n|     20| 42|     F|    homemaker|   95660|\n+-------+---+------+-------------+--------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066332_-209174451",
+      "id": "paragraph_1592046885778_494048787",
+      "dateCreated": "2020-06-14 16:04:26.332",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nval test \u003dratings_df.withColumn(\"counter\", lit(1)) \nval test2 \u003d test.drop(\"timestamp\")\nval grouped_by_id \u003d test2.groupBy(\"item_id\").sum(\"counter\")\nval top_10 \u003d grouped_by_id.sort(desc(\"sum(counter)\")).withColumnRenamed(\"sum(counter)\", \"Rating\")\n\nval names \u003d movies_df.select(\"item_id\", \"movie_title\")\nval movie_names \u003d top_10.join(names, Seq(\"item_id\"))\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.332",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 8.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mtest\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, item_id: int ... 3 more fields]\n\u001b[1m\u001b[34mtest2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, item_id: int ... 2 more fields]\n\u001b[1m\u001b[34mgrouped_by_id\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, sum(counter): bigint]\n\u001b[1m\u001b[34mtop_10\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, Rating: bigint]\n\u001b[1m\u001b[34mnames\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, movie_title: string]\n\u001b[1m\u001b[34mmovie_names\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, Rating: bigint ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066332_1454143366",
+      "id": "paragraph_1592059847998_-217964732",
+      "dateCreated": "2020-06-14 16:04:26.332",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nmovie_names.show(10)\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.332",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+------+--------------------+\n|item_id|Rating|         movie_title|\n+-------+------+--------------------+\n|     50|   583|    Star Wars (1977)|\n|    258|   509|      Contact (1997)|\n|    100|   508|        Fargo (1996)|\n|    181|   507|Return of the Jed...|\n|    294|   485|    Liar Liar (1997)|\n|    286|   481|English Patient, ...|\n|    288|   478|       Scream (1996)|\n|      1|   452|    Toy Story (1995)|\n|    300|   431|Air Force One (1997)|\n|    121|   429|Independence Day ...|\n+-------+------+--------------------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066332_485862040",
+      "id": "paragraph_1592060464571_-120819956",
+      "dateCreated": "2020-06-14 16:04:26.332",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nval genres \u003d movies_df.drop(\"movie_title\", \"release_date\", \"IMBd_URL\", \"video_release_date\")\n\nval action \u003d genres.select(\"item_id\", \"action\").groupBy(\"action\").sum(\"action\").show()\nval unknown \u003d genres.select(\"item_id\", \"unknown\").groupBy(\"unknown\").sum(\"unknown\").show()\nval adventure \u003d genres.select(\"item_id\", \"adventure\").groupBy(\"adventure\").sum(\"adventure\").show()\nval comedy \u003d genres.select(\"item_id\", \"comedy\").groupBy(\"comedy\").sum(\"comedy\").show()\nval crime \u003d genres.select(\"item_id\", \"crime\").groupBy(\"crime\").sum(\"crime\").show()\nval documentary \u003d genres.select(\"item_id\", \"documentary\").groupBy(\"documentary\").sum(\"documentary\").show()\nval drama \u003d genres.select(\"item_id\", \"drama\").groupBy(\"drama\").sum(\"drama\").show()\nval fantasy \u003d genres.select(\"item_id\", \"fantasy\").groupBy(\"fantasy\").sum(\"fantasy\").show()\nval film_noir \u003d genres.select(\"item_id\", \"film_noir\").groupBy(\"film_noir\").sum(\"film_noir\").show()\nval horror \u003d genres.select(\"item_id\", \"horror\").groupBy(\"horror\").sum(\"horror\").show()\nval musical \u003d genres.select(\"item_id\", \"musical\").groupBy(\"musical\").sum(\"musical\").show()\nval mystery \u003d genres.select(\"item_id\", \"mystery\").groupBy(\"mystery\").sum(\"mystery\").show()\nval sci_fi \u003d genres.select(\"item_id\", \"sci_fi\").groupBy(\"sci_fi\").sum(\"sci_fi\").show()\nval thriller \u003d genres.select(\"item_id\", \"thriller\").groupBy(\"thriller\").sum(\"thriller\").show()\nval war \u003d genres.select(\"item_id\", \"war\").groupBy(\"war\").sum(\"war\").show()\nval western \u003d genres.select(\"item_id\", \"western\").groupBy(\"western\").sum(\"western\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.332",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------+-----------+\n|action|sum(action)|\n+------+-----------+\n|     1|        251|\n|     0|          0|\n+------+-----------+\n\n+-------+------------+\n|unknown|sum(unknown)|\n+-------+------------+\n|      1|           2|\n|      0|           0|\n+-------+------------+\n\n+---------+--------------+\n|adventure|sum(adventure)|\n+---------+--------------+\n|        1|           135|\n|        0|             0|\n+---------+--------------+\n\n+------+-----------+\n|comedy|sum(comedy)|\n+------+-----------+\n|     1|        122|\n|     0|          0|\n+------+-----------+\n\n+-----+----------+\n|crime|sum(crime)|\n+-----+----------+\n|    1|       505|\n|    0|         0|\n+-----+----------+\n\n+-----------+----------------+\n|documentary|sum(documentary)|\n+-----------+----------------+\n|          1|             109|\n|          0|               0|\n+-----------+----------------+\n\n+-----+----------+\n|drama|sum(drama)|\n+-----+----------+\n|    1|        50|\n|    0|         0|\n+-----+----------+\n\n+-------+------------+\n|fantasy|sum(fantasy)|\n+-------+------------+\n|      1|         725|\n|      0|           0|\n+-------+------------+\n\n+---------+--------------+\n|film_noir|sum(film_noir)|\n+---------+--------------+\n|        1|            22|\n|        0|             0|\n+---------+--------------+\n\n+------+-----------+\n|horror|sum(horror)|\n+------+-----------+\n|     1|         24|\n|     0|          0|\n+------+-----------+\n\n+-------+------------+\n|musical|sum(musical)|\n+-------+------------+\n|      1|          92|\n|      0|           0|\n+-------+------------+\n\n+-------+------------+\n|mystery|sum(mystery)|\n+-------+------------+\n|      1|          56|\n|      0|           0|\n+-------+------------+\n\n+------+-----------+\n|sci_fi|sum(sci_fi)|\n+------+-----------+\n|     1|        247|\n|     0|          0|\n+------+-----------+\n\n+--------+-------------+\n|thriller|sum(thriller)|\n+--------+-------------+\n|       1|          101|\n|       0|            0|\n+--------+-------------+\n\n+---+--------+\n|war|sum(war)|\n+---+--------+\n|  1|     251|\n|  0|       0|\n+---+--------+\n\n+-------+------------+\n|western|sum(western)|\n+-------+------------+\n|      1|          71|\n|      0|           0|\n+-------+------------+\n\n\u001b[1m\u001b[34mgenres\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, unknown: int ... 17 more fields]\n\u001b[1m\u001b[34maction\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34munknown\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34madventure\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mcomedy\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mcrime\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mdocumentary\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mdrama\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mfantasy\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mfilm_noir\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mhorror\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mmusical\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mmystery\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34msci_fi\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mthriller\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mwar\u001b[0m: \u001b[1m\u001b[32mUnit\u001b[0m \u003d ()\n\u001b[1m\u001b[34mw..."
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066332_-13075272",
+      "id": "paragraph_1592060707190_1646500537",
+      "dateCreated": "2020-06-14 16:04:26.332",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nval rating \u003d ratings_df.select(\"item_id\", \"rating\", \"timestamp\").where(col(\"rating\")\u003d\u003d\u003d5)\nval rating_timestamp \u003d rating.withColumn(\"timestamp\", to_timestamp(col(\"timestamp\")))\n\nval release_date \u003d movies_df.select(\"item_id\", \"movie_title\", \"release_date\")\nval date_time \u003d release_date.withColumn(\"release_date\", to_date(col(\"release_date\"), \"dd-MMM-yyyy\"))\n\nval oldest_movie \u003d date_time.sort(asc(\"release_date\"))\nval filter_null \u003d oldest_movie.filter(col(\"release_date\").isNotNull)\nfilter_null.show(1)",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.333",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+--------------------+------------+\n|item_id|         movie_title|release_date|\n+-------+--------------------+------------+\n|    675|Nosferatu (Nosfer...|  1922-01-01|\n+-------+--------------------+------------+\nonly showing top 1 row\n\n\u001b[1m\u001b[34mrating\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [item_id: int, rating: int ... 1 more field]\n\u001b[1m\u001b[34mrating_timestamp\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, rating: int ... 1 more field]\n\u001b[1m\u001b[34mrelease_date\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, movie_title: string ... 1 more field]\n\u001b[1m\u001b[34mdate_time\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, movie_title: string ... 1 more field]\n\u001b[1m\u001b[34moldest_movie\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [item_id: int, movie_title: string ... 1 more field]\n\u001b[1m\u001b[34mfilter_null\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [item_id: int, movie_title: string ... 1 mor..."
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066333_-1182013995",
+      "id": "paragraph_1592076773847_-1678095879",
+      "dateCreated": "2020-06-14 16:04:26.333",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nval rated_counter \u003d ratings_df.withColumn(\"counter\", lit(1)) \nval rated_grouped \u003d rated_counter.groupBy(\"item_id\").sum(\"counter\")\nval most_rated \u003d rated_grouped.sort(desc(\"sum(counter)\"))\nval most_rated_movies \u003d most_rated.join(names, Seq(\"item_id\"))\nval movies_ids \u003d most_rated_movies.select(\"item_id\")\nval top_10 \u003d movies_ids.limit(10)\nval genres \u003d top_10.join(movies_df, Seq(\"item_id\"), \"left\")\nval movie_and_genres \u003d genres.drop(\"release_date\", \"IMBd_URL\", \"video_release_date\", \"item_id\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.333",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 5.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mrated_counter\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, item_id: int ... 3 more fields]\n\u001b[1m\u001b[34mrated_grouped\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, sum(counter): bigint]\n\u001b[1m\u001b[34mmost_rated\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [item_id: int, sum(counter): bigint]\n\u001b[1m\u001b[34mmost_rated_movies\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, sum(counter): bigint ... 1 more field]\n\u001b[1m\u001b[34mmovies_ids\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int]\n\u001b[1m\u001b[34mtop_10\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [item_id: int]\n\u001b[1m\u001b[34mgenres\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, movie_title: string ... 21 ..."
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066333_2053680810",
+      "id": "paragraph_1592062125736_1954309390",
+      "dateCreated": "2020-06-14 16:04:26.333",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nmovie_and_genres.show()\n\n \n \n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.333",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 7.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+-------+------+---------+---------+------+-----+-----------+-----+-------+---------+------+-------+-------+-------+------+--------+---+-------+\n|         movie_title|unknown|action|adventure|animation|comedy|crime|documentary|drama|fantasy|film_noir|horror|musical|mystery|romance|sci_fi|thriller|war|western|\n+--------------------+-------+------+---------+---------+------+-----+-----------+-----+-------+---------+------+-------+-------+-------+------+--------+---+-------+\n|    Star Wars (1977)|      0|     1|        1|        0|     0|    0|          0|    0|      0|        0|     0|      0|      0|      0|     1|       1|  0|      1|\n|      Contact (1997)|      0|     0|        0|        0|     0|    0|          0|    0|      1|        0|     0|      0|      0|      0|     0|       1|  0|      0|\n|        Fargo (1996)|      0|     0|        0|        0|     0|    0|          1|    0|      1|        0|     0|      0|      0|      0|     0|       0|  1|      0|\n|Return of the Jed...|      0|     1|        1|        0|     0|    0|          0|    0|      0|        0|     0|      0|      0|      0|     1|       1|  0|      1|\n|    Liar Liar (1997)|      0|     0|        0|        0|     0|    1|          0|    0|      0|        0|     0|      0|      0|      0|     0|       0|  0|      0|\n|English Patient, ...|      0|     0|        0|        0|     0|    0|          0|    0|      1|        0|     0|      0|      0|      0|     1|       0|  0|      1|\n|       Scream (1996)|      0|     0|        0|        0|     0|    0|          0|    0|      0|        0|     0|      1|      0|      0|     0|       0|  1|      0|\n|    Toy Story (1995)|      0|     0|        0|        1|     1|    1|          0|    0|      0|        0|     0|      0|      0|      0|     0|       0|  0|      0|\n|Air Force One (1997)|      0|     1|        0|        0|     0|    0|          0|    0|      0|        0|     0|      0|      0|      0|     0|       0|  1|      0|\n|Independence Day ...|      0|     1|        0|        0|     0|    0|          0|    0|      0|        0|     0|      0|      0|      0|     0|       1|  0|      1|\n+--------------------+-------+------+---------+---------+------+-----+-----------+-----+-------+---------+------+-------+-------+-------+------+--------+---+-------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066333_2047926239",
+      "id": "paragraph_1592070552654_472123089",
+      "dateCreated": "2020-06-14 16:04:26.333",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nval students \u003d users_df.select(\"user_id\", \"occupation\").where(col(\"occupation\") \u003d\u003d\u003d\"student\")\nval students_movies \u003d students.join(ratings_df, Seq(\"user_id\"))\nval movie_id \u003d students_movies.select(\"item_id\", \"rating\")\nval counter \u003d movie_id.withColumn(\"counter\", lit(1))\nval most_rated \u003d counter.groupBy(\"item_id\").sum(\"counter\").sort(desc(\"sum(counter)\")).limit(1)\nval movie_most_rated \u003d most_rated.join(movies_df, Seq(\"item_id\")).select(\"movie_title\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.334",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mstudents\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [user_id: int, occupation: string]\n\u001b[1m\u001b[34mstudents_movies\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, occupation: string ... 3 more fields]\n\u001b[1m\u001b[34mmovie_id\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, rating: int]\n\u001b[1m\u001b[34mcounter\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, rating: int ... 1 more field]\n\u001b[1m\u001b[34mmost_rated\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [item_id: int, sum(counter): bigint]\n\u001b[1m\u001b[34mmovie_most_rated\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [movie_title: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066333_705107938",
+      "id": "paragraph_1592085506558_-1597826412",
+      "dateCreated": "2020-06-14 16:04:26.334",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nmost_rated.show()\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.334",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 2.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+------------+\n|item_id|sum(counter)|\n+-------+------------+\n|    288|         137|\n+-------+------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066334_-891320323",
+      "id": "paragraph_1592087446769_-766330669",
+      "dateCreated": "2020-06-14 16:04:26.334",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nmovie_most_rated.show()\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.334",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 3.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+\n|  movie_title|\n+-------------+\n|Scream (1996)|\n+-------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066334_1027007364",
+      "id": "paragraph_1592137789366_1975474360",
+      "dateCreated": "2020-06-14 16:04:26.334",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nval movies_5_ratings \u003d ratings_df.where(col(\"rating\")\u003d\u003d\u003d 5)\nval counter_movies \u003d movies_5_ratings.withColumn(\"counter\", lit(1))\nval group_by_id \u003d counter_movies.groupBy(\"item_id\").sum(\"counter\").sort(desc(\"sum(counter)\")).limit(10)\nval movie_names \u003d movies_df.select(\"item_id\", \"movie_title\")\nval top_movies_5_ratings \u003d group_by_id.join(movie_names, Seq(\"item_id\"), \"left\").withColumnRenamed(\"sum(counter)\", \"5 ratings\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.334",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 8.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mmovies_5_ratings\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [user_id: int, item_id: int ... 2 more fields]\n\u001b[1m\u001b[34mcounter_movies\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, item_id: int ... 3 more fields]\n\u001b[1m\u001b[34mgroup_by_id\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [item_id: int, sum(counter): bigint]\n\u001b[1m\u001b[34mmovie_names\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, movie_title: string]\n\u001b[1m\u001b[34mtop_movies_5_ratings\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [item_id: int, 5 ratings: bigint ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066334_224787221",
+      "id": "paragraph_1592137952080_-167665419",
+      "dateCreated": "2020-06-14 16:04:26.334",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\ntop_movies_5_ratings.show()",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.334",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+---------+--------------------+\n|item_id|5 ratings|         movie_title|\n+-------+---------+--------------------+\n|     50|      325|    Star Wars (1977)|\n|    100|      227|        Fargo (1996)|\n|    127|      214|Godfather, The (1...|\n|    174|      202|Raiders of the Lo...|\n|     56|      188| Pulp Fiction (1994)|\n|    318|      186|Schindler\u0027s List ...|\n|     98|      181|Silence of the La...|\n|    313|      179|      Titanic (1997)|\n|    172|      172|Empire Strikes Ba...|\n|    181|      171|Return of the Jed...|\n+-------+---------+--------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066334_-655416007",
+      "id": "paragraph_1592142771661_-43326645",
+      "dateCreated": "2020-06-14 16:04:26.334",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nval users_counter \u003d ratings_df.select(\"user_id\").withColumn(\"counter\", lit(1))\nval count_users \u003d users_counter.groupBy(\"user_id\").sum(\"counter\").sort(desc(\"sum(counter)\"))\nval zip_codes \u003d users_df.select(\"user_id\", \"zip_code\")\nval user_zip_code \u003d count_users.join(zip_codes, Seq(\"user_id\"), \"left\").withColumnRenamed(\"sum(counter)\", \"number of ratings\")\n\n\n\n\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.334",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 8.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34musers_counter\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, counter: int]\n\u001b[1m\u001b[34mcount_users\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [user_id: int, sum(counter): bigint]\n\u001b[1m\u001b[34mzip_codes\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, zip_code: int]\n\u001b[1m\u001b[34muser_zip_code\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, number of ratings: bigint ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066334_1008685640",
+      "id": "paragraph_1592142822847_1005753092",
+      "dateCreated": "2020-06-14 16:04:26.334",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nuser_zip_code.show()",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.335",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----------------+--------+\n|user_id|number of ratings|zip_code|\n+-------+-----------------+--------+\n|    405|              737|   10019|\n|    655|              685|   60657|\n|     13|              636|   29206|\n|    450|              540|   11758|\n|    276|              518|   95064|\n|    416|              493|   92626|\n|    537|              490|   22902|\n|    303|              484|   14853|\n|    234|              480|   94702|\n|    393|              448|   83686|\n|    181|              435|   21218|\n|    279|              434|   85251|\n|    429|              414|   29205|\n|    846|              405|   47130|\n|      7|              403|   91344|\n|     94|              400|   71457|\n|    682|              399|   55128|\n|    308|              397|   95076|\n|     92|              388|   80525|\n|    293|              388|   60804|\n+-------+-----------------+--------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066335_323802862",
+      "id": "paragraph_1592142828849_-619522324",
+      "dateCreated": "2020-06-14 16:04:26.335",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nval users_age_20_25 \u003d users_df.select(\"user_id\", \"age\").where(col(\"age\") \u003e\u003d 20 \u0026\u0026 col(\"age\") \u003c\u003d 25)\nval users_ratings_20_25 \u003d users_age_20_25.join(ratings_df, Seq(\"user_id\"), \"left\")\nval users_counter \u003d users_ratings_20_25.withColumn(\"counter\", lit(1))\nval most_rated_df \u003d users_counter.groupBy(\"item_id\").sum(\"counter\").sort(desc(\"sum(counter)\")).limit(1)\nval most_rated_movie \u003d most_rated_df.join(movies_df ,Seq(\"item_id\"), \"left\").select(\"movie_title\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.335",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 8.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34musers_age_20_25\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [user_id: int, age: int]\n\u001b[1m\u001b[34musers_ratings_20_25\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, age: int ... 3 more fields]\n\u001b[1m\u001b[34musers_counter\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [user_id: int, age: int ... 4 more fields]\n\u001b[1m\u001b[34mmost_rated_df\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [item_id: int, sum(counter): bigint]\n\u001b[1m\u001b[34mmost_rated_movie\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [movie_title: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066335_-1537243138",
+      "id": "paragraph_1592143519306_23710402",
+      "dateCreated": "2020-06-14 16:04:26.335",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nmost_rated_movie.show()\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.335",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+\n|  movie_title|\n+-------------+\n|Scream (1996)|\n+-------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066335_-68117744",
+      "id": "paragraph_1592143591307_-648775410",
+      "dateCreated": "2020-06-14 16:04:26.335",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n\nval movies_release_date \u003d date_time.select(\"movie_title\", \"release_date\")\nval movies_after_1960 \u003d movies_release_date.filter(col(\"release_date\").gt(lit(\"1960-12-31\")))\nval movies_after_1960_sorted \u003d movies_after_1960.sort(asc(\"release_date\"))\n\n\n\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.335",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 8.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mmovies_release_date\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [movie_title: string, release_date: date]\n\u001b[1m\u001b[34mmovies_after_1960\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [movie_title: string, release_date: date]\n\u001b[1m\u001b[34mmovies_after_1960_sorted\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [movie_title: string, release_date: date]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066335_1620421312",
+      "id": "paragraph_1592144140704_-2019174767",
+      "dateCreated": "2020-06-14 16:04:26.335",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\nmovies_after_1960_sorted.show()",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.335",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+------------+\n|         movie_title|release_date|\n+--------------------+------------+\n|Innocents, The (1...|  1961-01-01|\n|Parent Trap, The ...|  1961-01-01|\n|Breakfast at Tiff...|  1961-01-01|\n|To Kill a Mocking...|  1962-01-01|\n|Manchurian Candid...|  1962-01-01|\n|    Cape Fear (1962)|  1962-01-01|\n|Lawrence of Arabi...|  1962-01-01|\n|   Mamma Roma (1962)|  1962-01-01|\n|Great Escape, The...|  1963-01-01|\n|      Charade (1963)|  1963-01-01|\n|   Birds, The (1963)|  1963-01-01|\n|Dr. Strangelove o...|  1963-01-01|\n|        8 1/2 (1963)|  1963-01-01|\n|Sword in the Ston...|  1963-01-01|\n| My Fair Lady (1964)|  1964-01-01|\n| Mary Poppins (1964)|  1964-01-01|\n|That Darn Cat! (1...|  1965-01-01|\n|Sound of Music, T...|  1965-01-01|\n|Faster Pussycat! ...|  1965-01-01|\n|   Alphaville (1965)|  1965-01-01|\n+--------------------+------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066335_-825796961",
+      "id": "paragraph_1592144180557_1910136282",
+      "dateCreated": "2020-06-14 16:04:26.335",
+      "status": "READY"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-14 16:04:26.336",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1592147066335_356143454",
+      "id": "paragraph_1592146410567_244565421",
+      "dateCreated": "2020-06-14 16:04:26.336",
+      "status": "READY"
+    }
+  ],
+  "name": "movielens_scala",
+  "id": "2FDD7SDF3",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-preview1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}
