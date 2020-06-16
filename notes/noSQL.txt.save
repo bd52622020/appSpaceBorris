@@ -1,0 +1,72 @@
+				No SQL
+
+Scaling up MySQL:
+-Denormalization
+-Caching layers
+-Master/slave setups
+-Sharding
+-Materialized views
+-Removing stored procedures
+
+Apache HBase
+------------
+*Non-relational, scalable database built on HDFS
+*CRUD: Create, read, update, delete
+*There is no query language, only CRUD API's
+
+Architecture:
+ZooKepper - HMaster: Maintaining data across regions(silimar to nodes) servers
+Everything: Object of a row(BLock of data with unique key), every row has a
+column family.
+
+Cassandra
+---------
+*Has no master/slave architecture and no single point of failure
+*Every node runs exactly the same software and performs the same functions
+*Non-relational but has a limited CQL query language as its interface
+
+CAP Theorem:
+Consistency, availability, partition tolerant
+*Cassandra favors availability over consistency 
+*Any two of the three
+
+Architecture:
+Node-Node-Node: Data persists across all nodes
+*Highly available
+
+CQL:
+*No joins, data must be normalized 
+*All queries must be on some primary key
+*All tables must be in a keyspace - keyspaces are like databases
+
+
+MongoDB
+-------
+*No single key, you cna enforce a schema, but it's not required 
+*You can have different fields in every document
+
+Terminology:
+Databases - collections - documents
+
+Replication sets:
+*Single-master, maintains backup copies of your database instance
+*Secondaries can elect a new primary
+
+
+Integratrion considerations:
+*Scaling requirements
+*Support considerations
+*CAP considerations
+
+****************************
+Conclusion:
+
+Cassandra: A + P - C
+Mongo DB : C + P - A
+HBase	 : C + P - A
+MySQL	 : A + C - P
+
+Availability = A
+Partition Tolerance = P
+Consistency = C
+*****************************

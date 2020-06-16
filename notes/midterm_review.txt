@@ -1,0 +1,76 @@
+					Midtern_Review
+
+1.a) bin/hadoop fs -copyFromLocal characters.csv /home/blarico/hadoop/data/characters.csv 
+
+1.b)
+
+1.1.a) What is an RDD?
+	-An RDD is an immutable data structure, once created it cannot change, RDDs are
+	the building blocks of the Hadoop ecosystem. RDDs are partitioned collections,
+	meaning that they are only parts of a file, distributed across data nodes. They
+	can operate in parallel, they are connected to other RRDS as dependencies and
+	they are partitioned as key-value pairs. 
+
+1.1.b) What is a DAG?
+	-Related to RDDs, a DAG is created when an "action" is performed on and RDD,
+	the DAG containes the information when an RDD is tranformed. A DAG is rooted 
+	in transformations, classified as either narrow or wide transformations. the 
+	sequence of commands defines the DAG of an RDD object and will be used later
+	when an action is called.
+
+1.1.c) What is the role of a spark driver?
+	-The main purpose of the driver program is to declare the transformations and
+	actions specified in the DAG about the RDDs, the spark driver submits the data
+	as a request to the mater. A spark context connects to a spark master in order
+	for the data to transform.
+
+1.1.d) Is spark fault tolerant and how does spark achieve that?
+	-In spark, RDDs are the core units used to transfer information, the RDD is 
+	partitioned on various nodes. The DAG keeps track of operations performed in the
+	data(RDD) and in case of a crash or data corruptionin the nodes, the DAG has the 
+	information to then assign the same partition of RDD to a new node.
+	RDDs are immutable and provide a lineage of operations which can be be retrived.
+
+2.a) How to make a shell script executable?
+	-To make it executable, the user needs to change the read, write and execute 
+	permissions of that file. To make a file executablem, the file needs to have 
+	permission to execute. Using chmod u+x or 774 following the file name.
+
+2.b) What is the use of "#!/bin/bash"?
+	- Called the hashbang, the line of code is used at the very first line of a
+	file to assert which interpreter the script will use. 
+
+2.c) How do you resolve variable in a shellscript?
+	- A variable is set all in capitals and using the "=" sign to provide a value
+	e.g. JAVA_HOME=/home/java
+	the variable needs to be all in capitals and in order to call the variable a
+	dollar sign needs to be appended before the name e.g. $JAVA_HOME
+
+3.a) What are the core components of Hadoop?
+	- The core components of Haddop are the Datanode, where all the data is stored 
+	into block, the Namenode where information about which data is stored in which 
+	data node, Mapreduce is the process where data is stored in nodes and then
+	retrived.
+
+3.b) What are the differences between nameNode and dataNode?
+	-The datanode is where all the data is stored across the cluster, they only 
+	contain parts of information in each node, the nameNode has pointer information
+	about which part are distributed in which datanodes.
+
+3.c) What does jps command do in Haddop?
+	- The jps command allows the user to view the processes that are running, in the
+	case of Hadoop it will show information about the namenodes, datanodes and 
+	resource managed or any secondary nodes.
+
+3.d) What do you mean by metadata in Hadoop?
+	- Due to the nature of RDDs, the core building blocks of hadoop, metadata
+	representas the structure of the directories and files in hadoop with the location
+	of the differrent nodes and information about the status of the services. 
+	The metadata serves as the configuration of how hadoop runs. 
+
+3.e) What is a block in HDFS, why block size 64MB?
+	- Inside of the datanodes, information needs to be organized. Due to the 
+	distributed natuve of HDFS, a block serves as storage of data inside a datanode.
+	The size block of 64MB is because the smaller the blocks, the easier is becomes to
+	process information with commodity hardware, reducing the cost of overhead and
+	reducing the strain while processing.
