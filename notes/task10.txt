@@ -1,0 +1,12 @@
+HBase
+
+1) hbase shell
+2) create 'star_wars_characters', {NAME => 'characters_data'}
+3) bin/hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.separator=','
+   -Dimporttsv.columns='HBASE_ROW_KEY,characters_data:name,characters_data:height,
+   characters_data:mass,characters_data:hair_color,characters_data:skin_color,
+   characters_data:eye_color,characters_data:birth_year,characters_data:gender,
+   characters_data:homeworld,characters_data:species' star_wars_characters 
+   /home/blarico/hadoop/data/characters.csv
+
+4)

@@ -1,0 +1,57 @@
+				Yarn
+
+
+*Resource manager layer: Providing resources to schedule/trigger mappers
+ and reducers jobs. Once task is done, yarn retrives data from datanodes and
+ deliver to the local application.
+
+*separates the problem of managing resources on the cluster from mapReduce
+*Managing the usage of your cluster.
+*HDFS -- YARN -- MapRuce
+
+in case of failure: Yarn, will take a block in datanode and distributed it to
+other datanodes.
+
+-Apache Slider
+-Apache Twill
+
+Tez
+---
+Makes Hive, Pig, MapReduce jobs faster
+*Application framework client, it can code against as a replacement for 
+MapReduce
+
+*Constructs DAG (Directed Acyclic Graphs) for more efficient processing of 
+distributed jobs 
+*Relies on a more holistic view of your job, eliminates unnecessary steps
+and dependencies
+*Optimizes physical data flow and resource usage
+*Dont have to deal with RDDs
+
+*With hive- uses metadata to create DAGs 
+
+Mesos
+-----
+When using spark, to avoid creating mappers and reducers. Replaces yarn, in 
+managing resources across data centers.
+
+*General container management system: Keep track of the software, what it is 
+doing across every node.
+
+
+YARN --- MESOS
+
+YARN is a monolithic scheduler - you give it a job, and yarn figures out
+where to run
+
+MESOS is a two-tiered system
+-Mesos just makes offers of resources to your application("framework")
+-You framework decides whether to accept or reject them
+-You also decide your own scheduling algorithm
+-Able to track which resources are being used/unused 
+
+
+architecture
+------------
+*Siloed: system isolated from others
+*Resource sharing

@@ -1,0 +1,30 @@
+				Zookeeper
+
+Master/Slave architecture:
+*Master is where the metadata is stored
+*Slave is where the actual data is stored 
+
+
+Coordinating your cluster:
+Keeps track of information that must be synchronized across your cluster
+-Which node is the master?
+-What tasks are assigned to which worker?
+-Which workers are currently available?
+-Health of nodes
+
+Zookeper it a tool that applications can use to recover from partial failure
+in your cluster.
+
+*An integral part of HBASE, high-availability MapReduce, Drill, Storm, Solr
+
+
+Failure modes
+-------------
+*Master crashes, needs to fail over to a backup
+*Worker crashes, its work needs to be redistributed
+*Network trouble, part of your cluster can't see the rest of it
+
+
+Zookeeper's API
+---------------
+*Directory based, tree structure: 

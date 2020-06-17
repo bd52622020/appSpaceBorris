@@ -1,0 +1,63 @@
+				HBase
+
+Apache HBase is the Hadoop database, a distributed, column oriented, 
+scalable, big data store.
+
+NoSQL database:
+-Consistent
+-Partition Tolerant
+
+-It is a kay value store where we can have the value and a key
+-Columns are grouped together into column families 
+-To access columns of a single column family, it makes it faster 
+ as it does not scan other column families 
+
+* Use HBase when in need of random, realtime read/write access
+
+Architecture
+------------
+Master/slave architecture:
+-HMaster: Performns administrative functionalities, such as creation and
+	deletion of tables and handling the region spliting.
+
+-Region server: every region server communicates with the HMaster, the 
+	actual data are hosted by the region server in the form of 
+	HFiles, optimized files for the storage of data.
+
+Zookeper: Performs the distribution coordination, regions and Hmaster
+ send heartbeats to zookeper to view which regions are active/inactive.
+
+*The data in HBase table is divided horizontally across different regions,
+ these regions are sorted across differerent region servers. Region server
+ size by default is 1GB.
+
+*Every region is sorted according to the key and the content specified by 
+ the startkey and endkey. 
+
+*Meta-Table: Contains the information of in which region/server, the start
+ key and endkey will be found.
+
+*Get/Put operations: The client connects to the zookeeper to get the address
+ of the meta-table, then looks into the particular data to find the specific
+ region server.
+
+Region server:
+-Memstore
+-HFile
+-BlockCache
+-WAL Write ahead log
+
+*HFile stores actual data in HDFS
+*Any job such as update, delete or insert will go to the memstore located in
+ the ram. Content of the HDFS cannot be directly updated.
+*In case of failure the WAL maintains the same entry stored in the memstore
+*Content of WAL can be replayed to create the same structure and state of 
+ the memstore in a different machine
+*BlockCache is a space in the RAM, one for one region server, contains recent
+ read data. 
+*If no data found in the readCache-->memtore is inquired--> if not --> HFile
+
+**Flash Activity 
+*When memtore is full it flushes the changes in the form of HFiles
+
+*In new entry --> WAL --> Memstore --> updates client
