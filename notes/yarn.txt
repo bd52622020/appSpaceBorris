@@ -4,6 +4,7 @@
 *Resource manager layer: Providing resources to schedule/trigger mappers
  and reducers jobs. Once task is done, yarn retrives data from datanodes and
  deliver to the local application.
+*Job processor, scheduler.
 
 *separates the problem of managing resources on the cluster from mapReduce
 *Managing the usage of your cluster.

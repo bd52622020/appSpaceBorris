@@ -28,3 +28,25 @@ Failure modes
 Zookeeper's API
 ---------------
 *Directory based, tree structure: 
+*Create, Delete, Exists, setData, getData, getChildren
+
+persistent and ephemeral znodes
+-------------------------------
+*Persistent znodes remain stored until explicitly deleted:
+Assignment of tasks to workers must persist even if master crashes 
+
+*Ephemeral znodes go away if the client that created it crashes 
+
+Zookeeper ensemble
+------------------
+Cluster of zookeeper servers
+
+
+Oozie
+-----
+*Xml script
+*Tool to schedule jobs 
+*Process Automation
+--> HDFS --> Hive+MapR --> mySQL(RDS) --> python(CSV)
+
+
