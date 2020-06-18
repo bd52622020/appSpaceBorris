@@ -1,0 +1,11 @@
+
+				APIs
+
+
+-Forge Finance APIs: Stock and Forex Data and Realtime quotes.
+-Open skills: Data store for canonical and emerging skills, knowledge, 
+	abilities, tools, technologies, and how they relate to jobs.
+-Ocrapi: Optical character recognition OCR
+-Google classroom: Manages classes, rosters, and invitations
+-Apacta: Used to register working hours, material usage and quality assurance
+ 

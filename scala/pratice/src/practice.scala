@@ -1,0 +1,5 @@
+package Scala
+
+class practice {
+  
+}
