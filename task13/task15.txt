@@ -1,0 +1,35 @@
+					Task15
+
+1) What is the purpose of local or local[*] in a scala code?
+
+The purpose of local is to run spark locally. There square brackets
+indicates the amount of threads. * defines an many worker threads as 
+logical cores on your machine.
+
+2) What is the difference between map and flatmap?
+
+A map is a collectionof key/value pairs. The transformation affects 
+every element in the object.
+In flatmap hte inner grouping of an item is removed and a sequence is
+generated.
+
+3) What are two fundamental methods of creating a RDD in spark?
+
+One method is parallelization of collection, the number of partitions
+can also be specified.
+Using an external database, using the sparkContext textFile method,
+taking the URL of the file and is read as a collection of lines.
+Creating and RDD from an existing RDD, usually called a transformation,
+mutates one RDD with the specifications of the change and creates 
+a new RDD.
+
+
+4) what is the difference between map and mapValues?
+
+MapValues is only applicable for PairRDDs, key/value pairs, operating
+on the value only. While map operates on the entire record, tuple of 
+key and value.
+
+5) What transformation helps us summarize data according to a key?
+
+Group by key
