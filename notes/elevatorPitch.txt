@@ -1,25 +1,4 @@
-			Elevator pitch
-
-
-Introduction:
-
-My name is Boris, I have studient architecture from Newcastle University,
-where I learned a creative approach towards solving problems. I began my 
-technology carrer as an RPA developer, automating data pipelines such as
-data tranfer from a database in excel to a CRM system using a secured
-genereted password. Culminating in getting my advanced certificate in UiPath.
-
-My experience as a developer improved by learning the .NET framework, 
-I took part in developing the back-end application of a website by using 
-ADO.net, allowing data access from a SQL database to the application.
-
-I have developed a test driven development when writing code, focusing on
-the reliability and quality of code. As a developer I have learned to 
-write code using the SOLID principles to achieve low coupling and high cohesion.
-
-
-As a big data engineer, I value a reliable infrastructure meaning data is 
-checked, validated and stored correctly.  
+				Questions
 
 
 why are you a good fit for the role?
@@ -29,4 +8,298 @@ different purpose but all of them working together as a whole.
 
 * Architecture taught me to make the best use of resources weather 
 that is the sun, CPU memory, efficient code, worker nodes.
+
+
+
+1)Tell me about yourself
+------------------------
+My name is Boris, I have studient architecture from Newcastle University,
+where I learned a creative approach towards solving problems. I began my
+technology carrer as an RPA developer, automating data pipelines such as
+data tranfer from a database in excel to a CRM system using a secured
+genereted password. Culminating in getting my advanced certificate in UiPath.
+
+My experience as a developer improved by learning the .NET framework,
+I took part in developing the back-end application of a website by using
+ADO.net, allowing data access from a SQL database to the application.
+
+I have developed a test driven development when writing code, focusing on
+the reliability and quality of code. As a developer I have learned to
+write code using the SOLID principles to achieve low coupling and high cohesion.
+
+
+2)Describe yourself in 3 words?
+----------------------------
+Methodical - Proactive - Creative
+
+
+3)What are your strengths and weaknesses?
+---------------------------------------
+-Dedication, curiosity, problem solver
+-Critical, skeptical
+
+
+4)What is your greatest fear?
+--------------------------
+My greatest fear is to have a unidimesional life. I want to be able to 
+try new things, have new experiences, grow as a person and become a 
+better version of myself.
+
+
+5)If I call up your current or previous reporting manager now, what will
+be their opinion about you?. What will they say that you need to work on?
+-------------------------------------------------------------------------
+Their opinion of me would be that he was always on time and completed  
+his job to the best of his abilities. They will say that he needs to
+improve his ability to stand his ground when exchanging ideas.
+
+
+6)Did you ever have a conflict with your current/previous boss or professor?
+-------------------------------------------------------------------------
+Yes, It might be conflict but I look at it more like a misanderstanding,
+During a project, the manager of our team, had set the task of creating a
+basic pipeline connecting an SQL database to our backend project. I raised 
+a concern based on how long it would take, we discused the project in more
+detail and came to the conclusion that it will be better to reduce the 
+detail required.
+
+
+7)What do your friends/co-workers say about you?
+------------------------------------------------
+My friends will most likely mention my playful nature, I have a relaxed 
+personality and enjoy socialising. My co-workers will probably mention
+that I remain clam under pressure and like to help people when they 
+dont understand something. 
+
+
+8)What did you do in the last year to improve your knowledge?
+-------------------------------------------------------------
+Last year I began to improve my knowledge by solving coding puzzles in 
+code warriors, in order to solve ecah puzzle I had to get detailed 
+information about a specific topic and build my code to pass all the 
+test cases in order to receive the credit. I have gained a deeper
+insight into how to write efficient code. 
+
+
+9)Explain the difference between group and team?
+------------------------------------------------
+In my opinion, I see group as something where each member has something
+in common with each other, in the other hand I see team as a group of
+people who work together to achieve a particular goal.
+
+
+10)What is your ideal company or workplace?
+-------------------------------------------
+I believe what makes a company great, is their ability to communicate 
+effectively in all sectors from the company. A place where people can 
+rely on eachother to complete their task and follow a particular goal.
+
+
+11)Have you ever had to provide negative feedback? what was your approach?
+--------------------------------------------------------------------------
+Yes, the approach that I have taken is to first tell the person all the work 
+that he has done well, ask if there is something going on that has affected 
+his work, tell the person what the issue is and a path that he can take to 
+improve things.
+
+
+12)What is the most difficult thing that you've ever accomplished?
+------------------------------------------------------------------
+The most difficult thing that I have ever done was to build good habits,
+it was easy to just sit in my computer and just watch tv or play games.
+I struggled to use my time efficiently, I decided to dedicate 
+five minutes to improve something until It became easy to create good 
+habits.
+
+ 
+13)What is the difference between hard work and smart work?
+-----------------------------------------------------------
+In my opinion, hard work most often happens when we are not able to
+find good ways to get the job done due to lack of knowledge,
+resources, creativity or willingness. Smart work in the other
+hand is to understand what you need to do and
+find the best approach to get the job done with the resources
+that you have.  
+
+
+14)How do you feel about working weekends and night shifts?
+-----------------------------------------------------------
+In my opinion, the nature of projects have some degre of uncertainty that can
+be very hard to control, in those cases there might be the need to work 
+overtime when there are critical issues that need to be fixed and dealt with
+and in those situation I would understand why and would try my best to get
+the job done.
+
+
+15)Where do you see yourself in 5 years?
+----------------------------------------
+I am an abitious person, I believe that if you are not learning something new 
+you are forgeting something that you knew. Having said that I do realize that 
+you cant always control where you might end up but I do see myself as someone
+who has great experince, has the ability to make great descicions and someone
+who can lead people.  
+
+
+16)Give an example of a time you had to respond to an unhappy manager
+---------------------------------------------------------------------
+
+
+17)How quickly do you adapt to new technology?
+----------------------------------------------
+I have learned a wide range of technologies such as RPA, software development 
+and Big data analytics. I believe that having a record of learning new things
+shows that I have the capability to learn and master new technologies and that 
+many of the things that I have learned can be applicable to learning something 
+new. 
+
+
+18)On a scale of 1 to 10 how would you rate yourself as a leader and why?
+-------------------------------------------------------------------------
+I would rate myself an 8 as a leader, there are two aspects for my score, 
+one is because I believe in giving and receiving feedback so that everybody 
+in the team can learn and grow. The other aspect is the ability to understand
+people. A good example took place during a team project, we had the task to
+create a mock up website to explore how to efficiently connect to a database.
+Understanding the people in my group and their strengths, I suggested that 
+we should delegate work depending on what they are confortable with. As a 
+result we got work done alot more efficiently and we all enjoyed working 
+together. 
+
+
+19)What are your future goals?
+My future goals are to learn as much as I can, that involves learning new software,
+taking new hobbies and meeting new people. I want to be able to have the experience
+needed to be able to lead people, to help them as some people have helped me in
+my carrer and studies.
+
+
+20)What are you passionate about?
+I am passionate about learning, its not just confined to learning new softwares but
+to be able to take new exiting hobbies, to explore things that I havent tried 
+before, to talk to interesting people and listening to their opinions. I am currently
+designing my own notebook, I was not able to find one that fullfilled my needs so 
+I began to work on my own notebook.
+
+
+21)What are you most proud of?
+I am most proud of finishing university, during my second year of university studying
+architecture, I began to enjoy architecture less but I decided to finish what I 
+started and graduate. After I realised that being a proffesional is most often doing
+things that have to be done regardless of the circumstances.
+
+
+22)How do you respond to change?
+Depending on the situation, I would first investigate if there are any new conflicts
+due to the change, if there are conflicts then meassure how important and urgent 
+they are. I would then use this hierarchy to first deal with the most importnat and
+work my way down until there are no more conflicts to resolve. 
+
+
+23)Are you a demanding as a boss?
+-------------------------------
+Depending on the situation, if a project is very demanding then I will
+mirror what the project demands of me and my team to get the job done. 
+
+
+24)Are you an organized person?
+-------------------------------
+I would consider myself orgnized, personally there are many things that I want to 
+archieve during the day and I have found that setting clear goals helps to achieve 
+them. I also think that it is alot easier to get things done when you know where
+and how to find what you need. 
+
+
+25)Can you describe your time management skills?
+------------------------------------------------
+I would describe my time management skills to be prudent, I personally think that 
+it is best to plan for things that you want to achieve and also to allow some extra
+time and an appropiate secondary plan of action, just in case there are some unseen
+circumstances that could delay what you have planned.
+
+
+26)Are you reliable?
+--------------------
+I would consider myself a reliable person, not becuase I always do everything right
+the first time but because I plan accordintly including scenarios where everything
+goes wrong and what to do if it does.
+
+
+27)What are the three things that are most important for you in a job?
+----------------------------------------------------------------------
+Personally, I think communication is the most important in a job, to be able to 
+discuss ideas freely and openly. Secondly, good management structure, I believe that
+there needs to be someone who can lead people and bring them to work together. 
+Finally I think its important to have friendly co-workers, I believe that when you
+work with friendtly people, everybody in the team can learn and grow much more.
+
+
+28)What was a tough decision you had to make at the work place?
+---------------------------------------------------------------
+During the end of a project, having performed well in the area of RPA. 
+I was presented with the opportunity to work and learn the .NET framework, a much 
+more indeph task. I decided to jump on board, my lack of experience made it hard to
+keep up but with time I managed to learn and get hands on experience building 
+projects and learned a whole new set of skills.   
+
+
+29)If you won the lottery, would you still work?
+------------------------------------------------
+I would still work, because it is not just about earning money for a living. But it
+is also about learning, growing as a person, making meaningfull connections with 
+people and contributing back to the community and have enough experience to one day
+be able to teach and lead people.
+
+
+30)How do you work under pressure?
+----------------------------------
+I have learned that, pressure often helps to achieve things. I personally would first
+have a holistic understanding of everything that have to get done, compose a 
+hierarchical list with the most important at the top and focus on completing one task
+at a time until the task is completed.
+
+
+31)Are you willing to relocate or travel?
+-----------------------------------------
+Personally I dont have an issue with traveling or relocating, I believe that the
+opportunity of working and the experience that I would gain is far more significant.
+Going into the industry I have known that this might be the case.
+
+
+32)What do you know about us or our company?
+--------------------------------------------
+
+
+33)How long do you think you will work for us after we hire you?
+----------------------------------------------------------------
+I will work for as long as you need me to get the work done.
+
+
+34)Are you applying for other jobs?
+-----------------------------------
+
+
+35)Why do you want to work for us or our company?
+-------------------------------------------------
+
+
+36)Why should we hire you?
+--------------------------
+I personally think that, I possess the skills that the experience required to get
+the job done. My background reflects that I am capable and that I have learned how
+to deal with people effectively to work together as a team.
+
+
+37)Do you have a good work ethic?
+---------------------------------
+I like to arrive on time before work starts to prepare for the day, I hope to have 
+shown that I am a person that you can rely on and that when the time comes will get
+the job done. 
+
+
+38)How do you deal with feedback and criticism?
+-----------------------------------------------
+I think feedback and criticism is extremely important because it is an opportunity
+to learn and grow as a person, it shows you where you are and a place where you can
+be if you work hard to improve yourself. 
+
 

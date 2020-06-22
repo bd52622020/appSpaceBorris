@@ -1,3 +1,21 @@
 					Pig
 
 
+-Pig Latin: A scripting language, using SQL-like syntax to define map and
+	reduce steps, highly extensive with user-defined functions(UDFs)
+
+*Tuple: fundamental unit
+*E.g: LOAD 'test.txt' AS (UseID:int, movieID:int, rating:int)
+*Use pigStorage if you need a different delimeter
+*Commands: 
+FOREACH - GENERATE - AS | GROUP - BY | FILTER - BY | ORDER - BY | DUMP
+STORE - INTO - USING | DISTINCT 
+*custom commands:
+MAPREDUCE | STREAM 
+*Join commands:
+JOIN - COGROUP - CROSS - CUBE
+
+*UDF's
+-Register
+-Define
+-Import

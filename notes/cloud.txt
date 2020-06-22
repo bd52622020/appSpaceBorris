@@ -1,0 +1,65 @@
+				Cloud
+
+Why cloud?
+Moving away from dedicated servers, single point of failure and expertise needed 
+to maintain servers.
+
+What is cloud?
+Outsource the need of storage, processing, services and infrastructure.
+
+*The cloud is the internet
+*The cloud is a utility
+*Services are provided on a pay-as-you-go basis
+
+Current state of cloud computing:
+-Cloud computing services is becoming the biggest revenue
+generator for leading software companies.
+
+Public cloud:
+-Service provider makes resources, such as applications and storage,
+available to the general public over the internet.
+
+
+Private cloud:
+-Through a proprietary architecture
+-Single organization
+-Best for businesses with dynamic or unpredictable computing
+needs that require direct control over their system.
+
+
+Hybrid cloud:
+-Mix of on-premises, private cloud and third-party
+-Allowing workloads to move between private and public
+clouds as computing needs and costs change, flexibility.
+
+
+Top growing cloud servies:
+-Serverless architecture
+-Container-as-a-service
+-DBaaS SQL
+-DBaas NoSQL
+-DRaaS
+
+
+Abstraction & Virtualization
+----------------------------
+
+Virtualization: On a data center, depending on the customer, there exists 
+containers which can be provisioned to customer.
+
+*Removing the process of relying on a piece of software
+
+Abstraction: Universal access, details are abstracted. The services will be
+provisioned the same way.  
+
+Service Models:
+-Infrastructure as a service(IaaS): Provide virtual machines, storage
+-Platform as a service(PaaS)
+-Software as a service(SaaS)
+
+Benefits:
+-On-demand self service
+-Broad network access
+-Resource pooling
+-Rapid elasticity
+-Measured service 
