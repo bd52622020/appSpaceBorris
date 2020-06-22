@@ -66,3 +66,11 @@ request to stop the information flow.
 	 only relevant data.
 
 
+1)Start zookeper - manage brokers
+2)Start kafka server in bin directory - one server one broker
+3)
+
+-Credentials
+-kafkaProducer library 
+-kafkaConsumer library
+

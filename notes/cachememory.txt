@@ -1,0 +1,26 @@
+					Cache Memory
+
+Type of volative memory:
+Storage that only maintains its data while the device is powered
+
+*Much faster form of RAM
+*Static memory
+
+level 1 Cache(L1)
+-2KB to 64KB
+-Instruction Cache 
+-Data Cache
+
+level 2 Cache(L2)
+-256KB to 512KB
+
+level 3 Cache(L3)
+-1MB to 8MB
+
+CPU -> L1 -> L2 -> L3 -> RAM -> HDD
+
+
+Broadcast table/variable
+------------------------
+shared in chash memory throught nodes in a cluster
+
