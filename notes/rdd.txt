@@ -1,14 +1,23 @@
 				Resilient Distributed Dataset
 
-RDD: imutable data structures 
-DataFrame: abstraction of an RDD, tabular data structure
-DataSets: extension of a dataFrame, type safe---code in Java or Scala
-Query optimizer/ Catalyst optimizer: Spark software
+
+RDD: 
+----
+Imutable data structures.
+A resilient distributed dataset(RDD), the basic abstraction in Spark.
+Represents an immutable, partitioned collection of elements that can be 
+operated in parallel.
+
+All of the scheduling and execution in Spark is based on these methods, 
+allowing each RDD to implement its own way of computing itself.
 
 * Schema-less distributed collection of immutable JVM objects
 * A backbone of Apache Spark
 * Datasets are split into chunks and distributed to executor nodes
 
+DataFrame: abstraction of an RDD, tabular data structures
+
 1) Creating RDDs
-	- Paralize collection: list of values, tuples
-	- Read file
+        - Paralize collection: list of values, tuples
+        - Read file
+

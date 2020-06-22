@@ -281,21 +281,3 @@ E.g. Requiring lots of data to be transferred over the network
 ** Disk spilling
 ** partitions
 ** Catalize optimizer??
-
-
-
-* map: is a tranformation for a sequence
-* Reduce By key:  
-* mapvalues: apply a function only on the values not the key
-
-
-
-* spark-submit  name.py
-
-* spark-submit ----> in hdp
-
-- 4 different functions: to read and parse data 
-	- u.data
-	- u.time
-	- u.user
-	- u.genre
