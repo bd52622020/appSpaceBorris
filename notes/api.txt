@@ -1,0 +1,46 @@
+
+					APIs
+
+-Sign up and get the API key
+-Information with URL
+
+Kafka Connect API - Kafka Streams API
+-
+Source --> Kafka  : Producer API		Kafka Connect source
+Kafka --> Kafka   : Consumer, Producer API	Kafka Streams
+Kafka --> Sink    : Consumer API		Kafka Connect sink
+Kafka --> APp     : Consumer API
+
+Kafka Connect
+-------------
+-Simplify and improve getting data in and out of Kafka
+-Set of existing connectors
+-Source connectors to get data from common data sources
+-Sink connectors to publish that data in common data stores 
+
+Concepts:
+-Kafka connect cluster has multiple loaded CONNECTORS
+	-Each connector is a re-usable piece of code (java jars)
+	-Many existing connectors 
+
+-Connectors + User Configuration --> Tasks
+	-A task is linked to a connector configuration
+	-A job configuration may spawn multiple tasks
+
+-Tasks are executed by Kafka Connect WORKERS(Servers)
+	-A worker is a single java process 
+	-A worker can be standalone or in a cluster
+
+Architecture:
+Sources --> Connect cluster(workers) --> Kafka cluster(Brokers)
+
+1) Workers will get a connector and configuration --> pull data from sources
+2) Workers will push data to Kafka cluster
+3) Transformation by using streams application API or spark
+4) workers will pull data from Kafka cluster 
+5) workers will write data to your sink(data storage)
+
+Topic:
+mesage: timestamp, offset number (unique across partition),
+	key(optional), value(sequence of bytes) serialized 
+

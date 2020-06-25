@@ -1,5 +1,0 @@
-package Scala
-
-class practice {
-  
-}

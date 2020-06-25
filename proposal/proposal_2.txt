@@ -1,0 +1,57 @@
+
+					Proposal
+
+Introduction:
+
+My project will be based on using a real time, financial market data API to
+retrieve stock marker data. Using Apache Kafka existing connectors to retrieve
+the data into Apache Kafka by using my own configurations to produce a job.
+Then I will use Spark to make some tranformation and finally I plan to use HBase,
+a NoSQL database and use the wide column store architecture to store my data.
+
+
+1) Connect to Source:
+
+I plan to use Twelve-Data API to obtain financial market data using real time data of 
+Forex stocks and read the data from a CSV format.
+The API call returns meta and time series for Foreign Exchange(FOREX).
+-Meta object consists of general information about requested currency pair
+-Time series contains an array of objects ordered by: Datetime, Open, High, Low, Close
+The data will come as a batch request with a frequency of 1min
+Example
+-https://api.twelvedata.com/time_series?symbol=EUR/USD&interval=1min&apikey=your_api_key
+
+2) Apache Kafka: Producer
+
+I have chosen to use Kafka for its distributed, resilient and fault tolerant architecture
+that is able to scale horizontally. The high performance and real time capabilities will
+allow for my project to store and query time-series data of the financial market data API.   
+
+-Using a batch pipeline
+-Using a Kafka server to create a broker that will contain the topic.
+-To begin the pipeline I will be create a Topic to store the stream of data, the topic
+will be split into three partitions.
+
+-Using a producer to write data to a topic by specifying the name and the broker created
+	-Acks = 1 : The producer will wait for leader acknowledgement
+
+3) Apache Spark:
+
+
+4) Apache Kafka: Consumer
+-Using consumer to read data from a topic by specifying the name and the broker created 
+-Some potential use cases of the data will be to track old and current stock values for 
+a particular stock
+-Another potential use case would be to triger a script if a particular stock had gone 
+below/above a certain value 
+
+5) HBase:
+
+I chose HBase for time series data storage because it scales.
+-Linear scaling, if more storage is needed, add more nodes
+-Automatic replication, data can be stored in HDFS which makes it fault tolerant 
+-Efficient scans, most of the time the data will be used to answer questions related to
+data points between times X and Y. the implementation of scan operations 
+-High write throughput, the big-table design, which HBase follows, uses LSM trees to make
+writes cheaper.
+-HBase is column oriented and sorted key-value system 

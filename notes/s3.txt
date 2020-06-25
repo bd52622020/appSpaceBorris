@@ -1,0 +1,200 @@
+
+				S3
+
+Fundamental data storage, everything is an object.
+
+-Storage for the internet
+-Natively online, HTTP access
+-Allows you to store and retrieve any amount of data, anytime, from 
+anywhere on the web
+-High scalable, reliable, fast and durable
+
+Use cases
+---------
+-Storage & backup
+-Application file hosting
+-Media hosting
+-Software delivery
+-Store AMIs and snapshots 
+
+Concepts
+--------
+-Amazon S3 stores data as objects within buckets
+-An object is composed of a file and optionally any metadata that
+describes that file
+-You can have up to 100 buckets in each account
+-You can access control to the buckets
+
+Object Key
+---------
+-An object key is the unique identifier for an object in a bucket 
+
+S3 Security
+----------
+-You can control access to buckets and objects with
+	-Access control lists(ACLs)
+	-Bucket policies
+	-Identity and access management (IAM) policies 
+-You can encrypt data
+
+S3 Versioning
+-------------
+-Protects from accidental overwrites and deletes with no performance 
+pernalty 
+-Generates a new version with every upload
+-Allows easily retrieval of deleted objects or roll back to previous
+versions
+
+Object Lifecycle
+----------------
+-Log files
+-Archive documents
+-Digital media archives
+-Financial and healthcare records
+-Raw genomics sequence data
+-Long-term database backups
+-Data that must be retained for regulatory compliance
+
+S3 Pricing
+----------
+-Pay only for what you use
+-Based on location of your amazon S3 bucket
+-Storage pricing 
+-Request pricing
+-Data transfer pricing
+
+Amazon S3-glacier
+--------------
+-Long term low-cost archiving 
+-Infrequently accessed data
+-Three to five hours standard retrieval time
+
+
+Amazon Elastric Block Store (EBS)
+---------------------------------
+-Persistent block level storage volumes offer consistent and low-latency
+performance 
+-Stored data is automatically replicated within its availability Zone
+-Snapshots are stored durably in Amazon S3
+
+Life cycle
+----------
+-Vast amounts of unused space 
+-Create: Call createVolume 1GiB to 16TiB
+-Attach: Call attachVolume to affiliate with one amazon EC2 instance
+-Attached and in use: Format from Amazon EC2 instance OD - Mount drive
+-Create snapshot: Snapshot to Amazon S3
+-Detach: Call detach volume
+-Delete: Call delete volume
+
+Volume types
+------------
+-SSD-backed volumes
+	-Optimized for transactional workloads that involve frequent read
+	write operations with msall I/O size - General purpose
+	-Highest performance for mission critical app  - Provisioned 
+-HHD-back volumes 
+	-Low cost HDD designed for frequently accessed - Optimized
+	-Low cost HDD designed for less frequently accessed workloads - cold
+
+Why EBS 
+-------
+-Long-term persistence 
+-Launch volumes as encrypted volumes
+-You can create point-in-time snapshots of EBS volumes, which are persisted
+to Amazon S3
+
+Amazon EBS Use Cases
+-------------------
+-OS: Use for boot/root volume
+-Databases: Sclaes with your performance 
+-Enterprise applications: Provides reliable block storage to run 
+mission critical applications
+-Business continuity: Minimize data loss and recovery time by regularly
+backing up using EBS snapshots
+-Applications: Install and presist any application 
+
+EBS Scope
+---------
+-Amazon EBS volumes are in single availability zones
+
+Difference 
+----------
+Storage layer persistency
+
+
+AWS Shared responsibility model
+------------------------------
+-Customers are responsible for security IN the cloud
+-AWS is responsible for the security OF the cloud 
+
+
+SSL Endpoints
+-------------
+-SSL enpoints : Secure transmission to establish secure communication
+sessions (HTTPS)
+-Security groups: Instance firewalls
+-PVC: Network control use public and private NAT, VPN support in your private
+cloud
+
+AWS Multi-tier Security groups
+------------------------------
+-Web tier
+-Application tier
+-Database tier
+
+AWS Indentity and access management
+-----------------------------------
+-IAM users and their access 
+
+AWS IAM authentication
+----------------------
+-Access key and secret key
+-Access to a particular service
+
+AWS IAM user management groups
+------------------------------
+-User
+-Dev ops group
+-Tester
+
+AWS IAM authorization
+---------------------
+-IAM Policies are JSON documents to describe permision 
+
+AWS cloudTrail
+--------------
+-Records AWS API calls for accounts
+-Delivers log files with information 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+

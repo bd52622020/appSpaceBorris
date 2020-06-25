@@ -1,0 +1,58 @@
+					
+					Proposal
+
+
+Introduction: 
+
+My project will be based on using a real time, financial market data API to 
+retrieve stock marker data. Using Apache Kafka existing connectors to retrieve
+the data into Apache Kafka by using my own configurations to produce a job. 
+Then I will use Spark to make some tranformation and finally I plan to use HBase,
+a NoSQL database and use the wide column store architecture to store my data.  
+
+
+1)Source:
+
+I plan to use Twelve-Data API to obtain financial market data, Using real time 
+data of Forex stocks and reading the data in a CSV format.
+
+-Meta object consists of general information about requested currency pairs.
+-Time series is the array of objects order by time desceding with Open, High,
+low and Close prices.
+
+The data will come as batch requests with a frequency of 1min
+example:
+https://api.twelvedata.com/time_series?symbol=EUR/USD&interval=1min&apikey=your_api_key
+
+
+2)Kafka:
+I plan to use Kafka for collecting the streaming data from the Twelve-data source.             
+After having a reliable connection from the source, I will create a new Kafka Topic 
+in order to store the information from the source.
+-The Topic will have two partitions 
+
+Twelve-Data API -->  Kafka topic --> Spark --> Kafka topic --> HBase
+
+4)Transformation by using Spark 
+
+In order to achieve high performance for batch data, I have chosen to use Spark, with     
+the use of DAGs, a  query optimizer, to execute transformations.
+
+-Start Zookeeper and Kafka
+-Create an output topics using "Kafka-topics"
+-Publish data to the input topic
+-Run the example
+-Stream the output topic 
+
+
+5)Consumer:
+
+The information from the Topic will be stored in a HBase database
+
+*The data will be used to track the current stock value at a peticular time 
+*The data can also be used to notify the user if the chosen stock has reached
+ a certain value. 
+*E.g. Triger a script if the stock has gone below/above a certain value 
+
+
+

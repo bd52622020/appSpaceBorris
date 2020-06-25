@@ -63,3 +63,61 @@ Benefits:
 -Resource pooling
 -Rapid elasticity
 -Measured service 
+
+AWS - Amazon Web Services
+-------------------------
+-Compute: Amazon EC2 instances = Main services, AWS Lambda = serverless architecture
+-Network: Amazon VPC
+-Storage: Amazon S3 Glacier
+-Security & Identity: IAM 
+-Applications: Amazon WorkSpaces
+
+EC2 - Elastic Compute Cloud:
+*Offers a virtual machine in the cloud
+*Offering auto scaling, growing and shrinking your fleet of servers on-demand
+*Resizable compute capacity
+*Xeon processors - C5n.16xLarge
+
+EC2 Families:
+-General purpose
+-Compute optimized
+-Memory optimized
+-Accelerated computing
+-Storage optimized 
+
+Core Infrastructure and Services
+--------------------------------
+-Security
+-Networking
+-Servers
+-Storage and Database
+
+
+WS Global infrastructure Map
+-----------------------------
+Spans 76 Availability zones within 24 regions around the world
+-Edge Locations, smaller data centers
+
+
+Choosing the right instance 
+-Price to performance ratio
+-Region
+-Operating system 
+
+
+Networking VPC
+--------------
+-Creates a master network and sub-net
+-sub-net: " local" IP address
+-In a private subnet - VPC: Group of computers that belong to a particular network
+-Common Public IP address, only for communication 
+-Private IP addresses to talk to each other inside a VPC
+
+
+
+
+
+
+
+
+

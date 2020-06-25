@@ -1,0 +1,192 @@
+					ApacheKafka
+
+Horizontally scalable, fault-tolerant, distributed streaming platform.
+
+with muliple chanels, in order to store data and chanel it for others to consume
+Kafka is a broker, the middle man to facilitate information transfer.
+
+-Information is received, managed with fault tolerance capabilities
+
+Broker:
+-------
+-Sits between the source and the producer, acknowledges the successful receipt.
+-Stores the messages in a log file to safeguard from potential loss. 
+-Delivers the message to the consumer when they require it.
+
+Data is partitioned       
+- Data is stored in physical directories 
+- Until the time of the log retention period ends 
+
+
+Duration of the messages stored?
+By replicating the messages, would the volume be an issue?
+
+Topic:
+------
+When receiving information, data is transformed into a topic, a table like structure.
+
+topic -> log file
+topic -> table
+table -> data file
+
+Replicator Factor: 
+------------------
+When we configure the broker, how many topics and partions of topics will be created.
+aim: Coordinate data across partitions.
+
+1) Leader partitions: 
+
+
+2) Follower Partitions: Data from leader is replicated into follower partitions, the 
+   broker talks with the follower partitions to coordinate data.
+
+Offset number / id: Keepstrack of the files to delete/update partitions 
+
+
+Kafka Cluster Architecture:
+---------------------------
+Not Master slave architecture, Zookeeper microservice elects one leader to: 
+-Elect master broker, where first data will be placed
+-Every other broker will follow, storing parts of data of master broker
+-Publish tasks to a topic
+-Commiting logs messages
+-Dont have to build a recilient master-slave architecture
+
+
+-Multiple brokers: Parallelism
+
+
+REST API: Client sends request to a server using a HTTPS connection, information is
+transfered if successful. One request and one response.
+
+Stream API: Client sends request to connect, if successfull the port sends streams 
+of information from the server. One request and information flows until another
+request to stop the information flow.
+	-As big data engineers, we are able to take the information and process
+	 only relevant data.
+
+
+1)Start zookeper - manage brokers
+2)Start kafka server in bin directory - one server one broker
+3)
+
+-Credentials
+-kafkaProducer library 
+-kafkaConsumer library
+
+Steps
+-----
+*Launch zookeper
+*Launch kafka
+
+*Command for creating new topic
+./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic topicName
+
+*Command for list
+kafka-topics.sh --list --bootstrap-server localhost:9092
+
+*Command for Messages
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicName --from-beginning --max-messages 100
+
+Touble shooting
+---------------
+*Number of partitions
+./kafka-topics.sh --describe --zookeeper localhost:2181 --topic topicName
+
+
+
+How Kafka saves information in topics
+-------------------------------------
+-Managing messages across partitions.
+-Kafka is storing serialized messages.
+-Kafka is storing the messages in a serialized way.
+-Turning into bits, 1 and 0. 
+-Level one serialization, encryped.
+-Fast performance.
+-You can see the logs saved in the topics/partitions.
+-Writing complete string take alot of storage.
+
+
+jar file: Compiled java, ones and zeros
+	-Unpacked 
+
+
+-----------------------------------------
+Apache Kafka:
+*Decoupling of data streams
+
+Sources -->  Apache Kafka -->  Target system
+Sources: Website eventt, pricing data, financial transactions
+Target system: Database, Analytics, Email system, Audit
+
+*Distributed, resiliennt architecture and fault tolerance
+
+Due to many servers 
+Horizontal scalability
+High performance 
+
+
+Kafka Ecosystem
+---------------
+
+Source --> Producers --> Kafka --> Consumers --> Target systems
+
+Kafka <--> Zookeper
+
+Extended API
+-----------
+Kafka Connect
+Kafka Streams
+
+
+Kafka Architecture
+------------------
+*Real time pipeline: Spark, Storm, Flink --> real time analytics, alerts
+*Batch pipeline: Hadoop, Amazon S3, RDBMS --> Data science, audit, backup
+
+
+Topics & Partitions
+-------------------
+topic: Stream of data
+-Topics managed by multiple brokers
+-Zookeper keeps track the offset id information 
+-Replication of data available from other brokers by zookeper
+
+Partition leader - follower
+---------------------------
+-Topic is distributed across multiple brokers 
+-Brokers have a lead partition to commit first messages 
+-follow up partition dont talk to the brokers directly
+-follow up partitions talk to the lead partition
+-quorum: odd number of partitions or brokers in case of failure 
+-to achieve fault tolerant cluster: minimun of tree partitions and 
+odd number of brokers/partitions. Partition failure/broker failure
+
+Producer writes
+---------------
+-Producer will write evenly across multiple partitions and brokers
+-The producer will write in the lead partition
+-The Lead partition will syncronize the message to follower partitions
+
+Consumer reads
+--------------
+-Consumer talks to the zookeper cluster
+-Zookeper will pair a broker to provide the information to the consumer
+-Zookeper ensures the right information is provided to the right consumer
+-
+
+-Information
+1)How to connect an API
+1)How to configure kafka -topic
+
+
+Broker: Single server represents a broker
+Zookeper: Maintains a list of active brokers
+
+
+
+
+
+
+
+

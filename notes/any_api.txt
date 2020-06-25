@@ -9,3 +9,5 @@
 -Google classroom: Manages classes, rosters, and invitations
 -Apacta: Used to register working hours, material usage and quality assurance
  
+
+
