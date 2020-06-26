@@ -55,3 +55,147 @@ data points between times X and Y. the implementation of scan operations
 -High write throughput, the big-table design, which HBase follows, uses LSM trees to make
 writes cheaper.
 -HBase is column oriented and sorted key-value system 
+
+
+Video notes
+-----------------------
+Launch Zookeper & Kafka
+-----------------------
+// Open a shell - zookeeper is at localhost:2181
+bin/zookeeper-server-start.sh config/zookeeper.properties
+ 
+// Open a shell - kafka is at localhost:9092
+bin/kafka-server-start.sh config/server.properties
+
+--------------------------
+Create input/output topics
+--------------------------
+// Create input topic
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1
+--partitions 3 --topic financial_market_data
+
+// Create output topic
+bin/kafka-topics.sh --create --zookeeper localhost:2182 --replication-factor 1
+--partitions 3 --topic financial_market_agg
+
+--------------------------
+Public data to input topic
+--------------------------
+// Start a kafka producer
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic financial_market_data
+
+// Connect to data source API
+
+
+------------------------------------
+Start a consumer on the output topic
+------------------------------------
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 
+	--topic financial_market_agg
+	--from-beginning
+	--formatter kafka.tools.DefaultMessageFormatter
+	--property print.key=true
+	--property print.value=true
+	--property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+	--property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+
+-----------------------------
+Start the streams application
+-----------------------------
+bin/kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo
+
+-------------
+Checking info
+-------------
+// Check list of topics 
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+//Check topic information
+bin/kafka-console-consumer.sh --topic financial_market_data --bootstrap-server 
+localhost:9092 --from-beginning
+
+
+			Scala project
+-------------------
+Create scala object
+-------------------
+import org.apache.spark.SparkConf
+import org.apache.spark.streaming.kafka010.KafkaUtils
+import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.kafka.common.serialization.StringDeserializer
+import org.apache.spark.streaming.kafka010.LocationStrategies.{PreferConsistent, Subscribe}
+import org.apache.hadoop.hbase.HBaseConfiguration
+import org.apache.hadoop.hbase.client.{HTable, Put}
+
+OBJECT : KafkaHBaseSpark
+
+MAIN
+// Initiate spark conf for streaming
+val conf = new SparkConf().setMaster("local[*]).setAppName("kafka_spark_hbase")
+
+// Initiate spark streaming context
+val ssc = new StreamingContext(conf, Seconds(5))
+
+// Define Kafka parameters
+// Define zookeeper server 
+// Define key/value deserializers
+// Group ID - kafka producer that will read the messages to the topic 
+val kafkaParams = Map[String, Object](
+	elems= "bootsrap.servers" -> "localhost:2181",
+	"key.deserializer" -> classOf[StringDeseriazlizer],
+	"value.deserializer" -> classOf[StringDeseriazlizer],
+	"group.id" -> "GRP2",
+	"auto.offset.reset" -> "latest",
+	"enable.auto.commit" -> (false: java.lang.Boolean))
+
+// Define topic
+val topics = Array("financial_market_data")
+
+// Create kafka stream
+// Consistent evenly distribute requests among executers 
+val kafkaStream = KafkaUtils.createDirectStream[String, String](
+	ssc,
+	PreferConsistent,
+	Subscribe[String, String](topics, kafkaParams))
+
+// Transformations
+val split = kafkaStream.map(record = > (record.key(), record.value.toString)).flatMap(x => x._2.split( regex = " "))
+val updateFunc = (values: Seq[Int], state: Option[Int]) => {
+	val currentCount = values.foldLeft(0)(_ + _)
+	val previousCount = state.getOrElse(0)
+	val updatedSum = currentCount + previousCount
+	Some(updatedSum)}
+
+// Hbase
+ssc.checkpoint(directory="HBase directory")
+val count = split.map(x => (x, 1)).reduceByKey(_ + _).updateStateByKey(updateFunc)
+
+// Function to insert data into HBase
+// Use put function to store data - convert into bytes
+def toHbase (row: (_,_)): Unit = {
+	val hConf = new HBaseConfiguration()
+	hConf.set("hbase.zookeeper.quorum", "localhost:2181")
+	val tableName = "Table name in HBase"
+	val htable = new HTable(hConf, tableName)
+	val tableDescriptor = new HTableDescriptor(tableName)
+	val thePut = new Put(Bytes.toBytes(row._1.toString()))
+	thePut.add(Bytes.toBytes("word_count?", Bytes.toBytes("count?"), Bytes.toBytes(row._2.toString))
+	HTable.put(thePut)}
+
+// To insert
+val HBase_insert = count.foreachRDD(rdd => if (!rdd.isEmpty()) rdd.foreach(toHbase(_)))
+
+// Start spark streaming context
+ssc.start()
+ssc.awaitTermination()
+
+*Create table in hbase
+e.g. create "GKCodeLabds_sparkHBase", "word_count", "count"
+
+//Before start the program
+*Start a producer to post messages to topic --> financial_market_data
+
+
+
+
+

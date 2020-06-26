@@ -1,0 +1,98 @@
+
+
+				AWS - Amazon web Services
+
+Databases
+---------
+-SQL: Rows and Columns	- Vertical
+-NoSQL: Key and value	- Horizontal 
+
+Data storage considerations
+---------------------------
+-Data formats
+-Data size
+-Query frequency
+-Data access speed
+-Data retention period
+
+AWS Database services
+---------------------
+-Amazon DynamoDB	: Key-value database
+-Amazon ElastiCache	: Queries
+-Amazon RDS		: SQL like engines - tabular 
+-Amazon Aurora		: enhanced SQL
+-Amazon Neptune		: Fast and reliable  
+-Amazon Redshift	: Postgress system - data warehousing
+
+Amazon Relational Database service
+----------------------------------
+-Cost efficient and resizable capacity
+-Manages time consuming databse administration tasks
+-Access to the full capabilities of Amazon aurora, MySQL, Oracle, PostgreSQL
+-Deployable on VMware
+
+DB Instance:
+-Basic building blocks of Amazon RDS
+-Isolated database environment in the cloud
+-Can contain muktiple user-created databases
+
+RDS Security
+------------
+-Run DB instance in an Amazon VPC
+-use IAM policies to grant access
+-Use security groups
+-Use secure socket layer
+-Use RDS encryption 
+-Use network encryption and tranparent data encryption (TDE)
+
+Application Architecture
+------------------------
+-Elastic load balancing
+-Amazon EC2 application servers
+-Amzon RDS database instance
+-DB snapshots in Amazon S3
+
+DynamoDB - NoSQL 
+--------
+-SSD
+-Key value pair
+-Allocates the necessary machine resources to meet youe needs
+-Elastic load balancing ELB
+-Living in a EC2 instace
+
+Operations:
+-Query a table using the partition key
+-Scan
+
+Application type:
+-New web-scale applications
+-Large number of small writes
+-Simple data models, transactions
+
+Elastic Load Balancing
+----------------------
+-Management balacing service 
+-Siting in between
+-Distribute traffic across multiple EC2 instances
+-Support health checks 
+
+How it works - Network load balancer
+------------------------------------
+-Optimize request
+-Register instances with your balancer
+-Load balancer reutes request at either: 
+	-Transport layer(TCP)
+	-Application layer(HTTP/HTTPS)
+-For applications within the EC2 network
+
+
+
+
+
+
+
+
+
+
+
+
