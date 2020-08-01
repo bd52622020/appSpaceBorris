@@ -1,0 +1,17 @@
+
+
+
+					Profile
+
+
+Java developer
+--------------
+-As a java developer, I report to a senior project manager 
+-Initially focusing on program architecture with some testing and later ensuring the program
+architecture of the project run seemlessly. Some key responsibilities revolve around testing
+code to ensure great performance, contribution in the development lifecycle by the creation 
+of entity-relationship diagrams, ensuring designs comply with specifications such as clear
+user interface and git integration.
+-The company is consultant based, the projects that we are involved in are part of their clients,
+ranging from small businesses applications to automating ticketing systems for part of the 
+financial side.

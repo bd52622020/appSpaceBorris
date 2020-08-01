@@ -147,14 +147,12 @@ In MapReduce, the DAG consists of two vertices: Map --> Reduce.
 
 Latency
 -------
-
 *Operations made in memory
 *Operations that require sending data over the network
 
 
 Shuffling
 ---------
-
 Distributed data: when applying a groupBy or a groupByKey
 -ShuffleRDD
 
@@ -179,7 +177,6 @@ during the shuffle is greatly reduced.
 
 Partitioning
 ------------
-
 Comes into play when shuffling data around your cluster, partitioning your data 
 intelligently can save time when running computations. It's important to understand
 in general with distributed systems and in particular with park RDDs
@@ -222,7 +219,6 @@ Two kinds of partitions:
 
 Spark functions
 ---------------
-
 *reduceByKey: Combination of first groupByKey and then reduce-ing on all the values 
 	grouped per key. Operates on the values that you assume are already grouped by 
 	some key.
@@ -266,7 +262,6 @@ Spark functions
 
 Wide vs Narrow Dependencies
 ---------------------------
-
 Dictates relationships between RDDs in graphs of computation,
 which has alot to do with shuffling.
 
@@ -275,9 +270,173 @@ Some transformations are more expensive in terms of latency than others.
 E.g. Requiring lots of data to be transferred over the network
 
 
-
 ** wide transformations vs narrow transformations
 ** Shuffling-minimize
 ** Disk spilling
 ** partitions
 ** Catalize optimizer??
+
+Communicate
+-----------
+Broadcast: Information in your driver/controller, pass to every executor
+Take: Information the executors have, bring back to driver. Taking too 
+much data can lead to problems, no scalability
+DAG: Instruction, transmitted from driver to the executors. Control flow
+logic is inexpensive operation.
+Shuffle: Product of mapper and reducers, the intermediate files need to 
+travel over the network and serialize
+
+*Exchange needs to be done in a lock step manner 
+*RDD, Dataframes
+*DAGs
+*flumeJava APIs
+*Long lived jobs 
+
+
+Spark Hierarchy - Hardware standpoint
+-------------------------------------
+Cluster: Driver, Executors
+
+Executors: Cores (SLOTS), memory, disks
+
+
+Cores: Insert tasks into
+
+Memory: Storage and working
+  -Working memory: Utilized by spark workloads
+  -Storage memory: Persisted objects 
+
+Disks: Attached directly and provide space for shuffle partitions and persistance
+       to disk and spills from execution of the workloads.
+       -Fast disks
+       -Slow disks
+       -Remove 
+       -Local 
+
+Spark Hierarchy - Software standpoint
+-------------------------------------
+Actions and transformations. Actions perform one or many transformations at a time 
+which spanws jobs. Every tasks inside of a stage does the same thing only on another
+segment of the data, if a task is required to do something different then it needs to
+be inside of another stage. One task is operated by one core which is one partition
+and one task takes up one slot.
+
+Transformations: they are lazy, they dont do anything until an action is called.
+  -Narrow
+  -Wide (requires shuffle)
+
+Spawn jobs: For orchestration & collections to coordinate tasks
+  -Spawn stages: For orchestration & collection to coordinate tasks
+    -Stages: contains tasks
+      -Tasks: Do the work and utilize the hardware directly.
+
+
+Minimize data scans (lazy loads)
+--------------------------------
+Data skipping:
+  -Hive partitions
+  -Bucketing
+  -Databricks Delta Z-Ordering
+
+Partitions
+----------
+Each of a number of portions into which some operating systems divide memory or storage.
+Subset of a superset.
+
+Spark partition: Data that is broken down so that it can be operated in parrallel in memory.
+  -Input: You can control the size of the partition.
+    -Spark default parallelism.
+    -Spark max partition bytes.
+  -Shuffle: You can only control the count.
+    -Shuffle partitions: Default 200
+  -Output: You can control the composition of the output
+    -Coalesce: Shrink down the file set, never use repartition.
+    -Repartition: To increate and/or rebalance (shuffle) --> carefull.
+    -Df.write.option: Set number of records in each file.
+
+*Partition Count = Stage Input Data / Target Size (< 200Mb)
+
+Output partitions
+-----------------
+-Size of your files and how you want them structured
+-Composition of files
+-Maximise parallelism
+
+Compaction
+----------
+Put files back together to the right size
+
+Composition
+-----------
+Shuffle partitions, output partitions --> change compositions of the files
+
+Balance
+-------
+Maximizing resources requires balance
+  -Task duration
+  -Partition size
+
+Minimize data scans (persistence)
+---------------------------------
+Cash is a certain type of persist
+
+Persistence: Not free, they take time and space, only persist when you have repetition
+  -Cash: Goes to memory first then goes to disk.
+  -Ram: Fast medium storage level
+  -Dont forget to unpersist!
+Repetition: SQL plan, identify super-sets that are used in many ways for sub-sets
+
+
+Spills
+------
+Most of the time, the hardest work the cluster will deal with is the shuffle, most data intensive.
+When you dont write size the shuffle partitions, you get spills, the slowest process of a job.
+
+Persistence vs Broadcast
+------------------------
+Persistent: Take data from parititions and save them in executors, each executor dividing the load of the 
+            the data in memory 
+Broadcast: Take data from partitions and save them in working memory, pull the data through a collect
+           into the driver and transformed it from a dataframe to a broadcastable object, similar to a
+           hashmap and send all the transformed data back to each executor.Data in the driver will be 
+           persistent until the garbage collector has run.
+
+Omit expensive Ops
+------------------
+Repartition: Use coalesce or shuffle partition count
+Count: Do you really need it?
+DistinctCount: Use approxCountDistinct
+-Use dropDuplicates
+-Drop duplicates before the join
+-Drop duplicates before the groupBy
+
+Range Joins Types
+-----------------
+Right size beans and the right number of beans by time
+
+-Point in interval range join: Predicate specifies value in one relation that is between two values from 
+ the other relation
+-Interval Overlap range join: Predicate specifies an overlap of intervals between two values from each 
+ relation
+
+Skew Optimization
+-----------------
+Salting method, will work for aggregates and for joins 
+-Null safe equality: Its not going to try to join the nulls 
+
+Join Optimization
+-----------------
+SortMergeJoins --> Both sides are large
+Broadcast Join --> One side is small
+  -Not enough driver memory
+    -Validation functions
+  -DF max result size
+Skew joins
+Range joins
+BroadcastedNestedNestedLoop Join (BNLJ)
+
+
+
+
+
+

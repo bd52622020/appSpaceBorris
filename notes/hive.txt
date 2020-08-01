@@ -1,6 +1,7 @@
 				Hive
 
-
+What is Hive
+------------
 Hive data warehouse software enables reading, writing, and managing large
 datasets in distributed storage.
 
@@ -8,10 +9,63 @@ HiveQL: Using the Hive query language, similar to SQL, queries are converted
 	into a series of jobs that execute on a Hadoop cluster through 
 	MapReduce or Apache Spark.
 
+HDFS
+----
+Uses Hadoop HDFS for stoarge and retrieval of the large data sets and Map reduce
+for execution on the Hadoop cluster.
+
+Hive Architecture
+-----------------
+Client: All client services connect to the Thrift server.
+  -Thrift: Common protocol for different programming languages.
+  -JDBC: Java database connectivity.
+  -ODBC: Open database connectivity.
+
+Services: All services connect to the driver.
+  -Driver: Connects to the Metastore for data. Checks and validates Hive queries 
+    -Compiler: Compile queries in the form of DAGs
+    -Optimizer: Optimize DAG queries.
+    -Execution engine: Executes queries, interface between Hadoop cluster and Hive.
+  -Metastore: Table definitions, data locations, schemas and has derby database.
+  -Thrift server: Receives requests/queries from client programs.
+  -CLI: Command line interface.
+  -Hive engine: Driver, compiler, optimizer and executor.
+
+Processing: Map reducer, Yarn, HDFS
+  -Map reduce: Execution of its queries.
+  -Yarn: Cluster resource management.
+  -HDFS: Distributed storage.
+
+Limitations
+-----------
+Derby database: Only one user can connect to database at a time, MySQL for multi-user.
+
+
+Hive job execution flow
+-----------------------
+1)Hive query is received by Driver: Thrift server, CLI or other
+2)Driver contacts the compiler: Validation of query
+3)Compiler contacts Metastore: Validates query with success or failure
+4)Compiler sends request back to Driver: With the plan/DAG/success or failure
+5)Driver sends plan to the Execution engine: Validates the plan with metastore
+6)Execution engine sends plan to HDFS: plan is a DAG for map-reduce
+7)HDFS sends result back to Execution engine: After map-reduce
+8)Execution engine sends results back to Driver.
+9)Driver sends back results to Client program.
+
+Processing
+----------
 Users can run batch processing workloads with Hive while also analysing the
 same data for interactive SQL or machine-learning workloads using tools like
 Apache Impala or Apache Spark.
 
+-Hive efficiently converts your queries into Map reducetasks at the backend.
+-Using Hive you are forcing a structure to the unstructured big data to perform
+ usefull analysis.
+-Hive is very fast, scalable and extensible.
+
+Batch processing
+----------------
 * The underlying MapReduce interface with HDFS is hard to program directly, but 
 Hive provides an SQL interface. Hive on MapReduce or Spark is best-suited for batch 
 data preparation or ETL:
@@ -24,12 +78,16 @@ data preparation or ETL:
 
 Hive Components 
 ---------------
-
 1) The Metastore Database:
 
 Its a separate database, relying on a traditional RDMBS such as MySQL or PostgreSQL,
 holding metadata about Hive databases, tables, columns, partitions, and Haddop-
 specific information such as the underlying data files and HDFS block locations.
+
+-Embedded Metastore: Default, metastore runs service in the same JVM as Hive services
+-Local Metastore: JDBC compliant like MySql runs on a separate JVM, metastore service
+ still runs on the same JVM as Hive but it connects to an outside database.
+-Remote Metastore: Metastore runs in its own separate JVM not in Hive service JVM.
 
 * The metastore is shared by other components. The same tables can be inserted into,
   queried, altered by:
@@ -47,3 +105,20 @@ Hive and retrieve the results.
 
 * HiveServer2 is a container for the Hive execution engine. For each client connection,
 it creates a new execution context that serves Hive SQL requests from the client.
+
+Hive partitioning
+-----------------
+Used for storing information in HDFS, when your data gets bigger, there will be more files
+that needs to be read and queries will become slower as more data gets stored. Partitioning
+data by a particular column creating subdirectories where you can then store corresponding
+data. This approach removes the need to read all the data to find the value.
+Creating subdirectories.
+
+*Limitations: Un-even amount of data in partitions by large range influx of data. 
+
+Hive Bucketing
+--------------
+In partitions, there can be huge amounts of data inside folders, bucketing is the 
+implementation of further organizations by specifying the amount of buckets and the category
+by which the data is going to be separated. Avoiding the need to read huge amounts of data.
+Second level of segregation.

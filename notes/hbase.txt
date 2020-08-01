@@ -61,3 +61,5 @@ Region server:
 *When memtore is full it flushes the changes in the form of HFiles
 
 *In new entry --> WAL --> Memstore --> updates client
+
+

@@ -1,0 +1,172 @@
+
+
+					Skills matrix 
+
+Framework 
+---------
+-Process large amounts of data 
+-Hadoop is one solution to process large amount of data
+-Map reduce --> Yarn --> HDFS
+
+Types of data
+-------------
+-Unstructured: Video, audio, logs 
+-semi-structured: JSON, XML
+-structured: Excel, SQL, Databases 
+
+Roles
+-----
+-Big data developer
+-Spark developer
+-Hadoop developer
+-Kafka developer
+
+Data enginner
+-------------
+-Develop, contruct, test and maintain architectures such as databases and large-scale
+processing systems
+-Ensure architecture will support the requirements of the business 
+-Discover opportunities for data acquisition 
+-Develop data set processes for data modelling, mining and production
+-Employ a variety of languages and scripts to marry systems together
+-Recommend ways to improve data reliability, efficiency and quality 
+
+Pipeline components 
+-------------------
+Sources --> ingestion --> processing --> storage --> analytics --> visualization 
+Sources of the raw or structured data:
+	-IoT: phones, thermomitor, sensors 
+	-REST services
+	-Clickstream
+	-SOAP services
+	-Databases, warehouses
+Ingestion, read information into the pipeline:
+	-Kafka: reads information continuously
+	-Messaging system: JMS, Rabbit MQ, SQS 
+	-Sqoop: Takes information from relational databases into the pipeline
+	-Flume: moves logs from one application into Hadoop
+
+Cloud tools
+-----------
+-AWS: Amazon web service --> Kinesis is similar to Kafka but in the cloud 
+-Azure: Event Hub --> is similar to Kafka but in the cloud 
+-GCP: Google cloud platform --> Dataflow is similar to Kafka but in the cloud 
+
+*Speak to the right pipeline for each project based on the client's needs, type of data 
+and which tools interact and work together across the pipeline areas:
+	-Sources
+	-Ingestion
+	-Processing
+	-Storage
+	-Analytics 
+	-Visualization 
+
+Hadoop distributions 
+--------------------
+-Type of environment, three major vendors with pre-packed pipeline materials and only on PREM 
+	-Cloudera
+	-Hortonworks
+	-MapR
+-The cloud have three counterparts
+	-HDInsights in Azure
+	-EMR in AWS
+	-GCP in Google DataProc 
+
+Hortonworks & Cloudera
+----------------------
+-Hortonworks offers Apache foundation certified software and Cloudera sells commercial software 
+-Hortonworks embeds Hadoop into existing data platforms and Cloudera embeds with other commercial
+ software providers
+-Hortonworks have open source license and Cloudera have commercial license 
+
+Apache Spark 
+------------
+-Open source application composed of a cluster of computing frameworks with in-memory computation,
+fast analytic applications and ease of use. Taking avantage of languages such as Java, Scala, python
+and SQL-like syntax.
+
+Spark concepts 
+--------------
+-Architecture of Spark 
+-Internal operation of Spark --> how it works 
+-Spark API
+-Coding concepts of Spark 
+
+Kafka concepts 
+--------------
+-Architecture of Kafka 
+-Internal operation of Kafka --> how it works 
+-API
+-Coding concepts in Kafka
+
+AWS concepts 
+------------
+-Glue
+-RDS --> Oracle, postgres, MariaDB
+-Lambda
+-Athena
+-Sage maker
+-IAM
+-Security groups 
+-Centrify
+-VPN
+-Airflow
+-ECS --> elastic container service 
+-EBS --> Elastic block service 
+-ELB --> Elastic load balancer 
+-ELK --> Elastic logstash Kibana
+-EMR --> Elastic mapreduce --> Spark, Hive, OOZIE, SQOOP, Ganglia, Tez
+-SWF --> Simple workflow service 
+-LDAP --> Lightway directory active protocol 
+-Kerberos --> Security for the cluster - authentication ticketing systems 
+-SSL --> encryption
+-SSH 
+
+Spark Session
+-------------
+-The library that allows the interpretation of your program with the cluster, "Driver" being the
+ name of the program.
+-Maps, filters and other transformations can be done without the Spark Session but they won't be 
+ interacting with the cluster (The multiple computers/servers processing the data simultaneously.
+-Spark session was released on Spark 2.0, using spark context previously, they have the same
+function but Spark session has more APIs and is more optimized.
+-To create a driver, one uses Scala, Python, Java or R. Using a tool called SBT (Scala building 
+tool) to create the driver, in the SBT you instantiate all the libraries you will be using.
+-The program or driver should be written using the following parameters:
+	-Define spark session
+	-Define spark SQL
+	-Define Spark streaming context if streaming
+
+Kafka
+-----
+Playing the role of a messaging system between applications that allows to publish and subscribe,
+delivers messages and transactions. A broker messaging system
+-Producer --> cluster --> consumer 
+-Producer: A program that produces any information to Kafka and the information in the producer is 
+sent to Kafka.
+-Cluster: The producer's information is sent to the cluster, the cluster is composed of multiple 
+servers simultaneously handling the data. These multiple computers/servers are called brokers, inside
+the brokers there are special pipes or channels called topics.
+-Topics: The topic can be partitioned (broken up to send information in parallel), with the data in 
+one topic, replicated in another topic in another broker.
+-Consumer: Any application that reads the Topic's output, streaming programs are the only ones that 
+can read the Kafka pipelines topic output.
+	-Spark
+	-Flink
+	-Storm
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

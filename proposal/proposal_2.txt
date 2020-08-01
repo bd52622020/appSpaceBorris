@@ -9,6 +9,15 @@ the data into Apache Kafka by using my own configurations to produce a job.
 Then I will use Spark to make some tranformation and finally I plan to use HBase,
 a NoSQL database and use the wide column store architecture to store my data.
 
+-Libraries, for application - request libraies 
+-API keys 
+-Teams - Example in scala
+-
+-Process data using scala
+-producer- publish to topic 
+-Scala application is consumer 
+-Spark
+-Hbase 
 
 1) Connect to Source:
 
@@ -100,7 +109,7 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092
 	--property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
 
 -----------------------------
-Start the streams application
+:Start the streams application
 -----------------------------
 bin/kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo
 

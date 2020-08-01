@@ -1,0 +1,90 @@
+
+
+				AWS vs GCP vs AZURE
+
+Amazon Web Services
+Google Cloud Platform
+Microsoft Azure 
+
+
+Cloud provider storage
+----------------------
+AZURE: Storage
+-Blob storage
+-Queue storage
+-File storage
+-Disk storage
+-Data lake storage 
+AZURE: Database
+-SQL
+-MySql
+-Postgres
+-Data warehouse
+-Cosmos DB
+
+GOOGLE: Storage
+-Cloud storage
+-Persistent disk
+-Transfer appliance 
+-Transfer service
+GOOGLE: Database
+-Cloud SQL
+-Cloud Bigtable
+-Cloud Spanner
+-Cloud Datastore
+
+Compute
+-------
+AZURE: 
+-Virtual machines
+-Azure container service(AKS)
+-Container instances
+-Batch
+-Service fabric
+-Cloud services
+
+GOOGLE:
+-Compute engine 
+-Kubernetes
+-Functions
+-Container security
+-App engine
+-Knative
+-Graphics processing unit(GPU)
+
+
+Serverless or FaaS Differ from PaaS
+-----------------------------------
+Serverless architecture
+
+PaaS: Platform as a service
+-Offers many of the same benefits as serverless. They do eliminate the need for management
+of server hardware and software.
+-Primary difference is in the way you compose and deploy your application, and therefore 
+the scalability of your application.
+-Deployed as a single unit and is developed in the traditional way using some kind of web 
+framework like ASP.NET 
+FaaS: Function as a service  
+-Compose your application into individual, autonomous functions
+-Each function is hosted by the FaaS provider
+-Can be scaled automatically as function call frequency increases of decreases
+-Cost effective way of paying for compute serources 
+-Only pay for the times that your functions get called, rathen than paying to have your 
+application on and waiting for requests on so many different instances.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

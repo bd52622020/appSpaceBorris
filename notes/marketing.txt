@@ -1,0 +1,121 @@
+
+
+
+				Marketing
+
+Interview notification flow
+---------------------------
+-Assigning your placement specialist --> sales
+	-Market your profile
+	-Liases with vendor
+	-Follow up on submissions
+	-Schedules the interview
+-confirmation
+	-Rate
+	-C2C or C2H --> Contractor
+	-Data and time
+	-Job description
+	-Interviewer info
+	-Call medium
+	
+INterview notification flow
+---------------------------
+-Scheduling your tech prep
+	-Placecment specialist notifies air traffic control
+	-ATC sends out interview and tech prep emails from mainbrain
+	-Contains interview details
+	-Technical manager for tech prep and interview 
+	-Reply to team confirmation receipt 
+
+Tech prep
+---------
+-Review of your prep worksheet and notes taken prior to prep
+-Understanding of marketing profile
+-Reviewing info from KT
+-Feedback from previous interviews
+-Questions from previous reounds 
+-Interviewer info
+
+Tech prep
+---------
+-Reply with confirmation
+-Complete prep worksheet
+-Research company/client
+-Research interviewer
+
+Recap
+-----
+-Submit profile to vendor 
+-Profile reviewed by vendor 
+-Interview request 
+-Interview confirmation
+-Notification of interview to ATC
+-Interview email sent out 
+-Prep
+-Interview
+-Post interview feeback and kt --> knowledge transfer 
+
+Marketing credentials
+---------------------
+-Marketing contact information --> phone/email/Skype
+
+Tools used during interviews
+----------------------------
+-Communication devices: Skype and phone
+-Anydesk
+-Marketing profile 
+
+Tools used to prepare
+---------------------
+-Consultant interview prep worksheet
+-Behavioral/situational/legal interview questions 
+-Interview prep matrix
+-Profile snapshot
+-Historic interview questions and project details 
+-Common eligibility 
+
+Expectations 
+------------
+-Soft skills and technical coaching with your tech manager
+-Dedicated placement specialist
+-Complete transparency in terms of your submissions, feedback and interviews
+-Hands on support during interviews 
+-Open availability for interviews from 8:00 to 5:00
+-48 Hours in advnace notice for PTO requests 
+
+Pre-interview
+-------------
+-Job description 
+-Profile
+-Entire KT details
+-Historic questions and project details 
+
+During interview
+----------------
+-Elevator speech is the first impression --> Introduction of skills set 
+-Can you do the job & do you want to do the job 
+-Compare your experience to the client's needs
+-Answer each question thoroughly by providing examples from profile experience
+-Ask questions about the project 
+-Closing questions 
+
+After interview
+---------------
+-Self evaluation
+-Feedback provided from tech manager
+-Discuss game plan for next round
+-Assignment may be provided  
+
+
+---------------------------------------------------------
+*Client
+*Vendor
+*Interview --> Project duration, description, opportunity 
+---------------------------------------------------------
+
+
+
+
+
+
+

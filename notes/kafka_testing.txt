@@ -1,0 +1,38 @@
+
+
+				Kafka Testing
+
+-Unit testing
+-Integration testing
+-Avro and schema compatibility testing
+-Confluent cloud tools
+-Multi-datacenter testing
+
+
+Unit Testing
+------------
+-Producers, reducers testing
+-Kafka-streams-test-util for writing tests
+
+Integration testing
+-------------------
+-To make sure everything is ayncronous
+-Producers and consumers running parallely? 
+-Embedded kafka cluster  
+
+Avro and schema compatibility testing
+-------------------------------------
+-Producers write messages, passing JSON data while the producer is working 
+-The schame is implied, thus it has to be tested to make sure they match
+-Schema registry, how the schema can evolve 
+-Once schema is defined for the JSON is the avro
+-Mock schema library client - for testing 
+
+
+Multi-datacenter testing
+------------------------
+-Compare data moving from kafka deployments to make sure they match. 
+-Insuce failures, ability to recover and publish data.
+-General type of testing
+-Make sure pipeline is not dependant on a single cluster.
+

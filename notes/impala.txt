@@ -1,0 +1,91 @@
+
+
+					Impala
+
+
+Impala is in memory SQL computational engine, comes in integration with Apache Hive 
+and is used to perform the high intensive read operations. It keeps the metadata in
+memory.
+
+What is Impala
+--------------
+-General purpose SQL engine
+-Real time-like queries in Apache Hadoop
+
+Overview
+--------
+-Works for both analytical and transactional/single row workloads 
+-Runs directly within Hadoop
+-High performance 
+-Runs as a distributed service in cluster
+-There is no "impala format"
+-Supported files formats: RCFile, Avro, Parquet, HBase 
+
+SQL
+---
+-SQL-92
+-Only equi-joins
+-Order by requires limit
+-Limited DDL support 
+
+Limitations
+-----------
+-No file formats, SerDes
+-No beyond SQL (Buckets, samples, transforms, arrays, maps, json)
+-Broadcast joins and partitioned hash joins supported
+-Smaller table has to fit in aggregate memory of all executing nodes 
+
+Use cases
+---------
+-Cost effective, ad hoc query environment
+
+Architecture
+------------
+-Three binaries: impalad, statestored, catalogd
+-Impala daemon (impalad) - N instances
+	-Handles client requests and all internal requests related to 
+	query execution
+-State store daemon (statestored) 
+	-Provides name service and metadata distribution
+-Catalog daemon (catalogd)
+	-Relays metadata changes to all impalad's
+
+Query execution
+---------------
+*SQL App --> ODBC --> Query planner 
+*Query planner --> Query coordinator --> Query executor
+
+Query planning
+--------------
+-two phase planning process:
+	-Single node plan 
+	-Plan partitioning 
+-Parallelization of operators:
+	-All query operators are fully distributed  
+
+Metadata handling
+-----------------
+-Hive's metastore: logical metadata
+-HDFS NameNode: Directory contents and block replications 
+-HDFS DataNode: Block replicas volume IDs
+
+Execution Engine
+----------------
+-Written in C++ for minimal execution overhead
+-Internal in-memory tuple format puts fixed-width data at fixed offsets
+-Uses intrinsics/special CPU instructions for text parsing, crc32 computation
+-Runtime code generation for "Big loops"
+
+
+
+
+
+
+
+
+
+
+
+
+
+

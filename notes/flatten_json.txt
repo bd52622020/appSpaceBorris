@@ -1,0 +1,15 @@
+
+                          How to flatten whole JSON 
+
+In order to flatten a JSON completely we don't have any predefined function in Spark.
+We will write a function that will accept DataFrame. For each field in the DataFrame
+we will get the DataType
+  -If the field is of ArrayType we will create new column with exploding the ArrayColumn
+  using Spark explode_outer function.
+  -If the field is of StructType we will create new column with parentfield_childfield 
+  for each field in the StructType field.
+
+This is a recursive function, once the function doesn't find any ArrayType or StructType.
+It will return the flattened DataFrame. Otherwise, it will iterate through the schema to
+completely flatten out the JSON.
+

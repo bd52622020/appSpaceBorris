@@ -1,0 +1,70 @@
+
+
+				Interview 
+
+*Microservices questions 
+*Spring boot-anf 
+
+Pipeline
+-retrieving the most popular articles 
+-Data ingestion in kafka
+
+Consumer
+-Explain how the consumer works within the main pipeline
+
+Experience in other languages
+-Difference between Python, Java, Scala
+-Explain advantages and dissadvantages 
+-Multithreading - multiprocessing 
+-Functional coding 
+-Val 
+-Dictionaries
+-Lists
+-Array
+-Lambda functions 
+-Tuples 
+-Set
+-Hashtable 
+-Hashmap
+-Overloading
+-Overriding 
+-Spark architecture 
+	-Driver
+	-Manager
+	-Worker nodes
+	-Executers 
+	-Cores
+-Yarn
+	-Resource manager
+	-Worker notes
+	-Node manager
+-Spark
+	-Lazy evaluation
+	-Mapper
+	-Reducer
+	-Partitions
+	-Catalyst optimizer 
+-Complex task
+-Broadcast variables
+-Hive
+	-partition
+	-bucket
+-JSON
+-CSV
+-Avro & packet, difference
+-Schema
+-Different joins: left, right, inner, full
+-Kafka
+	-Fault tolerance 
+
+*Details about the project
+*Softwares used
+*When would I hear back from you
+
+
+
+
+
+
+
+

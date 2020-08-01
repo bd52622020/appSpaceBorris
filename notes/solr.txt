@@ -1,0 +1,29 @@
+
+
+					Solr
+
+-NoSQL distribution, alternative for ElasticSearch
+-Built on the Java based search engine library Apache Lucene
+-Powers the search and navigation engines 
+-XML, JSON, HTTP support
+-Distributed search through sharding 
+
+
+-Request handler 
+-Search component 
+-Query parser
+-Response writer
+-Analyser: Examiines text of fields and generates a token stream
+-Tokernizer: Breaks the token into smaller chunks
+-Update request processor. 
+
+Field-value faceting
+--------------------
+-A facet is one side or aspect of something.
+-Faceted search allows users to explore the multiple faces of a field.
+-Several parameters can be used to trigger faceting based on the indexed
+terms in a field.
+
+*Connect with spark stream, deliver as json packets and enable live search 
+
+

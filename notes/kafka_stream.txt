@@ -1,0 +1,30 @@
+
+
+
+				Kafka Stream
+
+What is a stream
+----------------
+-Unbounded, continuous real-time flow of records 
+-You dont need to explicitly request new records, you just receive them 
+-Records are key-value pairs 
+
+Kafka streams API
+-----------------
+-Transforms and enriches data 
+-Supports per-record stream processing 
+-Supports stateless processing, stateful processing, windowing operations 
+-Write standard Java applications and microservices to process your data 
+in real time 
+-No separate processing cluster required 
+-Develop on Mac, Linux, Windows 
+-Elastic, highly scalable, fault tolerant 
+-Deploy to containers, VMs, cloud, on prem
+-Equally viable for small,medium, and large use cases
+-Kafka streams is a java dependency - JAR - Library
+-Runs inside the application
+
+Configuring the Kafka Streams Application
+-----------------------------------------
+-Configure with a StreamConfig instance 
+

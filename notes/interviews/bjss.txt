@@ -1,0 +1,203 @@
+
+----------------------------------------------------------------------------------------------------
+                                          BJSS
+----------------------------------------------------------------------------------------------------
+Who is bjss?
+------------
+Leading technology and engineering consultancy for innnovative technology and engineering solutions
+
+  -Digital transformation and user engagement a reality.
+  -Strategy, software, cloud, data and automation.
+
+DataOps
+-------
+Analysts, data scientists, developers and operations working together in the entire service life 
+cycle, from design to development to production support. DataOps make use of similar techniques 
+compared to DevOps and its built on 5 primary pillars.
+
+  -Focus on creating data products
+  -Operationalizing analytics and data science 
+  -Data science and analytics recipes and blueprints 
+  -Methodologies and processes 
+  -Culture allignment and clarity
+
+Project description
+-------------------
+As a BJSS data engineer you'll help our clients deploy data pipelines and processes in a production
+safe manner, using the latest technologies and with a DataOps culture.
+
+  -Work in a fast moving, agile environment, within muilti-disciplinary teams, deliverying modern
+   data platforms into large organisations.
+  -Expertise and confidence to work collaboratively with engineers, architects and business analysts
+   in multi-disciplinary teams on client site.
+
+Experience 
+----------
+-Python
+-AWS or Azure data services (E.g. Data factory, Synapse, Redshift, etc)
+-Databricks or Apache Spark
+-Distributed NoSQL database --> HBase
+-Stream processing technologies such as Kafka
+-Hadoop ecosystem exposure
+
+AWS
+---
+Global cloud platform which allows you to host and manage services in the internet. 
+
+  -Infrastructure as a service (servers)
+  -Platform as a service
+  -Software as a service
+  -Cloud storage platform
+
+Services overview
+-----------------
+-EC2: Elastic compute cloud, bare servers which you can launch and run software
+-VPC: Virtual private cloud, lets you create networks in the cloud and run your servers on those 
+      networks.
+-S3: Simple storage service, opportunity to upload and share files.
+-RDS: Relational Database service, SQL, MySql, Postgres, Route 53.
+-ELB: Elastic load balancer, service which balances incoming traffic to multiple machines.
+  -Autoscaling: Adds capacity in real time when load is increased.
+
+EC2
+---
+One of the most popular of AWS offerings, the first step is to create an Amazon machine image(AMI),
+select the type (CPU, Memory, storage, network performance) and add storage (EBS) volume.
+The security group, set firewall rules controlling the traffic for the instance, also create a 
+key/pair to access the new instance.
+  -Renting virtual machines 
+  -Storing data on virtual drives (EBS)
+  -Distributing load across machines (ELB)
+  -Scaling the services using an auto-scaling group (ASG)
+
+EC2 User Data
+-------------
+EC2 user data is used to automate boot tasks such as:
+  -Installing updates
+  -Installing software
+  -Downloading common files from the internet
+-It is possible to bootstrap our instances using an EC2 User data script
+-Bootstrapping means launching commands when a machine starts 
+-That script is only run once at the instance first start
+
+IAM
+---
+Identity and access management, the whole AWSD security is there with the following categories. Root
+account should never be used, users must be created with proper permissions. Policies are written in
+JSON (JavaScript Object Notation)
+  -Users: Physical person
+  -Groups: By functions such as admins, devops or teams such as engineering, design ,etc
+  -Roles: Internal usage within AWS resources, for machines
+
+*IAM has a global view, permissions are governed by policies, you can set up MFA (multi factor 
+authentication). It's best to give users the minimal amount of permissions they need.
+*IAM federation:  Big enterprises usually integrate their own repository of users with IAM, allowing
+ one to login into AWS using their company credentials. Identity federation uses the SAML standard
+ (Active directory) 
+  -One IAM user per physical person
+  -One IAM role per application
+
+Redshift
+--------
+Data warehouse, easy go gain insights from all your data. With redshift you can query petabytes of structured
+and semi-structured data across your data warehouse, operational database, and your data lake using standard SQL.
+  
+  -Redshift lets you easily save the results of your queries back to your S3 data lake using open formats like
+   apache Parquet to further analyse from other analytics services.
+  -Ability to query data directly into our Amazon S3 data lake, we have been able to easily integrate new data 
+   sources in hours, not days or weeks. Resulting in reduced time for insight and help control infrastructure cost.
+  -Performance, Amazon Redshift is the fastest cloud data warehouse.
+  -Bring together structured data from your data warehouse and semi-structured data such as application logs from
+   your S3 data lake to get real-time operational insight on your applications and systems.
+
+Architecture
+------------
+Client application: Interacts using drivers.
+  -JDBC: Java database connectivity
+  -ODBC: Open database connectivity
+
+Leader node: Manages interaction between the client application and compute nodes, it analyses and developes
+             designs in order to carry out database operations.
+
+Compute node: Executes the program and shares result back to the leader node for final aggregation.
+  -Node slices: Processsing, each slice is alloted with specific memory space, where it processes its workload.
+                They work in parallel in order to finish their work.
+
+-Column Storage: Column storage is an essential factor in optimizing query performance and resulting in quicker
+outputs.
+
+-Compression: Compression is a coumn level operation which decreases storage requirements and improves query 
+performance.
+
+
+Demo
+----
+1) Set up prerequesites:
+  -Sign up/login to AWS
+  -Determine firewall rules
+2) Create an IAM role for amazon redshift
+  -Sign in to AWS management console 
+  -Create a role
+  -Chose redshift 
+  -Add permission policies 
+  -Add tags if necessary
+  -Save the role ARN for the role 
+3) Launch redshift cluster
+4) Authorize access to the cluster
+  -Configure the VPC security group
+5) Connect to the cluster and run queries 
+  -AWS management console with query editor 
+  -Optionally download and set a SQL client application
+6) Load data from Amazon S3
+  -Create tables
+  -Load using copy command 
+
+---------------
+Potential cases
+---------------
+OLAP applications look at multiple records at the same time. You save memory because you fetch just the columns
+of data you need instead of whole rows and since data is stored via column, all data is of the same data-type 
+allowing for easy compression.
+
+-------------------
+Potential questions
+-------------------
+
+1) Tell me about youself
+------------------------
+I am an experienced Big data engineer primarily focused on data ingestion using distributed systems
+in the Hadoop ecosystem. In my position working at Data reply as a big data engineer, I worked on the
+inplementation of RDBMS data ingestion, batch processes and queries into messaging systems such as kafka.
+The implementation I have worked on falls into monitoring and testing data using scripts, development of 
+spark consumers to clean, test and perform aggregations using scala and python scripts. Also extensive use
+of kafka for the development of pipelines, configuration of producers from API calls, system logs and data 
+migration from RDBMS systems.
+
+2) Rescent project
+-----------------
+One project that I was heavily involed was in the a pipeline to centalize system logs. The company provide
+information solutions, primarily testing performance, quality of data and potential opportunities for change.
+Having multiple systems they wanted a centralized storage unit. Using HDFS as the foundation of the pipeline,
+I took part in ingestion scripts from RDBMS systems and logs from their systems. Cleaning data following 
+specifications and using spark and involvement in testing the pipeline.
+
+3) Previous experience
+----------------------
+During Appnovation, I took assisstance in various aspects of data, for example the projects included data 
+migration, modeling and warehousing. Providing data solutions when traditional RDBMS systems lack capacity.
+
+4) Cloud AWS
+------------
+EC2
+IAM
+RedShift
+
+
+-Contract only
+-Intership
+
+-volume - type
+
+1 level - explaining what I did
+2 level - detailed information about the project
+3 level - code level, specific functions

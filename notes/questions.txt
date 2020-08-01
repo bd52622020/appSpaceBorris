@@ -1,0 +1,428 @@
+
+
+				Questions?
+
+1)What is spark?
+----------------
+Spark is an execution framework distributed file system, keeping elements in memory, Spark is orders of 
+magnitude faster than MapReduce. Keeping operating on the same data quickly, results in dramatic 
+improvement in performance.
+
+2)What are the different Hadoop configuration files?
+----------------------------------------------------
+Hadoop-env.sh --> Environment variables: 
+	-Java path
+	-Process ID path
+	-Logs
+	-Metrics 
+Core-site.xml --> HDFS configuration:
+	-Enabling trash
+	-High availability
+	-Zookeeper
+Hdfs-site.xml --> HDFS configuration:
+	-Replication factor
+	-NameNode metadata storage 
+	-DataNode storage 
+	-Secondary NameNode metadata storage 
+Mapred-site.xml --> MapReduce processing
+	-Master/Slaves properties
+Yarn-site.xml --> Yarn processing framework 
+	-Resource allocation
+	-Resource manager properties
+	-Node manage properties
+
+3)What are the three modes in which Hadoop can run?
+---------------------------------------------------
+-Standalone mode: Default mode, it uses the local filesystem and a single Java process 
+		  to run the Hadoop service
+-Pseudo-distributed mode: Uses single node Hadoop deployment to execute all the 
+			  Hadoop services 
+-Fully-distributed mode: Uses separate nodes to run Hadoop master and slave services 
+
+4)What are the differences between regular file system and HDFS?
+----------------------------------------------------------------
+When refering to a regular life system, the data is maintained in a single system,
+compared to HDFS in which data is distributed and maintained on multiple systems.
+In a regular file system there are no fault tolerance when the machine crashes and 
+data is lost but in HDFS there are multiple datanodes which store data, if one 
+crashes, the cluster can recover data from other nodes. 
+And the biggest difference is in the seek time, the time taken to read the data.
+In a regular system with huge amount of data, it takes very long but in HDFS the 
+time taken to read data is faster due to reads from multiple machines.
+
+5)Why is HDFS fault tolerant?
+-----------------------------
+It archieves fault tolerance due to the replication of data in DataNodes, by default a 
+block of data gets replicated on three datanodes with size of 128MB. Since these blocks 
+are stored in different machines there is no single point of failure. 
+The rule of replication states, no indentical block on a single machine and rack awareness
+with at least one replica in another rack 
+
+6)Explain the architecture of HDFS
+----------------------------------
+Located in a Hadoop cluster, the first part is the NameNode which is the master process 
+and the DataNodes which are the slave processes. When data is transfered to HDFS, the 
+data is split into blocks and then randomly distributed accross nodes with a replication
+factor and the main condition of no two identical blocks will sit on the same machine.
+When the cluster is initiated, dataNodes will send a heart-beat to the nameNode every 
+three seconds and the nameNode will store the information in the RAM building metadata.
+When data is being writen and blocks are distributed across dataNodes, dataNodes will 
+send a block report to nameNode. NameNode is also maintaining metadata in disk
+
+7)NameNode explained
+--------------------
+The nameNode is the master server that host metadata in disc and RAM. It keeps information
+about the various datanodes, their location, the size of each block, etc. The edit log
+and the FsImage are stored in the disk. The metadata in disk gets appended everytime a
+read/write operation is called. Metadata in RAM is dinamically built everytime the cluster
+is running.
+
+8)DataNode explained
+--------------------
+Hold the actual data block and send block reports to NameNodes every 10 seconds, metadata
+of NameNode in RAM is constantly getting updated. Datanode stores and retrieves the blocks
+when called by the NameNode, it reads and writes client's request and performs block 
+creation, deletion and replication on instruction from the NameNode.  
+
+9)What are the two types of metadata a NameNode server holds?
+-------------------------------------------------------------
+Metadata in disk composed of edit log and fsImage.
+Metadata in RAM composed of information about dataNodes, files, where the replication is 
+created, blocks reciding in dataNodes and file permissions 
+
+10)What is the difference between federation and high availability?
+-------------------------------------------------------------------
+About the horizontal scalability of NameNode, federation refering to any number of NameNodes
+with no limitation meaning all belong to the same cluster but are not coordinated, linked by 
+a cluster ID and all nameNodes share a pool of metadata and each having a dedicated pool.
+High availability in the other hard there are two nameNodes, an active and stand-by nameNode,
+using the active nameNode while the standby nameNode will be idle and updating its metadata
+with the metadata of the active node. In case of failure, Zookeeper is in charge of using the
+standby nameNode as the primary source.
+
+11)Why the block size of 128MB?
+-------------------------------
+In Hadoop, every entity in the HDFS directory file, has multiple blocks and these are considered
+objects. For each object, Hadoop nameNode's RAM uses 150bytes thus if the block size is small
+then there will be greater number of blocks and directly affect the RAM usage and if the block
+size is big, there will be fewer number of block but more number of splits and the processing
+speed might be affected.
+
+12)How does rack awareness work in HDFS?
+----------------------------------------
+Rack awareness is about having knowledge of different data nodes and how it is distributed 
+across the racks of a Hadoop cluster. Following the rule of replication in racks, replicas 
+of a block cannot be placed on the same rack. By default each block gets replicated thrice on 
+various datanodes present on different racks.
+
+13)How can you restart NameNode and all the daemons in Hadoop?
+--------------------------------------------------------------
+When working with an apache Hadoop cluster, use the stop and start using Hadoop daemon  scripts
+On other distributors, daemons will run on different services thus using your server to send 
+instructions to the agents.
+
+14)Which command will help you find the status of blocks and filesystem health?
+-------------------------------------------------------------------------------
+hdfs fsck <path> -files -blocks ---> status of the block
+
+15)What would happen if you store too many small files in a cluster on HDFS?
+---------------------------------------------------------------------------
+Storing a lot of small files on HDFS generates alot of metadata files, storing these metadata 
+in the RAM can be a problem. The cumulative size of all the metadata will be too big
+
+16)How to copy data from local system on to HDFS?
+-------------------------------------------------
+hadoop fs -copyFromLocal [source] [destination]
+
+17)When do you use dfsadmin -refreshNOdes and rmadmin - refreshNodes command?
+-----------------------------------------------------------------------------
+These commands are used to refresh the node information while commissioning or decommissioning
+of nodes. The first one to run HDFS client and it refreshes node configuration for the NameNode,
+and the last one to perform administrative tasks for ResourceManager
+
+18)How to change replication of files on HDFS after they are already written to HDFS?
+-------------------------------------------------------------------------------------
+It is possible to change the replication value to a particular number in hadoop-site.xml file and
+to change the replication factor for a particular file use bin/hadoop dfs -setrep -w4 [file-path]
+
+19)Replication consistency
+--------------------------
+NameNode is in charge of replication consistency in a Hadoop cluster and fsck command gives the 
+information reguarding over and under replicated blocks. Under-replication are blocks that do not 
+meet their target replication for the file they belong to and HDFS will automatically create new 
+replicas until they meet the target replication. Over-replication are blocks that exceed their 
+target replication and HDFS will automatically delete excess replicas.
+
+20)Features of Python
+---------------------
+Python is a dynamically, high level interpreted programming language, supporting both object
+oriented and procedural programming. Python is very easy to learn because it's dynamically typed
+and because python is a high-level language thus its not necessary to remember system architecture 
+nor manage memory.
+
+21)What is pickling and how is it different from unpickling
+-----------------------------------------------------------
+The pickling module is used for serializing and de-serializing python object structures, converting
+any python object into byte streams, also called serialization or flattening. The opposite can also
+be achieved by converting a byte stream back into python objects by the unpickling process. 
+Pickling is mainly used for data transfer from one server/system to another because of its lighter
+functionality.
+
+22)Explain with an example what is slicing in Python?
+-----------------------------------------------------
+Primarily used when dealing with strings, slicing is about obtaining a sub-string or char arrays 
+from a given string by 'cutting' a particular section of a string. A string in Python is composed
+of an array of chars with the first character being the zero element, you can then specify which
+part of the string you want with their respective indexes.
+
+23)How is a generator function different from a normal function?
+----------------------------------------------------------------
+Generators can be used to constrol the iteration behaviour of a loop, similar to a function returning
+an array, a generator has parameters which are called to generate a sequence of numbers. Different
+from functions returning a whole array, a generator yields one value at a time whcih requires less 
+memory.
+
+24)Does Python have OOP concepts?
+---------------------------------
+When Python creates objects, it has attributes and behaviour. OOP focuses on creating reusable code,
+using classes, objects, attributes and methods. Inheritance, using existing classes/functionality to
+form a new class. Encapsulation, access restriction of methods and variables to prevent data from 
+direct modification using attributes. Polymorphism, the ability to use a common interface for multiple
+forms/classes.
+
+25)What is the built-in function that Python uses to iterate over a number sequence?
+------------------------------------------------------------------------------------
+Range 
+
+26)What is PEP?
+---------------
+Stands for Python enhancement proposal, pep is a design document providing information to the python
+community, or describing a new feature for Python or its processes or environment. PEP should provide
+a concise technical specification of the feature.
+
+27)What is call by value in Python?
+-----------------------------------
+Python utilizes a system, known as call by object reference, when you pass arguments to a function, the 
+passing is like call-by-value because you can not change the value of the immutable objects being passed
+to the function.
+
+28)What is call by reference in Python?
+---------------------------------------
+When passing arguments to a function and these arguments are mutable objects, it can be considered as 
+call by reference because when their values are changed inside the function, it will also be reflected
+outside of the function.
+
+29)What is the purpose of end in Python?
+----------------------------------------
+It's a keyword argument for the print function, the end keyword dictates what should be printed after 
+all the arguments have been printed
+
+30)What are errors and exeptions in Python?
+-------------------------------------------
+They are a signal that the written code lacks proper usage of code, logical errors are considered 
+exceptions because they occur at runtime, after passing syntax test. 
+
+31)What is the key difference between lists and tuples?
+-------------------------------------------------------
+List has dynamic characteristics whereas tuples has static characteristics, List preserve a sequence of 
+various types of data. Tuples also allow different data types but are immutable in nature
+
+32)What is type conversion in Python?
+-------------------------------------
+Type conversion is to change the properties and the way it behaves, types such as string, integers and 
+many more can be changed.
+
+33)What are the advantages that NumPy arrays offer over nested python lists?
+----------------------------------------------------------------------------
+NumPy arrays are more compact thatn Python lists, with readning and writing access much faster. The 
+difference is mostly due to indirectness, a python list is an array of pointers to python objects in the
+other hand NumPy array is an array of uniform values. In conclusion the flexibility of standard Python
+lists makes them slower and more expensive to run.
+
+34)What is the main difference between Pass and Continue in Python?
+-------------------------------------------------------------------
+Python works only with indentation, in order to do nothing when a condition is meet, Pass is used. 
+Continue, is used when a condition has been meet within a loop and you need to skip the current iteration
+and move to the next one.
+
+35)What is Kafka?
+-----------------
+Essentially Apache Kafka is a messaging system (publish-subscribe) between a source of data and a target
+system, decoupling the pipeline functionality using producers, consumers and using a topic to store
+structured or unstructured information. Kafka has a distributed, resilient and fault tolerant architecture
+with the coordination of Zookeeper. Based on transactional logs design
+
+36)Components of kafka
+----------------------
+-Consumer: The consumer is in charge of processing records from source, Rest API/Streaming data/Video, 
+ subscribing to a topic where all the information will be stored. Kafka has the ability to use consumer
+ groups to dividfe the work and process data more efficiently.
+
+-Topic: In kafka a topic is used as a common name/category to store and publish a particular stream of data,
+ serving a similar purpose as a table in a database. Producers publishes data to the topic and consumers
+ reads data from the topic by subscribing.
+
+-Producer: The producer will subscribe to a particular topic to read data from the cluster, a producer's
+ main aim is to store/analyse the data into strucuted or unstructured databases such as HBase and Cassandra.
+
+-Brokers: Kafka is compiled of one or more servers/computers as a distributed system, a broker is a container
+ that holds several topics with their multiple partitions. Also known as bootstrap brokers becuase connection
+ with anyone broker means connection with the entire cluster.
+
+-Zookeeper: Used as a service to maintain and manage the cluster for distributed systems, Zookeeper keeps 
+ track of topics, partitions, etc. Allowing clients to perform simultaneous reads/writes and acts as a shared
+ configuration service within the system.
+
+37)Explain the role of the offset
+---------------------------------
+The offset is a way of tracking the sequential order in which messages are recevied by Kafka topics, keeping
+track of the offset or position in order to retrieve information, backup data in case of failure and a way
+to organize data. Kafka consumer offset allows processing to continue from where it last left off if the 
+application is turned off or unexpected failure. By having the offset persist in a data store, data 
+continuity is retained. 
+
+38)What is a consumer group?
+----------------------------
+A consumer group is a number of kafka consumers who read data in parallel from a kafka topic, sharing a 
+common group id and each partition in a topic can only be read by one consumer.
+
+39)Is it possible to use kafka without zookeeper?
+-------------------------------------------------
+No, even if kafka is not running in a distributed system, Zookeeper is required for running kafka. In order
+to coordinate tasks, state management and configurations.
+
+40)Explain the concept of leader and follower
+---------------------------------------------
+Each partition in Kafka has one server that plays the role of a leader, leader performs the task of all read
+and write requests while the followers role is to passively replicate the leader.
+
+41)What roles do replicas and the ISR play?
+-------------------------------------------
+Kafka considers that a record is committed when all replicas in the inSync replicas set (ISR) have confirmed
+that they have written the record to disk. An acknowledgement (ACK) is a signal passed between communicating 
+processes to signify acknowledgement. ISR is simply all the replicas of a partition that are "in-sync" with 
+the leader, ISR acts as a tradeoff between safety and latency.
+
+42)How do you define a partitioning key?
+----------------------------------------
+
+43)In the producer, when does QueueFullExeption occur?
+------------------------------------------------------
+When the internal producer gueue gets full, max messages or bytes, the queue does not only account for 
+messages being queued for transmission to the broker but also for acknowledgement - delivery reports - 
+waiting to be polled by your application. Thus if using a delivery report callback you must also call
+kafka poll at regular intervals.
+
+44)What is traditional protocols and how are these different from kafka system?
+-------------------------------------------------------------------------------
+TCP: Transmission control protocol, residing between the application layer and network layer used to provide
+reliable stream delivery service. Deliver and receive data as a stream of bytes, it is considered a connection
+oriented protocol meaning it is maintained until each application is done exchanging messages.
+
+Kafka uses a binary protocol over TCP.The protocol defines all apis as request response message pairs.
+The client initiates a socket connection and then writes a sequence of request messages and reads back the
+corresponding response message. No handshake is required on connection or disconnection.
+
+45)What are RDD operations in Spark?
+------------------------------------
+RDD, resilient distributed datasets, is a collection of elements partitioned across the nodesof the cluster
+that can be operated on in parallel. RDDs support two types of operations, transformations which create a new
+dataset from an existing one and actions, which return a value to the driver program after running a 
+computation on the dataset.
+
+46)What do you understand by lazy evaluation?
+---------------------------------------------
+All transformations in Spark are lazy, they do not compute their results right away, instead they just
+remember the transformations applied to some dataset. The transformations are only computed when an action
+requires a result to be returned to the driver program.
+
+47)What is DAG in Spark?
+------------------------
+Directed acyclic graph, is a set of vertices and edges, where vertices represent RDDs and the edges represent
+the operation to be applied on RDDs. Every edge directs from earlier to later in a sequence, when calling an
+action, the created DAG submits to the scheduler.
+
+48)What is the role of a spark driver?
+--------------------------------------
+A Spark driver is a JVM process that hosts sparkContext for a Spark acpplication, the master node in a Spark
+application, it splits a spark application into tasks and schedules them to run on executors. A driver is 
+where the tasks scheduler lives and spawns tasks across workers, coordinates workers and overall execution
+of tasks.
+
+49)What is shuffling in Spark?
+------------------------------
+Shuffling is when data is moved across the network in a spark application, they happen but when too much data
+is moved across the network there will be performance issues due to latency.
+
+50)How many types of deploy mode are there in Spark?
+----------------------------------------------------
+In client mode, the driver daemon runs in the machine through which you submit the spark job to your cluster,
+this mode is great for interactivity, take action and in cluster mode, you submit the spark job to your 
+cluster and the driver daemon is run inside your cluster and application master, in this mode there will be
+a reserve of resources for the driver daemon because it will be running in the cluster
+
+51)What are the steps involved in structured API execution in Spark?
+--------------------------------------------------------------------
+Datasets, Dataframes and SQL tables and views. The first step is writing the dataframe/dataset code, if the
+code is valid, spark converts this to a logical plan. Spark then tranforms this logical plan to a physical 
+plan, checking for optimizations along the way and then executes this physical plan (RRD manipulations) on 
+the cluster.
+
+52)What is the difference between Dataframe and RDD?
+----------------------------------------------------
+A dataframe is a table, two dimensional array-like structure, has additional metadata due to its tabular 
+format which allows Spark to run certain optimizations on the finalized query. In the other hand an RDD is 
+a blackbox of data that cannot be optimized as the operations that can be performed against it are not as 
+constrained.
+
+53)What do you understand by receivers in Spark streaming?
+----------------------------------------------------------
+Receivers are special objects, their goal is to comsume data from data sources and move it to Spark. Receivers
+are created by streaming context as long running tasks on different executors.
+
+54)How to scale data consumption from a Kafka topic?
+----------------------------------------------------
+Adding more consumers to a consumer group. It is common for kafka consumers to do high-latency operations such 
+as write to a database or a time-consuming computation in the data. Adding consumers to share the load by 
+having each consumer own just a subset of the partitions and messages. Good idea to create topics with a large
+number of partitions and there is no point to keep adding more consumers than you have partitions in a topic.
+
+55)Why have consumer groups in kafka?
+-------------------------------------
+In cases where there is many applications that need information from the topic, we use consumer groups for each
+application. Kafka scales to a large number of consumers and consumer groups without reducing performance, when 
+a new consumer group is added, they read all the messages from the topic.
+
+56)Consumer groups and partition rebalance
+------------------------------------------
+Consumers in a consumer group share ownership of the partitions in the topics they subscribe to. When a new 
+consumer is added to the group, it starts consuming messages from partitions previously consumed by another 
+consumer. The same thing happens when a consumer shuts down or crashes, leaves the group and the partitions 
+it used to consume will be consumed by one of the remaining consumers. Moving partition ownership form one
+consumer to another is called rebalance, but they are undesirable because during rebalance, consumers cant 
+consuem messages and the consumer loses its current state.
+
+57)How does the process of assigning partitions to brokers work?
+----------------------------------------------------------------
+When a consumer wants to join a group, it sends a JoinGroup request to the group coordinator. The first consumer
+to join the group becomes the group leader. The leader receives a list of all consumers in the group from the
+group coordinator and is responsible for assigning a subset of partitions to each consumer. It uses an implementation
+of PartitionAssignor to decide which partitions should be handled by which consumer. After the partition assignment,
+the consumer group leader sends the list of assignments to the groupCoordinator, which sends this information to 
+all the consumers and the process is repeated with every rebalance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

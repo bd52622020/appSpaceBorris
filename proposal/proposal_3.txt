@@ -1,0 +1,24 @@
+
+
+				Financial market Proposal 
+
+case:
+
+The financial market is the backbone of the economy, millions of transactions 
+occuring everyday. My proposal attempts to use a real time financial market 
+data API to retrieve stock market data. The aim of my project is then to use
+the FOREX trading records of a particular currency and find patterns in a 
+given timeframe.
+
+
+Source:
+
+The Twelve-data API is to be used to obtain financial market data of Forex
+stocks. The API call will return meta and time series information in a CSV
+format.
+The data will come as a batch request with a frequency of 1min.
+
+-Meta object consists of general information about requested currency pair
+-Time series contains as array of objects: Datatime, Open, High, Low, Close
+
+

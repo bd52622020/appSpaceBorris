@@ -1,0 +1,43 @@
+
+
+                            No-SQL Databases
+
+There are four types of No-SQL databases:
+-Document store
+-Graph base
+-Key value store
+-Column 
+
+HBase and Cassandra are the best examples of column store types
+---------------------------------------------------------------
+HBase should be used when the big data application has 
+-A variable schema
+-Data is stored in the form of collections
+-If the application demands key based access to data while retrieving
+
+ACID Theorem
+------------
+Atomicity: Ability of the database to guarantee that all of the tasks of a transaction are 
+performed or none of them are.
+
+Consistency: Database remains in a consistent state before the start and after the transaction
+is over.
+
+Isolation: Requirement of other operations cannot access or see the data in an intermediate 
+state during a transaction.
+
+Durability: Guarantee that once the user has been notified of success, the transaction will
+persist, and not be undone.
+
+
+CAP Theorem
+-----------
+Consistency: every read would get the most recent write available in table.
+
+Availability: If node failed then it should always execute the queries.
+
+Partition tolerance: Even if connections between nodes are down, others should be kept in place.
+
+
+
+

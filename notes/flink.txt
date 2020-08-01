@@ -1,0 +1,84 @@
+
+
+					Flink
+
+
+-Apache flink is a stream processing framework 
+
+why Flink
+---------
+-Provides a high-throughput, low latency streaming engine
+-Support for event time processing and state management
+-Executes arbitrary dataflow programs in a data-parallel and pipelined
+manner
+-Flink's pipelined runtime system enables the execution of bulk/batch 
+and stream processing programs
+-Flink's runtime supports the execution of iterative algorithms
+
+Architecture
+------------
+-Task manager distributes and allocates jobs across distributed system 
+
+Data stream API
+---------------
+-Execution environment
+-Data sources
+-Transformations
+-Data sinks 
+-Connectors 
+
+Batch processing API
+--------------------
+-Data sources
+-Transformations
+-Broadcast variables
+-Connectors to various systems
+-Iterations 
+
+Structures data handling using table API
+----------------------------------------
+-Registering tables
+-Accessing the registered tables
+-Operations 
+-Data types
+-SQL
+
+Complex event processing
+------------------------
+-CEP and flink CEP
+-Event streams
+-Pattern API
+-Continuity 
+-Selecting from pattern 
+
+Graph API
+---------
+-Flink graph library -Gelly
+-Graph representation, properties, transformation and mutations
+-Iterative graph processing
+-Scatter gather processing 
+
+Integration between Flink and Hadoop
+------------------------------------
+-Flink-Yarn session
+-Job submission to Flink
+-Execution of Flink job on Yarn
+-Flink and YARN interaction details 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

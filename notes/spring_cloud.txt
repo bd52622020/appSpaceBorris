@@ -1,0 +1,61 @@
+
+
+					Spring Cloud
+
+Components
+----------
+-Configuration
+-Service Discovery
+-Circuit Breakers
+-Routing and messaging
+-API Gateway
+-Tracing
+-CI Pipelines and testing 
+
+
+Configuration
+-------------
+-Outside the application, to a centralized store across all environments 
+-Spring cloud config server can use Git, SVN, filesystem 
+-Config clients(microservice apps) retrieve the configuration from the server
+
+Service Discovery
+-----------------
+-Communication between microservices, easiliy discover the routes to the 
+services it needs to use
+-Zookeeper
+Producer --> register --> Service registry --> discover --> Consumer --> Connect
+
+Routing and messaging 
+---------------------
+-Could native app will be composed of many microservices 
+-Supports communication via HTTP requests or via messaging 
+-Messaging: Kafka 
+
+API Gateway
+-----------
+-Allows to route API requests (Internal or external) to the correct service 
+-Spring cloud gateway, load balancer
+
+Circuit Breakers
+----------------
+-Protect microservices from failure 
+-If requests fails --> after certain number of times 
+
+Tracing
+-------
+-Spring cloud Sleuth and Zipkin
+
+CI Pipelines and testing
+------------------------
+-Allows to accurately mock dependencies between services using published contracts 
+
+
+
+
+
+
+
+
+
+

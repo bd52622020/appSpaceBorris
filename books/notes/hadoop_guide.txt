@@ -1,0 +1,272 @@
+
+-----------------------------------------------------------------------------------------------------------
+                                            Hadoop Guide
+-----------------------------------------------------------------------------------------------------------
+Preface
+-------
+Hadoop fundamentally an enabling technology for working with huge datasets. Hadoop provides a bridge between
+structured (RDBMS) and unstructured (log files, xml, text) data and allows these datasets to be easily put
+together.
+
+Background and fundamentals
+---------------------------
+Hadoop's components and its ecosystem, how to store and work with voluminous data sizes and how to understand
+data and turn it into a competitive advantage.
+
+  -Hadoop provides effective storing and computational capabilities over substantial amounts of data.
+  -Distributed system made up of a distributed file system and offers parallelization.
+  -The computation tier uses a framework called MapReduce
+  -A distributed filesystem called HDFS provides storage
+  -Hadoop runs on commodity hardware
+
+What is Hadoop
+--------------
+Hadoop is a platform that provides both distributed storage and computational capabilities. A distributed
+master-slave architecture consisting of the Hadoop distributed file system (HDFS) for storage and MapReduce
+for computational capabilities.
+
+  -MapReduce, a computational framework for parallel processing
+  -Data partitioning 
+  -Its storage and computational capabilities scale with the addition of hosts to a Hadoop cluster 
+
+High level Hadoop architecture
+------------------------------
+Master node: MapReduce for computation and HDFS for storage
+  -MapReduce: Responsible for organizing where computational work should be scheduled on the slave nodes.
+  -HDFS: Responsible for partitioning the storage across the slave nodes and keeping track of where data is
+         located.
+
+Slave node: 
+  -MapReduce
+  -Storage 
+
+Core Hadoop components - HDFS
+----------------------------
+Storage component of Hadoop. Its a distributed filesystem that's modeled after Google file system (GFS).
+
+  -HDFS is optimized for high throughput and works best when reading and writing large files (Gigabytes)
+  -HDFS leaverages unusually large block sizes and data locality optimizations to reduce network input and
+   output (I/O).
+  -Scalability and availability are achieved due to data replication and fault tolerance.
+  -HDFS replicates files for a configured number of times and re-replicates data blocks when nodes fail.
+
+Core Hadoop components - MapReduce
+----------------------------------
+MapReduce is a batch-based, distributed computing framework, allows to parallelize work over a large amount
+of raw data such as combining web logs with relational data from OLTP database to model how users interact 
+with the website.
+
+  -MapReduce simplifies parallel processing by abstracting away the complexities involved in working with 
+   distributed systems such as computational paralelization, work distribution and unreliable hardware.
+  -MapReduce allows to focus on addressing business needs.
+  -MapReduce decomposes work submitted by a client into small parallelized map and reduce workers.
+
+
+High level HDFS architecture
+----------------------------
+NameNode: Keeps in memory the metadata about the filesystem, such information about block management.
+DataNode: Files are made up of blocks, each file is replicated and copies are stored in other nodes.
+Client Application: HDFS client talk to the NameNode for metadata-related activities and read/writes.
+
+MapReduce job 
+-------------
+The role of the programmer is to define map and reduce functions, where the map function outputs key/value
+tuples, which are processed by reduce functions to produce the final output.
+
+1) Client; Submits a MapReduce job to MapReduce Master.
+2) MapReduce: Decomposes the job into map and reduce tasks and schedules them for remote execution on slave
+              nodes.
+    -Map: Takes as input a key/value pair, which represents a logical record from the input data source and
+          in case of files it could be a line or a row in case of databases. Producing zero or more output
+          key/value pairs or it could be performing a demultiplexing operation, where a single input key/
+          value yields multiple key/value output pairs.
+
+MapReduce shuffle and sort
+--------------------------
+The shuffle and sort phases are reponsible for two primary activities, determining the reducer that should 
+receive the map output key/value pair (called partitioning) and ensuring that, for a given reducer, all its
+input keys are sorted.
+
+  -The power of MapReduce occurs in between the map output and the reduce input, in the shuffle and sort phases
+  -The reduce function is called once per unique map output key.
+  -All the map output values that were omitted across all the mappers for "key2" are provided in a list
+  -Like the map function, the reduce can output zero to many key/value pairs. Reducer output can be written to
+   flat files in HDFS, insert/update rows in a NoSQL database or write to any data sink.
+  -E.g.reduce (key2, list(value2)) ---> list(key3, value3)
+
+MapReduce logical architecture
+------------------------------
+1)Client application: Talk to the job tracker to launch and manage jobs.
+2)Job tracker: Coordinates activities across the slave TaskTracker process. It accepts MapReduce job requests
+               and schedules map and reduce tasks on TaskTrackers to perform the work.
+3)TaskTracker: Is a daemon process that spawns child processes to perform the actual map or reduce work. They
+               read their input from HDFS, and write their output to the local disk. Reduce tasks read the map
+               outputs over the network and write their outputs back to HDFS.
+
+The Hadoop ecosystem
+--------------------
+High level languages: Crunch, Cascading, Pig, Hive
+Miscellaneous: Sqoop, Oozie, Flume, Hbase
+Hadoop: HDFS, MapReduce
+
+Physical architecture
+---------------------
+Zookeeper requires an odd-numbered quorum, at least three of them in any reasonably sized cluster. Extending 
+the overview to include CPU, RAM, disk and network because they all have an impact on the throughput and 
+performance of your cluster.
+
+  -Client: Client hosts run application code in conjunction with the Hadoop ecosystem projects. Pig, Hive and
+           Mahout are client-side projects that don't need to be installed on your actual Hadoop cluster.
+  -Primary master: A single master node runs the master HDFS, MapReduce and HBase daemons. Running these master
+                   on the same cluster is sufficient in small projects, with larger clusters it would be worth
+                   considering splitting them onto separate hosts.
+                   -NameNode
+                   -Job tracker
+                   -HMaster
+                   -Zookeeper
+  -Secondary master: Provides NameNode checkpoint management services, and zookeeper is used by HBase for 
+                     metadata storage.
+                     -Secondary NameNode
+                     -Zookeeper
+  -Zookeeper master: Instance of Zookeeper running
+  -Slaves: The slave hosts run the slave daemons, to keep data locality, the ability to read from local disk, 
+           which is a key distributed system property of both MapReduce and HBase slave daemons.
+           -Data node
+           -Task tracker
+           -Region server
+           -optional: RHIPE, R, RHadoop
+
+Security
+--------
+Hadoop can be configured to run with Kerveros, a network authentication protocol, which requires Hadoop daemons
+to authenticate clients, both user and other Hadoop components. Kerberos can be integrated with an organization
+existing Active directory and thus offers a single sign-on experience for users.
+
+Weakness
+--------
+HDFS: Lack of high availability, its inefficient handling of small files and lack of transparent compression.
+      HDFS isn't designed to work well with random reads over small files due to its optimization for sustained
+      throughput
+MapReduce: Batch based architecture, no real-time data access.
+High availability: Single master models, resulting in single point of failure.
+
+Redhat
+------
+Uses packages called RPMs for installation, and Yum as a package installer that can fetch RPMs from remote Yum 
+repositories. Clousera hosts its own Yum repository containing Hadoop RPMs
+
+Hadoop configuration files
+--------------------------
+Hadoop-env.sh: Environment specific settings, current java home and you can also specify JVM options for various
+               Hadoop components. Customizing directory locations such as the log directory and location of the 
+               master and slve files.
+
+Core-site.xml: Contains system-level Hadoop configuration items, such as HDFS url, Hadoop temporary directory and
+               script locations for rack-aware Hadoop clusters.
+
+Hdfs-site: Contains HDFS settings such as the default file replication count, the block size and whether
+           permissions are enforced.
+
+Mapred-site: HDFS settings such as the default number  of reduce tasks, default min/max task memory size and 
+             speculative execution settings.
+
+Masters: Contains a list of hosts that are Hadoop masters, Name should have been called temporary masters 
+
+Slaves: Contains a list of hosts that are Hadoop slaves. When Hadoop starts, it will SSH to each host in this file
+        and launch the DataNode and TaskTracker daemons.
+
+Basic CLI commands
+------------------
+To list the files in the root directory in HDFS
+-hadoop fs -ls / 
+To make sure MapReduce is up and running
+-hadoop job -list
+
+Job
+---
+-When your job completes you can examine HDFS for the job output files, and also view their contents.
+-The map and reduce logs files can be found with the job's ID, which will take you into the local lifesystem. 
+ When you run your job, part of the output is the job ID
+-One a true distributed cluster these logs will be local to the remote TaskTracker nodes, which can make it harder
+ to get to them. The JobTracker and TaskTracker UI can help to provide easy access to the logs.
+
+Summary
+-------
+Hadoop is a distributed system designed to process, generate, and store large datasets. Hadoop excels at working 
+with heterogeneous structured and unstructured data at scale.
+
+------------------------------------------------------------------------------------------------------------------
+                                              Part 2
+------------------------------------------------------------------------------------------------------------------
+Data logistics 
+--------------
+Examples include working with relational data in RDBMSs, structured files and HBase
+
+Moving data in and out of Hadoop
+--------------------------------
+Moving data in and out of Hadoop, known as data ingress and egress, is the process by which data is transported 
+from an external system into and internal system, and vice versa.
+
+  -Hadoop supports ingress and egress at a low level in HDFS and MapReduce
+  -Files can be moved in and out of HDFS, and data can be pulled from external data sources and pushed to external
+   data sinks using MapReduce.
+  -How do you bring data that's sitting in an OLTP (online transaction processing) database, or ingress log data 
+   that's being produced by tens of thousands of production servers, or work with binary data sitting behind a 
+   firewall?
+
+Example
+-------
+Data ingress, perform processing such as joining different data sources together and copy data out of Hadoop.
+
+  -Log data --> Log collectors --> HDFS --> File egress --> Files
+  -Files --> File ingress --> HDFS --> Files egress --> Files
+  -HBase /NoSQL --> MapReduce --> HBase/NoSQL
+  -OLTP --> MapReduce --> OLTP/OLAP
+
+Automation of processes
+-----------------------
+Automation is a critical part of the process, along with monitoring and data integrity reponsibilities to ensure
+correct and safe transportation of data. There are different tools that simplify the process of ferrying data in
+and out of Hadoop and how to automate the movement of log files, ubiquitous data sources for Hadoop, but which 
+tend to be scattered throughout your environments and therefore present a collection and aggregation challenge.
+
+  -Flume for moving log data into Hadoop, and in the process we'll evaluate two competing log collection and
+   aggregation tools, Chukwa and Scribe.
+  -Sqoop for database ingress and egress activities, and we'll look at how to ingress and egress data in HBase
+
+Key elements of ingress and egress
+----------------------------------
+Moving large quatities of data in and out of Hadoop has logitical challenges that include consistency guarantees 
+and resource impacts on data sources and destinations. 
+Design elements:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

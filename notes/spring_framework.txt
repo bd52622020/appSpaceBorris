@@ -1,0 +1,42 @@
+
+
+					Spring framework
+
+*Frameworks tackle common application problems 
+
+Typical Java application
+------------------------
+-When you run the application --> Initialization 
+-Objects are created, related to each other --> Network of objects connected by references 
+-Share multiple existing instances --> business services
+
+Types of objects
+----------------
+-Objects that hold data
+-Instances of classes with business logic methods
+
+
+What is it
+----------
+-Provides patterns and structure
+
+Spring Application Context
+--------------------
+-Share object instances --> Handling interrelated dependencies among objects 
+-Connects objects together --> Every class declares the dependencies they need --> Dependency injection
+
+Database connectivity 
+---------------------
+-JDBC --> Data access API
+
+Web applications
+----------------
+-Dynamic web page applications
+-REST APIs
+-Spring MVC
+
+
+
+
+
+

@@ -1,0 +1,175 @@
+
+
+						Profile
+
+1) Elevator pitch
+-----------------
+I am an experienced Big data enginner primarily focused on data ingestion using distributed systems
+in the Hadoop ecosystem. In my position working at Data Reply as a Big data engineer, I worked on
+the implementation of data ingestion from RDBMS, Batch processes and queries into messaging sytems.
+The implementation personally falls into monitoring and testing data using scripts, development 
+of spark consumers to clean, test and peform aggregations using scala and python scripts.
+And extensive use of kafka for the development of pipelines, configuring producers from APIs calls,
+logs from systems and data migration from RDBMS systems.
+
+One project that I was heavily involved in was for a company providing information solutions, they
+primarily analysed systems for performance and quality of data. Having multiple systems, they wanted 
+a centralized location for all of their data. Using batch requests to get the data into kafka, I took
+part in creating scripts to test how the data would be best ingested into a topic, cleaning the data 
+by following specifications using spark and involvement in testing the pipeline.
+
+
+-Most of the data was logs from events, user data and information about specifications
+-The organization typically indentified critical systems and their processes that are most critical 
+ and implement changes
+
+-I took part in many other projects, but not a deeply. Most of my tasks were involved in the development
+ of scripts to check for relizbility in the pipelines, heavily involving testing of separate components 
+ using Java, Scala and python. Data profiling to check if there are issues with the source data, 
+ identify the structure of the data and report on the quality and if there are any necessary changes.
+
+
+
+2) Most recent project 
+----------------------
+One project that I was heavily involed in was for a company providing IT solutions by analysing systems for
+performance and quality of data. The project was to develop a centralized storage of data from all of their
+systems. Using a Hadoop cluster as the centralized repository for all the log files of their systems, then
+the integration of kafka to retrieve, clean and validate data. I took part in processing of data to Hadoop, 
+using Sqoop for traditional RDBMS systems, for unstructured data and data profiling such as log files used
+pig and python. Futher in the project, I managed to 
+
+
+
+
+3) Leadership experience 
+------------------------
+
+4) Biggest challenge 
+--------------------
+
+5) Conflict solution 
+--------------------
+
+6) Project 2
+------------
+
+7) Project 3
+------------
+
+
+1) What is the business case of your pipeline?
+----------------------------------------------
+
+Big data engineer responsibilities
+----------------------------------
+-Designing, creating, testing and maintaining the complete data management & processing systems
+-Ensuring architecture meets the business requirements
+-Building highly scalable, robust & fault-tolerant systems
+-Taking care of the complete ETL process 
+-Discover data acquisitions opportunities 
+-Find ways & methods to find value out of existing data 
+-Improving data quality, reliability & efficiency of the individual components & the complete 
+ system
+-Creating a complete solution by integrating a variety of programming languages and tools together
+-Creating data models to reduce system complexities and hence increase efficiency & reduce cost
+-Introduce new data management tools and technologies into the existing system to make it more 
+ efficient 
+
+Big data analytics for risk management
+--------------------------------------
+Organizations need to be able to implement a structured evolutionary so as to accommodate the broad
+scope of big data. To achieve this, organizations collect the internal data first so as to gain clear
+insights that will benefit them. More important is the integrated process of analysis that a company 
+uses, a proper big data analytics system helps ensure that areas of weaknesses or potential risks are 
+indentified.
+
+UBO bank from Singapore, uses big data to drive risk management, the big data risk management system 
+enables the bank to reduce the calculation time of the value at risk.
+
+Big data analytics as a driver of innovation and product development
+--------------------------------------------------------------------
+Help companies innovate and redevelop their products. Big data has become an avenue for creating 
+additional revenue streams through enabling innovations and product improvement. Start by correcting as 
+much data as would be technically possible before designing new product lines and re-designing the
+existing product.
+To improve the quality and streamline your manufactoring performance you need to collect huge data, 
+tracking their products, competitors and customer feedback.
+Once data is availed, an analysis is then conducted to ensure logical reasoning is applied before an
+action plan is devised. Luckily, product manufactorers of every size have a unique advantage when it 
+comes to gathering and harnessing big data.              
+
+Focusing on big data analytics, amazon whole foods is able to understand how customers buy groceries and
+how suppliers interact with the grocer. This data gives insights whenever there is need to implement 
+further changes.
+
+-----------------------------------
+Big data in supply chain management
+Help companies innovate and redevelop their products. Big data has become an avenue for creating 
+additional revenue streams through enabling innovations and product improvement. Start by correcting as 
+much data as would be technically possible before designing new product lines and re-designing the
+existing product.
+To improve the quality and streamline your manufactoring performance you need to collect huge data, 
+tracking their products, competitors and customer feedback.
+Once data is availed, an analysis is then conducted to ensure logical reasoning is applied before an
+action plan is devised. Luckily, product manufactorers of every size have a unique advantage when it 
+comes to gathering and harnessing big data.              
+
+Focusing on big data analytics, amazon whole foods is able to understand how customers buy groceries and
+how suppliers interact with the grocer. This data gives insights whenever there is need to implement 
+further changes.
+
+-----------------------------------
+Big data in supply chain management
+--------------------------------------------------------------------
+Help companies innovate and redevelop their products. Big data has become an avenue for creating 
+additional revenue streams through enabling innovations and product improvement. Start by correcting as 
+much data as would be technically possible before designing new product lines and re-designing the
+existing product.
+To improve the quality and streamline your manufactoring performance you need to collect huge data, 
+tracking their products, competitors and customer feedback.
+Once data is availed, an analysis is then conducted to ensure logical reasoning is applied before an
+action plan is devised. Luckily, product manufactorers of every size have a unique advantage when it 
+comes to gathering and harnessing big data.              
+
+Focusing on big data analytics, amazon whole foods is able to understand how customers buy groceries and
+how suppliers interact with the grocer. This data gives insights whenever there is need to implement 
+further changes.
+
+-----------------------------------
+Big data in supply chain management
+--------------------------------------------------------------------
+Help companies innovate and redevelop their products. Big data has become an avenue for creating 
+additional revenue streams through enabling innovations and product improvement. Start by correcting as 
+much data as would be technically possible before designing new product lines and re-designing the
+existing product.
+To improve the quality and streamline your manufactoring performance you need to collect huge data, 
+tracking their products, competitors and customer feedback.
+Once data is availed, an analysis is then conducted to ensure logical reasoning is applied before an
+action plan is devised. Luckily, product manufactorers of every size have a unique advantage when it 
+comes to gathering and harnessing big data.              
+
+Focusing on big data analytics, amazon whole foods is able to understand how customers buy groceries and
+how suppliers interact with the grocer. This data gives insights whenever there is need to implement 
+further changes.
+
+-----------------------------------
+Big data in supply chain management
+--------------------------------------------------------------------
+Help companies innovate and redevelop their products. Big data has become an avenue for creating 
+additional revenue streams through enabling innovations and product improvement. Start by correcting as 
+*This issue also happends in reverse, if your analysts find that they need the data differently structured, you'll
+ have to remake the format from that direction.
+*Even if you set up these scripts beautifully, they will experience small failures from time to time. You'll need 
+ a way to be alerted to problems, a way to locate and repair them quickly, and a means of recovering or reprocessing 
+ any data lost in the shuffle.
+
+Moving a Dataset
+----------------
+
+foreach rdd
+
+-foreach(writer / x=> x{_0})
+
+
+Streaming rdd 

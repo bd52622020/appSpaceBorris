@@ -1,0 +1,44 @@
+
+----------------------------------------------------------------------------------------------------
+                                           Kafka Guide
+----------------------------------------------------------------------------------------------------
+Preface
+-------
+Real-time data and stream processing at scale
+
+  -Understanding publish/subscribe messaging and how it fits in the big data ecosystem
+  -Explore Kafka producers and consumers for writing and reading messages
+  -Understand Kafka patterns and use case requirements to ensure reliability data delivery
+  -Get best practices for building data pipelines and applications with Kafka
+  -Manage Kafka in production, including monitoring, tuning, and maintenance tasks
+  -Learn the most critical metrics among Kafka's operational measurements
+  -Explore how Kafka's stream delivery capabilities make it a perfect source for stream processing
+   systems
+
+Foreword
+--------
+The observation was simple, there were lots of databases and other systems built to store data, but
+what was missing in the architecture was something that would help to handle the continuous flow of
+data.
+
+  -Kafka is a system that lets you publish and subscribe to streams of data, store them, and process
+  them.
+  -Kafka works as a modern distributed system that runs on a cluster and is able to scale to handle
+  all the applications.
+  -Central platform that can scale elastically to handle all the streams of data
+  -Kafka is a true storage system built to store data, the data is replicated and persistent.
+  -Kafka let you compute derived streams and datasets dynamically off of your streams.
+
+Hadoop-like
+-----------
+Kafka can be viewed as a real-time version of Hadoop, Kafka lets you store and continuously process 
+streams of data. Hadoop targeted analytics applications often in data warehousing space, Kafka due
+to its low latency makes it applicable for core applications that directly power a business.
+Events in a business are happening all the time and the ability to react to them as they occur make
+it much easier to build services that directly power the operation of the business.
+
+  -Kafka gets compared to ETL and data integration tools 
+  -Kafka is a platform oriented around real-time streams of events, it can power custom applications
+   built to trigger off of these same data streams.
+  -Architecture is centered around streams of events
+  -In some ways these flows of data are the most central aspect of a modern digital company

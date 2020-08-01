@@ -1,0 +1,6 @@
+
+
+-News API --> Streaming data --> kafka cluster --> test schema --> kafka producer
+-scala project 
+
+--> scala 2.12

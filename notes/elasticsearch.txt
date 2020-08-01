@@ -1,0 +1,71 @@
+
+
+						ElasticSearch
+
+
+-Distributed inverted index
+-Built on top of Apache Lucene
+-Lucene is a most popular java-based full text search index implementation
+
+Why elasticSearch
+Easy to scala
+-------------
+-Scale horizontally 
+-Add more nodes/shards to add more capacity 
+-sharding
+
+RESTful API
+-----------
+-Everything is one JSON call (RESTful API)
+-Over HTTP
+
+Persistence
+-----------
+-Puts data safety first, document changes are recorded in transaction logs
+on multiple nodes in the cluster to minimize data loss.
+
+Query
+-----
+-Query DSL, every query is just a JSON object that can practically contain
+-Schema free
+
+Milti-tenancy
+-------------
+-Host multiple indexes on one elasticseach installation - node or cluster
+-Each index can have multiple "types", essentially different indexes
+
+Advanced search features
+------------------------
+-Context aware, did you mean suggestions 
+
+Contepts 
+--------
+-Cluster: one or more nodes in the same cluster
+-Node: Running instance
+-Index: Like a database, it has a mapping which defines multiple types - key/value pairs
+-Type: Is like a table
+-Document: Is like a row, JSON document of a particular type and ID
+-Field: Key-value pairs, similar to a column.
+-Mapping: Schema
+-Shard: Single lucene instance, low level worker unit 
+-Primary shard: Each document is stored in a single primary shard. first while indexing 
+-Replica shard: Each primary shard can have zero or mroe replicas, copy of the shard
+
+ElasticSearch routing
+---------------------
+-All your data lives in a primary shard in the cluster.
+-Routing is the process of determining which shard that document ?
+-ElasticSearch has no idea where to look for your document, all docs are distributed 
+randomly
+-ElasticSearch will then request to view all the documents 
+
+
+SQL vs ElasticSearch
+-Indices -Database
+-Types	 -Tables
+-Documents -Rows
+
+
+
+
+
