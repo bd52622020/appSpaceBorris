@@ -24,7 +24,7 @@ by following specifications using spark and involvement in testing the pipeline.
  and implement changes
 
 -I took part in many other projects, but not a deeply. Most of my tasks were involved in the development
- of scripts to check for relizbility in the pipelines, heavily involving testing of separate components 
+ of scripts to check for reliability in the pipelines, heavily involving testing of separate components 
  using Java, Scala and python. Data profiling to check if there are issues with the source data, 
  identify the structure of the data and report on the quality and if there are any necessary changes.
 
@@ -37,7 +37,7 @@ performance and quality of data. The project was to develop a centralized storag
 systems. Using a Hadoop cluster as the centralized repository for all the log files of their systems, then
 the integration of kafka to retrieve, clean and validate data. I took part in processing of data to Hadoop, 
 using Sqoop for traditional RDBMS systems, for unstructured data and data profiling such as log files used
-pig and python. Futher in the project, I managed to 
+flume with python. Futher in the project, I managed to 
 
 
 

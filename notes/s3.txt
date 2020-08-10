@@ -1,33 +1,23 @@
 
-				S3
+--------------------------------------------------------------------------------------------------
+				                              S3 - Simple Storage Solution
+--------------------------------------------------------------------------------------------------
 
-Fundamental data storage, everything is an object.
+What is S3?
+-----------
+Object storage, no constraints in the type of data stored. Datalake 
+-Folder storage
+-Cost effective for storage
+-Built in redundancy, duplicating the bucket
+-Access cost
 
--Storage for the internet
--Natively online, HTTP access
--Allows you to store and retrieve any amount of data, anytime, from 
-anywhere on the web
--High scalable, reliable, fast and durable
-
-Use cases
----------
--Storage & backup
--Application file hosting
--Media hosting
--Software delivery
--Store AMIs and snapshots 
-
-Concepts
---------
--Amazon S3 stores data as objects within buckets
--An object is composed of a file and optionally any metadata that
-describes that file
--You can have up to 100 buckets in each account
--You can access control to the buckets
-
-Object Key
----------
--An object key is the unique identifier for an object in a bucket 
+Why is S3 usefull?
+------------------
+-Cheap, reliable way to store objects 
+-Low latency, high throughput access
+-Easily be used to host static websites 
+-Can integrate with SNS, SQS, Lambda for powerful event driven applications
+-Life cycle management, shift away old data into long term storage for cost reduction
 
 S3 Security
 ----------
@@ -45,29 +35,42 @@ pernalty
 -Allows easily retrieval of deleted objects or roll back to previous
 versions
 
-Object Lifecycle
-----------------
--Log files
--Archive documents
--Digital media archives
--Financial and healthcare records
--Raw genomics sequence data
--Long-term database backups
--Data that must be retained for regulatory compliance
+Walkthrough
+-----------
+Create bucket:
+  -Bucket name, region, copy settings
+  -Versioning, server access logging, Tags (track project cost)
+  -Object level logging using cloud trail
+  -Cloud watch request metrics, cost
+  -Block public access
+Upload files:
+  -Folder like structure
+  -Upload files
+  -Access for other AWS account
+  -Tier: standard, intelligent, glacier
+  -Encryption
+  -Metadata
+  -Tags
+Settings:
+  -Overview
+  -Properties: Transfer acceleration, static website hosting
+    -S3 event: Inserting file, broadcast event to other services such as PUT --> New events created
+      -Prefix: Only apply the event for a particular folder
+      -Suffix: Certain file types
+      -Send to: SNS topic, SQS queue or Lambda function
+    -Request pays: Ecosystem with multiple accounts, model where whoever is doing the request is
+      paying the access cost
+  -Permissions: 
+    -Block public access
+    -Bucket policy: Who, roles, permissions
+  -Management
 
-S3 Pricing
-----------
--Pay only for what you use
--Based on location of your amazon S3 bucket
--Storage pricing 
--Request pricing
--Data transfer pricing
 
-Amazon S3-glacier
---------------
--Long term low-cost archiving 
--Infrequently accessed data
--Three to five hours standard retrieval time
+
+
+
+
+
 
 
 Amazon Elastric Block Store (EBS)

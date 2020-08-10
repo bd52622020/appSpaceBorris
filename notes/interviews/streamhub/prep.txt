@@ -1,0 +1,33 @@
+
+------------------------------------------------------------------------------------------------------------------
+                                                Preparation
+------------------------------------------------------------------------------------------------------------------
+
+Day to day
+----------
+-Designing and building scalable systems
+-Building versatile data pipelines that deal with volume and diversity of data
+-Advanced analysis including machine learning
+-Scala best practices
+
+Technologies
+------------
+-Scala
+-NoSQL database
+-Extensive SQL experience 
+-Understanding of distributed systems and cloud platforms 
+-Exposure to in-stream and real-time data processing technologies and architecture
+-Big data enabling technoologies as AWS
+
+Snowflake
+---------
+Connecting data across an organization, modern data architecture with cloud platform, eliminating complexity, cost
+and constraints with other approaches.
+  -Eliminates architecture complexity
+  -Centralized storage
+  -Multi-clustered compute
+  -Cloud services
+  -Cloud agnostic layer
+
+
+

@@ -1,0 +1,62 @@
+
+----------------------------------------------------------------------------------------------------
+                                            Profile
+----------------------------------------------------------------------------------------------------
+
+1) Elevator pitch
+-----------------
+I am an experienced big data engineer with 5 years experience in the IT industry, primarily focusing
+on data ingestion using the Hadoop acosystem. In my position working at Data reply, as a big data 
+engineer, I have worked on building a data pipeline to centralize log data from multiples systems, 
+have experience using Spark to process, clean and aggregate data efficiently and have practical 
+knowledge in the integration of cloud services with storage, data warehousing, processing and 
+triggers.
+
+2) Most rescent project 
+-----------------------
+One of the projects that I was heavily involved was in the implementation of a centralized pipeline for
+system logs. The company provides information solutions, primarily focusing on performance testing, 
+quality of data and potential opportunities for change. Having multiple systems, they wanted a 
+centralized data lake to then use for analytical purposes, create reports and improve accessibility.
+
+The source of the data was from around a dozen system log files from an internal API, the stream of data
+generated about 7 to 8GB of data per day. For the ingestion of the files, we used Apache Flume integrated
+with Kafka. Flume was configured to use Kafka source to extract the data and then sync it to HDFS using
+HDFS sink.
+
+For the processing stage of our pipeline, we choose Spark. In order to create reports there was a need to
+clean, validate and aggregate data. Finally the processed data would go into Hive, where then data could
+be queried using SQL-like syntax.
+
+Source: System log files from an internal API for all of their working systems
+  -7/8GB data per day
+  -4 brokers to ingest data 
+  -Logs coming from an internal API
+Ingestion: Flume, defines an agent using the Kafka Source and a standards HDFS sink. Connecting to kafka
+  from flume by setting the topic, ZooKeeper server and channel
+  -Klafka source and sink
+  -Flume kafka integration
+  -Bucketing and event modification / routing
+  -Agent using Kafka Source and a standard HDFS sink
+    -Flume sources, channels and sinks
+    -There is a tradeoff involved between throughput and single-event processing latency
+      -Overhead in processing a batch event 
+      -Decreasing the batch size, the overhead is more incurred more frequently 
+
+3) Previous project
+-------------------
+My previous project during my time in AppNovation involved working primarily with webservices, working 
+with an e-commerce company who wanted to find areas of improvement by using clistream data, user activity
+and find where value could be added. The source of the project was buckets from regions dumping data into
+a landing bucket, which then would trigger an AWS Lambda request with new information to process. The 
+data would then be processed using EMR Spark everytime a batch of new data is triggered and the results 
+after the data have been cleaned and aggregated goes into a redshift data warehousing where then it can
+be pulled for analytics.
+
+S3: Batches of data is stored into S3
+Lambda: Gets triggered everytime there's new data in the buckets
+EMR Spark: Create scripts to process information from S3 buckets 
+  -Pages visited
+  -Time spent on each page
+  -How they arrived on the page 
+  -Site navigation

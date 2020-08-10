@@ -185,6 +185,9 @@ specifications and using spark and involvement in testing the pipeline.
 ----------------------
 During Appnovation, I took assisstance in various aspects of data, for example the projects included data 
 migration, modeling and warehousing. Providing data solutions when traditional RDBMS systems lack capacity.
+  -Clickstream data: analyse UI performance, data where the user is clicking, how the user interacts 
+  -Live stream data: Video sources stored
+  -User information: build a profile
 
 4) Cloud AWS
 ------------
@@ -201,3 +204,118 @@ RedShift
 1 level - explaining what I did
 2 level - detailed information about the project
 3 level - code level, specific functions
+
+
+5) Amazon Redshift
+------------------
+Migrations to the cloud, existing premise warehouses dont provide the flexibility and scale to meet the exponential
+growth of data also cost of renewing hardware.
+
+  -Rise of event data, unstructured data.
+  -IOT, streaming data, event data, log data.
+
+Challenges of data analytics at scale:
+  -Data volume, variety, velocity
+  -Performance, concurrency
+  -Multiple analytics needs
+  -Security governance 
+  -Increasingly costly, inflexible
+
+Real-time lake house approach
+-----------------------------
+Combines traditional data sources in data warehouse with event data sitting in object store such as Amazon S3
+as well as real-time data stored in a transactional database such as Amazon Aurora or Amazon RDS.
+
+  -Single interface through a common redshift query/dashboard, with a set of tables where the data resides, such
+   S3 parquet format, CVS format. Or transactional data loaded in real-time into a postGres database such as 
+   Amazon RDS or Aurora.
+  -Unique value of redshift is that we dont have to load all the data into redshift database in order to query it.
+  -Query federation model, where data can be local, S3, postgress
+  -The analysts only communicate with tables and schemas, from an data engineering perspective there is no need 
+   to move the data but simply query the data in place.
+  -Single view providing the flexibility and scalability to have insights into all the organization's data.
+
+Benefits 
+--------
+-Integration with Data lake: And other AWS services, such as Lake formation catalog & security, Cloud watch for 
+ monitoring, data warehouse migration service and other integration.
+-Performance: Faster than other cloud data warehouses
+-Lower cost: Up to 75% less 
+-Most scalable: Virtually unlimited elastic linear scaling, concurrency scaling 
+-Most secure & compliant: VPC, encryption, cloud trail and certifications such as SOC, PCI, ISO and FedRAMP
+-Easy to manage: Easy to provision & manage, automated backups.
+
+Features
+--------
+-Concurrency scaling
+-Spatial processing
+-Stored procedures
+-Elastic resize
+-IAM role chaining
+-Auto analyze
+
+Architecture
+------------
+SQL clients/BI Tools, you are connecting to the leader node using JDBC/ODBC, when you submit a query on redshift,
+each compute node is working in parallel to execute the query. Copy/load data from S3 in parallel.
+
+Leader node:
+  -SQL endpoint
+  -Stores metadata
+  -Coordinates parallel SQL processing & ML optimizations
+Compute node:
+  -Local, columnar storage
+  -Executes queries in parallel
+  -Load, unload, backup, restore from S3
+Redshift spectrum:
+  -Elastic fleet of compute nodes
+  -Ability to query data in any open format, JSON, CSV or Avro
+  -Ability to transport data from S3 to redshift cluster
+Amazon S3:
+  -Storage of data
+
+Turbo
+-----
+Charges query performance with machine learning based automatic optimizations.
+
+  -Automates table maintenance 
+  -Optimizes for peak performance as data and workloads scale
+  -Offers perscriptive recommendations with ability to apply changes dynamically
+
+Amazon Redshift advisor
+-----------------------
+  -Offers specific customized recommendations to improve performance and decrease the operating costs for your
+  cluster
+
+Data models
+-----------
+-Star
+-Snowflake
+-Highly denormalized 
+
+Data loading:
+Copy command: Loads data into Redshift in parallel, specifying the table name, path, aws credentials and region.
+  -Copy <tablle> from <location> credentials "aws_acesskey_id=<access_key;secretkey=..." iam_role "arn" region;
+  -Copy customer from "s3://mydata" credentials "awsacces...", delimeter "|";
+Materialized Views: Compute once query many times 
+  -Speed up queries by orders of magnitude
+    -Joins, filters, aggregations, and projections
+  -Simplify and accelerate ETL/BI pipelines
+    -Incremental refresh
+    -User triggered maintenance 
+
+NoSQL
+-----
+*High availability
+  -load balancer, retrieve information from other machines 
+  -Distributed system
+  -Everything is stored in json packets, key-value pairs, extremly fast read 
+  
+Streaming
+  -Multinode cluster
+  -Kafka - multinode
+
+Python
+  -How many I used
+  -Frameoworks
+  -

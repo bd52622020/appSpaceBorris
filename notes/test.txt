@@ -1,0 +1,92 @@
+
+EMR
+---
+Run apache tools in the cluster
+  -Similar to hortonworks, replicated on cloud.
+  -Kinesis --> Similar to Kafka based on the cloud 
+
+-Elastic map reduce
+  -Hadoop ecosystem
+
+Kinesis
+-------
+Messaging system, distributed, replicated, fault tolerant
+three types:
+-Kineses Analytical: Concluent kafka similar 
+  -Real time stream of data, process and analyse data on real time
+-Kineses firehouse: Diistributed messaging system 
+  -Partitions == sharding 
+  -Similar to Kafka
+  -Consumer/producer
+-Kineses stream: Stream data 
+  -Similar to spark streaming
+
+Dinamo Db
+---------
+Similar to HBase
+
+kineses vs kafka
+----------------
+
+RDS
+---
+Connect to external database, relational database service
+  -Connect EMR to SQL server
+  -Code JDBC driver
+
+Lambda
+------
+Repeating and redundant job, multiple things to do 
+  -Parallel procesing
+  -Event trigger: AWS pipelines
+    -Between EMR and S3: EMR is expensive to run, cluster will run 
+
+Glue
+----
+Analysis
+
+Snowflake
+---------
+Database management system
+  -Schema
+  -RDBMS 
+  -Connect SQL server
+  -Manage databases 
+
+Control M
+---------
+Similar to 
+-Airflow
+-Oozier
+
+Data integration
+----------------
+Data management: AWS RDS
+
+Hadoop stack
+------------
+Hive:
+  -External tables:
+    -Only the metadata get deleted not the data
+  -Internal tables: Temporary, once done, it can be droped
+    -Managed tables: When you drop the tables, the metadata and tables gets droped
+
+Partitons: Taking a large data set and diving the large dataset, data will be distributed in an equal way
+Bucketing: Once data is partition, if you want to further divide, it has a certain amount of partitions
+  -Consider the size
+  -Consider resources
+  -8GB total -- 2GB bucket
+  -1/4   1/3
+  -Can have one node for Hive --> optional
+
+Hive architecture
+-----------------
+Driver: compiler, check
+Submit query:
+  -Driver: Compiler, checks for syntax
+  -Metastore: Metadata of table, check for info
+  -Execution engine: map of how it is going to get executed 
+  -MapReduce
+
+Apache spark vs EMR spark
+-------------------------

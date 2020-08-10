@@ -1,0 +1,25 @@
+
+-----------------------------------------------------------------------------------------------------------------
+                                        Avro
+-----------------------------------------------------------------------------------------------------------------
+
+CSV
+---
+Comma separated values, easy to parse and read. But the data types of elements has to be inferred
+
+Relational tables
+-----------------
+Add types of the data, fits in a table but data has to be flat (row/clumn) and the data is stored in a database 
+with the definition different for each database.
+
+JSON
+----
+JavaScript Object notation, data can take any form such as arrays, nested elements and JSON is widely accepted
+but data has no schema enforcing and there can be repeated keys.
+
+AVRO
+----
+Defined by a schema written in JSON, Avro has an schema and a payload. Data is fully typed, compressed 
+automatically, schema comes along with the data, documentation is embedded in the schema and schema can evolve 
+over time, in a safe manner. The dissadvantages are that you cant "print" the data without using arvo tools due
+to its copressed and serialized nature.

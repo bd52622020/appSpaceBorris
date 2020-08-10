@@ -1,0 +1,34 @@
+
+----------------------------------------------------------------------------------------------------
+                                  Notes: Presentation
+----------------------------------------------------------------------------------------------------
+
+Introduction
+------------
+-Good morning
+-My name is...evelator pitch
+
+Overview
+--------
+-Proposal: The financial market is the backbone of the economy, millions of transactions occurring
+ everyday. My proposal attempts to use real time financial market data to retrieve stock market 
+ data. The aim of my project is to store FOREX trading records of a particular currency and store
+ it for further analytical purposes and take advantage of the real time capabilities of kafka to 
+ potentially trigger scripts when a certain value is reached.
+
+-Overview of my project: As the source of my project, I will be using the TwelveData API to obtain
+ FOREX stock data, the API call will then return metadata and time series information in a json 
+ format. Data will come as a batch request with a frequency of 1 min 
+
+-Kafka: For its distributed, resilient and fault tolerant architecture. The ability to gather data 
+ parallely using multiple currencies.
+  -Create a new topic for each currency, e.g. EUR/USD or EUR/GBP
+
+-Spark: For the processing stage of my pipeline, for its high speed data analysis by taking advantage
+ of in-memory computation and the ability to perform aggregate functions
+
+-HBase: To store time series data with the ability to scale horizontally if more storage is needed,
+ Efficient scans when querying data points and high write throughput, due to its column oriented
+ architecture, it becomes more effcient to get a particlar column such as 'high' or 'low' of the data
+
+

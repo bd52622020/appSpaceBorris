@@ -1,0 +1,19 @@
+
+--------------------------------------------------------------------------------------------------------
+                                          Cogniflare/ GSK
+--------------------------------------------------------------------------------------------------------
+
+GSK - vendor 
+
+Cogniflare
+-Oras
+-Lucy
+
+Require
+-Big data engineer
+-Kafka
+-Java testing 
+
+GxP
+-Guidelines to maintain a database
+-

@@ -1,0 +1,184 @@
+
+------------------------------------------------------------------------------------
+                                    Profile
+------------------------------------------------------------------------------------
+
+1) Tell me about yourself 
+-------------------------
+I am an experieced Big data engineer primarily involved on data ingestion using 
+distributed systems in the Hadoop ecosystem. In my position working at Data reply 
+as a big data engineer, I worked on the implementation of RDBMS data ingestion, 
+batch processes and queries into messaging systems such as Kafka. The implementation
+I have worked on falls into monitoring, testing and manipulation of the incomming 
+data to be in the correct format. Another area that I took part in was in the 
+development of spark scripts to aggregate, clean and extract data using scala and 
+python scripts. And extensive use of Kafka for the development of pipelines, 
+configuration of producers using their available high level API libraries, system
+logs and data migration from RDBMS systems.
+
+P1: Intro 
+  -Number of years of experience
+  -Overview: Data engineer
+      -Tools
+      -Architectures
+P2: Most rescent project 
+  -Project business case 
+  -Tools
+  -Your role on the project 
+    -Working for...I was responsible...Create spark application...perform
+
+P3: second most rescent project
+  -Same as P1 dut not into detail
+    -Prior to X I was working for Y, I was working on...which I used XYZ, my role on
+     the project was...reponsible for X 
+
+P4: Conclusion
+  -3 Main skills learned from my carrer
+    -
+    -
+    -
+  -Wrapping statements
+    -I am confident that I will be able to get the job done.
+
+2) Rescent projects
+-------------------
+One project that I was heavily involved was in the implementation of a centralized 
+log pipelines from around 20 systems. The company provides information solutions,
+primarily testing performance, quality of data and potential opportunities for change.
+Having multiple systems they wanted a centralized storage system for their logs. 
+Using HDFS as the foundation of the pipeline, the first part of the project was to 
+manipulate the incoming data using flume
+
+*To automate the process by which files are copied to HDFS, a way to periodically pull
+ streams of data generated from various systems.
+*When data volume increases, Flume can be adjusted by adding more machines
+*Useful for data masking or data filtering
+*Flume collects data from data generators through Flume agents, the systems have flume
+ agents running on them
+*There was intermediate nodes, to aggregate data, finally agents pass data to the final 
+ destination.
+*Flume agent: 
+  Multi-hop flow: Source --> channel --> Sink --> Source --> channel --> Sink
+  Fan-in flow: Source 1,2,3 --> channel --> sink
+*Python: import spark libraries, including flume. Then init the spark context/streaming 
+  context, create the stream with the port, then create the collector 
+
+Other projects that I took part were using Sqoop to transfer data between databases 
+and HDFS, I was only partly involved in these projects but the task was of a similar 
+nature.
+
+
+
+3) Previous experience
+----------------------
+During Appnovation, I was involved in the creation of scripts to automate reports in
+the cluster to improve configurations. Optimization by using their platforms such as 
+websites to get detailed information on what users want more, which aspects are most
+used and which parts are not being used to maximize profits. The implementation of 
+a kafka based pipeline using HDFS to store the data.
+
+*Marketing requiring that emails should be sent instantaneously when a user signs up,
+ they have an item in their shopping cart or recommendation when they are looking for 
+ a particular item.
+*Live dashboards with the current statistics about the website such as how many users
+ are there, have signed up, are buying, which pages are most/least used.
+  -Publish subscribe/to streams of records from websites 
+  -Process streams of records as they occur
+*Use case: Need to stream data from production systems/websites to a separate email 
+ service MySQL DB that another team is working on, as well as to S3, the data team's
+ data lake.
+
+-Data for further processing
+  -Client: Analysis of their webpages 
+    -User informantion
+    -Client streams
+  -Monitor: To increate customer experience
+
+
+-Snowflakes
+-scala
+
+
+-Opportunity
+  -Company
+  -Skills
+
+
+-London based
+-Travelling
+  -Ill send an email regarding 
+  -Not at this moment-If I have any questions
+    -Updates for the next steps
+    -Interview process
+
+-------------------
+Most rescen project
+-------------------
+
+Source: System log files form an API
+
+Ingestion: Flume
+
+Storage: HDFS
+
+Processing: Spark
+
+Storage: Hive
+
+-------------------
+Second most rescent
+-------------------
+Source: Buckets from regions, dumb their data 
+  -S3: One landing bucket 
+Trigger: 
+  -AWS Lambda
+  -Trigger processing
+Processing: EMR Spark
+Storage: Storage Redshift
+
+
+
+
+Ingestion:
+
+Storage:
+
+Processing:
+
+
+
+
+
+
+
+
+
+-Working with 5-6GB per day
+-connects to a source --starts ingesting
+  1)Connect to source start ingesting 
+    -Standard data lake HDFS 
+    -7-8Gb data per day 
+    -4 brokers to ingest data 
+    -Logs coming from an internal API --> using API to ingest 
+    -Kafka ingestion 
+  2)Data into processing
+    -Spark for processing
+  3)Processing
+  4)Storage
+    -Hive: HDFS
+  5)Analysing
+  6)Visualizing
+
+  -Hive is like SQLDatabase
+    -Batches of data 
+    -Stored and query
+    -HBFS-S3 stores in them
+    -Two types of tables
+      -Internal:Managed tables
+        -Regular tables, when you drop the metadata is also droped 
+      -Extenal:
+        -When you drop the table, only the metadata
+    -HDFS or S3: you can use hive and create external dataset and run queries on it.
+  -HBase:
+    -Live data: IOT sensors
+    -Faster read/write

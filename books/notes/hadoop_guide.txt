@@ -240,6 +240,76 @@ Moving large quatities of data in and out of Hadoop has logitical challenges tha
 and resource impacts on data sources and destinations. 
 Design elements:
 
+  -Idempotence: An indempotent operation produces the same result no matter how many times it's executed. In a 
+                relational database the inserts typically aren't idempotent, because executing them multiple
+                times doesn't produce the same resulting database state. Any time data is being written 
+                idempotence should be a consideration, How well do distributed log collection frameworks deal
+                with data retransmissions?. How to ensure idempotent behaviour in a MapReduce job where multiple
+                tasks are inserting into a database in parallel?
+  -Aggregation: The data aggregation process combines multiple data elements. In the context of data ingress this
+                can be helpful because moving large quatities of small files into HDFS potentially translates 
+                into NameNode memory woes, slow MapReduce execution times. Having the ability to aggregate files
+                or data together mitigates the problem.
+  -Data format: The data format transformation proces converts one data format into another. Often your source
+                data isn't in a format that's ideal for processing in tools such as MapReduce. If your source 
+                data is multiple XML or JSON form, for example, you may want to consider a preprocessing step.
+                This would convert the data into a form that can be split, such as a JSON or an XML element per
+                line, or convert it into a format such as Avro.
+  -Recoverability: Allows an ingress or egress tool to retry in the event of failed operation. Because it's 
+                unlikely that any data source, sink, or Hadoop itslef can be 100 percent available, its important
+                that an ingress or egrss action be retried in the event of failure.
+  -Correctness: In the context of data transportation, checking for correctness is how you verify that no data
+                corruption occurred as the data was in transit. When you work with heterogeneous systems such as 
+                Hadoop  data ingress and egress tools, the fact that data is being transported across different 
+                hosts, networks, and protocols only increases the potential for problems during data transfer.
+                Common methods for checking correctness of raw data such as storage devices include Cyclic 
+                Redundancy Checks (CRC), which are what HDFS uses internally to maintain block-level integrity.
+  -Resource consumption and performance: The measures of system resource utilization and system efficiency,
+                respectively. Ingress and egress tools don't typically incur significant load/resource consumption
+                on a system, unless you have appreciable data volumes. For performance, the questions to ask 
+                include whether the tool performs ingress and egress activities in parallel, what mechanisms it
+                provides to tune the amount of parallelism. For example if your data source is a production databse,
+                don't use a large number of concurrent map task to import data.
+  -Monitoring: Ensures that functions are performing as expected in automated systems. For data ingress and egress,
+                monitoring breaks down into two elements: Ensuring that the processes involved in ingress and egress
+                are live, and validating that source and destination data are being produced as expected.
+
+Moving data into Hadoop
+-----------------------
+The firs step is to make the data available to Hadoop. There are two primary methods that can be used for moving 
+data into Hadoop. Reading data in MapReduce has advantages in the ease with which the operation can be parallelized
+and fault tolerant. Not all data is accessible from MapReduce, however, such as in the case of log files, which is 
+where other systems need to be relied upon for transportation, including HDFS for the final data hop.
+
+  -Writing external data at the HDFS level (a data push)
+  -Reading external data at the MapReducelevel (like a pull)
+
+Low-level Hadoop ingress mechanisms
+-----------------------------------
+Focus on high-level data ingress tools that provide easy and automated mechanisms to get data into Hadoop. All these
+tools use one of a finite set of low-level mechanisms, however, which Hadoop provides to get data in and out.
+These mechanisms include Hadoop's Java HDFS API, WebHDFS, the new Hadoop REST API, and MapReduce.
+
+Pushing log files into Hadoop
+-----------------------------
+Log data has long been prevalent across all applications, but with Hadoop came the ability to process the large 
+volumes of log data procuded by production systems. Various systems produce log data, from network devices and 
+operating systems to web servers and applications. These log files all offer the potential for valuable insights 
+into how systems and applications operate as well as how they're used.
+
+  -What unifies log files is taht they tend to be in text form and line-oriented, making them easy to process.
+  -Tools to transport log data from source to HDFS
+  -How to transport system log files into HDFS and Hive
+  -Deploy, configure, and run an automated log collection and distribution infrastructure
+
+Log collection tools: Flume, Chukwa and scribe are log collection and distribution frameworks that have the 
+                  capability to use HDFS as a data sink for that log data. 
+  -Flume: Apache Fule is a distributed system for collecting streaming data. It's an Apache project in incubator 
+          status, originally developed by Cloudera. It offers various levels of reliability and transport delivery
+          guarantees that can be tuned to your needs. It's customizable and supports a plugin architecture to add
+          custom data sources and data sinks.
+
+
 
 
 
