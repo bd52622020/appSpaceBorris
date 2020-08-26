@@ -1,0 +1,29 @@
+
+Group project
+-Full stack project
+-Decide the project -->
+
+*3 weeks -- Visualization system
+  -Monitoring developer profile
+  -Capability of the coder
+  -Visual --> journey of the developer
+  -capture data
+    -Proficiency
+    -History of his competence
+      -Coding challenges
+      -Tools
+
+
+*Daily tasks --> SCRUM
+*Daily reviews
+
+*Today
+  -Project lead
+    -responsibilities
+  -Tools
+  -Language 
+  -Project documentation
+  -Agreement --> Scrum calls
+
+*EBAY
+

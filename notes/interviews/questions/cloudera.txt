@@ -1,0 +1,58 @@
+
+----------------------------------------------------------------------------------------------------
+                                          Cloudera Data Platform
+----------------------------------------------------------------------------------------------------
+
+Cloudera SDX: Shared Data Experience for security, governance and control
+
+Data Hub: Platform as a service, provision hardware and services
+  -Provision a new cluster in minutes
+  -Associated with an environment
+
+Cluster:
+  -Daskboard: Information and configuration of a cluster
+  -Links: To the services that the cluster is running/using
+  -Services: spark jobs, Hive queries, machine learning and more
+  -You can resize the cluster with more/less nodes
+    -Worker nodes
+
+Cloudera manager console:
+
+Data warehouse: Services runs on Kubernetes, ability to scala up/down.
+  -Data warehouse optimization 
+  -Mix and match analytics
+  -Hive, Impala
+  -Database catalog: Instance of Hive metastore, including references to the cloud storage
+  -Virtual warehouse: Actual work of running the queries
+    -Hive or Impala cluster
+    -Autoscaling
+  -Query: Information and the query
+
+Clousera:
+  -Ambari: UI
+    
+    
+Hortonworks:
+  -Ambari: UI
+    -Services
+      -Hadoop cluster
+        -Nodes
+
+-Administrator:
+  -
+-Architect:
+  -
+-Engineers:
+  -I have installed and configured on standaone
+    -hadoop:
+      -Configure home
+      -Add properties in config files
+      -Xml files 
+      -Hive 
+        -Configure environment 
+        -Modified the xml file
+  -Python:
+    -PySpark application
+    -Scripting to automate tasks
+    -Kafka, pandas, numpy libraries 
+

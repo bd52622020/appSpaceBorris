@@ -1,0 +1,19 @@
+
+------------------------------------------------------------------------------------------------
+                                                Dash
+------------------------------------------------------------------------------------------------
+
+3 Pillars
+---------
+Dash Components: Interactive capability inside data visualization 
+  -Slider
+  -Checkbox
+  -Drop-down
+
+Plotly Graphs: To visuallize data
+  -Map
+  -Scatter
+  -Line
+
+The Callback: Connector between dash components and plot graphs to provide interactive capability
+

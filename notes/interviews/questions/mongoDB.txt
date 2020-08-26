@@ -1,0 +1,45 @@
+
+----------------------------------------------------------------------------------------------------
+                                          MongoDB
+----------------------------------------------------------------------------------------------------
+
+What is MongoDB
+---------------
+Distributed NoSQL database, document oriented and fexibility by storing data in a JSON like structure
+with fields changing over time. As a distributed system, its highly available, can scale horizontally
+and the document model maps to the objects in your application code.
+
+How is data stored in MongoDB
+-----------------------------
+MongoDB stored data in collections, documents and fields. Compared to traditional RDBMS systems, 
+Collections can be seen as tables, documents as rows and fields as columns.
+
+Document management 
+-------------------
+Normalization: Storing data into multiple collections with references between them, data is defined
+once, making writing easy. Reading can be slower due to the need to receive data from multiple 
+collections, you have to perform multiple queries.
+
+Denormalization: Storing muiltiple data embedded in a single document. Better performance on reads
+but slower on writes and it will take up more space.
+
+1:N Relationships
+-----------------
+Embedding an array of documents into the parent table is not always the best solution, knowing when
+to normalize and denormalize is very important. 
+  
+  -One to few: Embed the array in the parent document 
+  -One to many: Consider two collections, every part will have a reference that will be present in
+  the parent document
+
+Smart indexing 
+--------------
+For good performance, the implementation of a smart indexing system will streamline your write and 
+read operations. The indexing advantages and limitations for MongoDB is very important, a limit of 
+32MB in holding memory for a sort operation.
+
+-BSON: 
+-Replicas set: Master set ---> replica sets 
+
+
+

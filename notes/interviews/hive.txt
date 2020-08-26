@@ -1,0 +1,24 @@
+
+----------
+  Hive
+----------
+-Thrift server
+-Hive context
+  -JDBC connector: Metadata --> connection 
+    -External tables: Data resider externally
+    -Internal tables: 
+
+Tables stored in HDFS
+
+Redshift:
+  -MPP
+  -PostGress SQL
+    -Date manipulation
+  -Queries: In parallel 
+    -Partition key
+    -Sorting key
+
+SAAS: Software as a service 
+  -You dont have to install 
+  -Kinesis
+  -

@@ -1,0 +1,130 @@
+
+----------------------------------------------------------------------------------------------------------
+                                            Spark
+----------------------------------------------------------------------------------------------------------
+
+1)What is Spark
+---------------
+Apache Spark is a powerful analytical engine, built to process streaming data in memory, making it much 
+faster than the traditional map-reduce in the hadoop ecosystem. Spark has built APIs for Scala, python,
+java, R and SQL. Key libraries for SQL, Dataframes, Datasets and Spark streaming can run seamlessly in 
+the same application. Spark can run on your local device, in a Hadoop cluster or in the cloud and can 
+be managed by Mesos, YARN or Spark itself.
+
+2)What are RDDs
+---------------
+Spark uses a fundamental abstraction to work with the distributed data in a cluster, these distributed 
+collection of objects are known as RDDs. Resilient distributed datasets (RDDs) provides a way to interact
+and transform these distributed datasets.
+
+RDDs are immutable by nature, meaning that once they are created they can not change, they can be stored
+in memory or disk across a cluster. The data being partitioned across machines can operate in parallel 
+with a low-level API, allowing transformations and actions to be performed on RRDs. Everytime there's a 
+new transformation, a new RDD is created, tracking the data lineage across many changes makes RDDs fault
+tolerant as they have the information to be rebuilt in case of failure.
+
+3)Dataframes
+------------
+Similar to RDDs, Dataframes are immutables collection of data, the different comes in the structure. 
+Dataframes are organized into named columns, similar to a tables in a relational database. Designed to 
+make the processing of large datasets easier, Dataframes have an structure attached to it, the dataframe
+can then be optimized for processing and makes its manipulation easier due it its higher level abstraction
+
+4)Spark streaming
+-----------------
+Spark streaming is an extension of the core Spark API to process data in real-time from a veriety of 
+sources including Kafka, Flume, Amazon kinesis. The processed data can be redirected to filesystems, 
+databases and live dashboards. 
+
+The key abstraction are DStreams, Discretized streams, which represents a stream of data divided into 
+small continuous batches. DStreams are built on top of RDDs, allowing Spark streaming to integrate with
+any other Spark components such as Sparl SQL, the unification of data processing capabilities makes it 
+easy to use a single framework for all their processing work.
+
+5)Structured streaming
+----------------------
+Structured streaming is a high level application built on top of Spark SQL engine. It is a declarative 
+API that extends DataFrames and Datasets to support batch, interactive, and streaming queries. The 
+advantage is that you can use the same approach working with static sets and apply it to a streaming 
+framework.
+
+6)Catalyst optimizer 
+--------------------
+Spark SQL powers both SQL queries and the Dataframe API, at the core of Spark SQL the Catalyst optimizer is
+found, which makes use of advanced features such as pattern matching and quasiquotes to build an optimized
+query.
+
+The features of the catalyst fall into having the ability to add new optimization techniques and to enable
+external developers to extend the optimizer to cover new data types. 
+
+7)DAG
+-----
+Directed Acyclic Graph is an abstraction used by Spark to keep track of the changes made by transformations
+in RDDs. The directed aspect of a DAG comes from the direct connection from on node to another, creating a
+sequence from beginning to end and that provides fault tolerance capabilities. The acyclic aspect dictates
+that there is no cycle or loop available, transformations take place and cannot return to earlier positions
+due to its immutable nature. And the graph refers to a combination of vertices and edges, connecting 
+together in a sequence is the graph.
+
+8)DAG Scheduler
+---------------
+
+
+8)Spark architecture
+--------------------
+Apache Spark's components and layers are lossely coupled and integrated with extensions and libraries.
+Based on two main abstractions RDDs and DAG
+
+9)YARN 
+------
+Yet another resource negociator, it was introduced to remove the bottleneck on the job tracker and serves the
+purpose of separating the resource management layer from the processing layer. The job tracker was split in
+doing resource management and applications management. The job tracker's purpose is to serve as an interface
+with the client and task trackers which actually spawns map and reduce jobs.
+
+-Scalability: The scheduler allows to extend and manage thousands of nodes and clusters
+-Compatibility: YARN supports existing map-reduce applications 
+-Cluster utilization: YARN supports dynamic utilization of cluster in Hadoop, enabling cluster optimization 
+-Multi tenancy: Allows multiple engine access
+
+10)YARN architecture
+--------------------
+Client:
+  -Submits map reduce jobs 
+
+Resource manager: Master daemon of YARN, reponsible for resource assignment for every processing request
+  -Scheduler: Scheduling based on the application and available resources 
+  -Application manager: Responsible for accepting the application and negociating resources - containers
+
+Node manager: 
+  -Individual nodes on Hadoop cluster, managing application and workflow 
+  -Monitors resource usage
+  -Log management 
+  -Creating container process and start them on requests 
+
+Application master:
+  -An application is a single job submited to a framework
+  -Makes container requests from Node manager by a CLC container launch context
+  -Sends health reports to the Resource manager 
+Containers:
+  -Collection of physical resources suchas RAM, CPU and disk on a single node
+  -Invoker by CLC 
+  -CLC is a record that contains information such as environment variables, security tokens and dependencies
+
+11)Streaming 
+------------
+Structured streaming works by using continuous micro-batching, Spark waits intervals and batches together 
+all the events that were received during that interval into a micro batch. The micro batch is then scheduled
+by the driver to be executed as Tasks in the executor. The continuous micro batch collection and schedules 
+gives the impression of streaming.
+
+12)Continuous processing
+------------------------
+
+
+
+
+
+
+
+

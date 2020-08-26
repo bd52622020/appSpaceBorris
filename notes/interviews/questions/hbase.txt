@@ -1,0 +1,48 @@
+
+-------------------------------------------------------------------------------------------------------------
+                                            HBase
+-------------------------------------------------------------------------------------------------------------
+
+1)What is HBase
+---------------
+HBase is a distributed and column oriented NoSQL database. HBase uses HTables as a container, these tables
+are then broken into column families where the data is actually inserted. The nature of columns families 
+makes HBase efficient when reading data. HTables are broken into regions servers, each region server is
+vertically divided into column families and these column families are then stored in HDFS files.
+
+2)Architecture
+--------------
+Client library:
+
+Master Server:
+  -Assigns a region to Region Servers working together with Zookeeper
+  -Responsible for load balancing, distributing the load between all the servers available
+  -Responsible for schema changes in the creationg og Hbase tables and column families
+  -Interface for creating, deleting and updating tables
+
+HBase region servers:
+  -Manages regions, running on HDFS datanodes
+  -In cases when tables go beyond configurable limit, HBase automatically split the table and distributes
+   the load to other region server. --> Auto sharding 
+  -Communicates with client handling data related operations 
+  -Handles read/write requests for all regions
+
+HBase regions:
+  -HBase tables are divided horizontally into row-key range called regions
+  -Regions are managed by region server
+  -Tables that are split horizontally are the regions
+  -Regions are assigned to a node in the cluster called the region server, holding upto 1000 regions
+
+HBase MemStore:
+  -Similar to a cache memory, when data gets writen in hbase, it will go first to the memstore
+  -There is only one memstore per column family, when there is enough data, the entire data is transferred
+   to HFiles in HDFS
+
+HBase HFiles:
+  -When the MemStore accumulates enough data, the entire key-value set is written into a new HFile in HDFS
+  -Writting into HFile is sequential and fast
+
+Zookeeper:
+  -Zookeeper is used by HBase as a coordinator service to keep track of the state in the cluster
+  -Tracks if servers are alive, available and if there are server failures 
+  -Network partitions and client communication with regions through Zookeeper as an interface

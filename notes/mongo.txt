@@ -1,0 +1,22 @@
+
+---------------------------------------------------------------------------
+                                  Mongo
+---------------------------------------------------------------------------
+
+-Database name
+  -Connection string
+-User for database
+  -Username
+  -Password
+
+-pip install djongo
+  -python 3.6 >
+
+-DATABASES 
+  -ENGINE: "djongo",
+  -NAME:"<name>",
+  -HOST:"<connection string>",
+  -USER:"<username>",
+  -PASSWORD:"<password>"
+
+-Python manage.py migrate

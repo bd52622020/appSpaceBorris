@@ -1,0 +1,89 @@
+
+------------------------------------------------------------------------------------------------
+                                              Kafka 
+------------------------------------------------------------------------------------------------
+
+1)What is kafka?
+----------------
+Kafka is a distributed streaming platform, leaverages the advantages of storing and processing 
+data while its in different locations and as a streaming service it processes data between source
+and consumer.
+
+2)Features of Kafka
+-------------------
+Kafka improves fault tolerance when processing data in real-time due to its replication system,
+It simplifies horizontal scaling, as a distributed system in order to increase performance you
+can add more kafka brokers. And Kafka permits free data handling and distribution by decoupling
+the data inside the messages, Kafka does not care what kind of data is being pased but can be 
+validated by the use of schemas such as AVRO.
+
+3)Architecture
+--------------
+The producer can be any source of data that is pushed to a Kafka cluster, Kafka cluster contains 
+brokers that store the data inside of topics, topics are broken down into partitions and are 
+replicated three times by default and consumers subscribe to a topic to request data. There can
+be multiple consumers working together, they are called consumer groups and they allow for much 
+higher processing power.
+
+4)Partitions
+------------
+Topics are divided into partitions, each partition contains records which are in an unchangable
+sequence, each record has a unique offset after its assigned into a partition.
+
+Topics are broken down into partitions by design, when data (messages) are sent into a partition,
+the timestamp is the default sorting criterion from old to new. The new data has an offset value 
+to define their position, starting from zero the values increase by a factor of 1. Kafka runs 
+with the help of Zookeeper, managing configurations, naming policies and grouping 
+
+5)Consumer
+----------
+Each consumer/group accesses data from the partition on demand, the consumer pulls data through 
+a query. The consumers range from databases to dashboards using the data for real-time management
+
+6)Kafka APIs
+------------
+There are five core APIs:
+Producer API: Controls who can gain write permission to topics and partitions in a Kafka cluster
+Connector API: Allows to create and maintain live transactions between both the consumer/producer
+Admin API: For adminitrative purposes, allows to inspect and change components in the cluster
+Streams API: Processing calls manager to arrange queries data from publishers into usable outputs
+  topics for the consumer 
+Consumer API: When a request is sent, access to topics are granted
+
+7)Replication factor
+--------------------
+The replication protocol with the distributed nature of Kafka, allows for a certain degree of 
+resilience. This can be difficult to achieve due to replicas jumping in and out of the in sync
+replica list (ISR).
+
+Every partition has a write-ahead log where the messages are stored with a unique offset to 
+identify its position, allowing Kafka to automatically recover in the presence of failures. Out
+of all the replicas, one replica is designated as the leader while the others are followers, the
+leader takes writes from the producer and the followers copy the leader.
+
+The replication factor guarantees that if a leader fails, the followers should be "in sync" with
+the leader. The leader for every partition tracks this in-sync replica list by computing the log
+of every replica from itself, a message is commited only after it has been successfully copied 
+to all the in-sync replicas. 
+
+8)Topics 
+--------
+Topics can be defined as categories which records are stored and published, records published to
+the cluster have a retention period. Producers take data from a source and stores it to a topic 
+in the form of a message, a message can include any type of information. Records are byte arrays
+that stores any format and has four attributes, key and value are mandatory but other attributes
+such as timestamp and headers are optional.
+
+Kafka retains records in the log, the consumers are responsible for tracking the position in the
+log, known as the "offset". Typically the consumer advances the offset in a linear manner but in
+case of reprocessing, the consumer can reset to an older offset.
+
+9)Broker
+--------
+A Kafka cluster is composed of one or more servers, a server being a broker. Producers push
+records into Kafka topics within the broker and a consumer pulls records off a Kafka topic. The 
+management of the brokers in a cluster is performed by Zookeeper and there can be multiple 
+instances of Zookeeper running with a recommened of 3 to 5.
+
+
+

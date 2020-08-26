@@ -1,0 +1,50 @@
+
+----------------------------------------------------------------------------------------------------
+                                          Profile
+----------------------------------------------------------------------------------------------------
+
+1)Elevator pitch
+----------------
+I am an experienced big data engineer with 5 years experience in the IT industry, primarily focusing
+on data ingestion in the Hadoop ecosystem. In my position at Data reply, as a big data engineer, I 
+have worked on building a data pipeline to centralize log data from multiple systems, I have used 
+Spark scripts to aggregate, clean and validate data. I have experience integrating cloud services for 
+storage, warehousing, processing and triggers. 
+
+2)Data Reply
+----------------------
+One of the projects that I was heavily involved was in the implementation of a centralized datalake 
+for system logs. The company provides information solutions, primarily focusing on testing performance,
+quality of data and find potential opportunities for change to reduce cost/improve profit. Having 
+multiple systems they wanted a centralized data lake for analytical purposes, create reports and improve
+accessibility of the data.
+
+The source of the data was from around a dozen system log files from an internal API, the stream of data
+generated about 7-8GB of data per day. For the ingestion of the files we used Apache flume integrated 
+with Kafka, as a messaging system. Once data was available in topics, a spark consumer would process the
+data by applying the appropiate aggregations, data validation and cleaning of the data. Finally the 
+implementation of Elastic search, using HDFS as a long term repository, with Kibana as the front end to 
+allow queries and visualize the data.
+
+3)AppNovation 
+-------------
+The project that I took part during AppNovation involved primarily working with webservices. Working with
+an e-commerce company who wanted to find areas for improvement/increase efficiency by using click-stream
+data and user activity. 
+
+The source of the project was click-stream data going into S3 landing buckets, everytime there was new 
+data to process a AWS Lambda trigger would send a request to process the new data. The data would be 
+processed using EMR spark everytime there was a new batch of data, the data would be validated, cleaned 
+and aggregated before storage. The data would then go into Redshift and the data would be available for
+analytical surposes.
+
+4)Allianz
+---------
+Cloudera 
+-Importing real-time logs to HDFS usign Flume
+
+
+5)Cigna
+-------
+Hortonworks Ambari 
+

@@ -15,8 +15,8 @@ triggers.
 2) Most rescent project 
 -----------------------
 One of the projects that I was heavily involved was in the implementation of a centralized pipeline for
-system logs. The company provides information solutions, primarily focusing on performance testing, 
-quality of data and potential opportunities for change. Having multiple systems, they wanted a 
+system logs. The company provides information solutions, primarily focusing on performance testing,
+quality of data and potential opportunities for change. Having multiple systems, they wanted a
 centralized data lake to then use for analytical purposes, create reports and improve accessibility.
 
 The source of the data was from around a dozen system log files from an internal API, the stream of data
@@ -43,8 +43,8 @@ Ingestion: Flume, defines an agent using the Kafka Source and a standards HDFS s
       -Overhead in processing a batch event 
       -Decreasing the batch size, the overhead is more incurred more frequently 
 
-3) Previous project
--------------------
+3) AppNovation-Big data engineer 
+--------------------------------
 My previous project during my time in AppNovation involved working primarily with webservices, working 
 with an e-commerce company who wanted to find areas of improvement by using clistream data, user activity
 and find where value could be added. The source of the project was buckets from regions dumping data into
@@ -60,3 +60,53 @@ EMR Spark: Create scripts to process information from S3 buckets
   -Time spent on each page
   -How they arrived on the page 
   -Site navigation
+Redshift: Store data 
+  -HDFS
+
+
+4) Morpheus-Hadoop developer
+----------------------------
+During my time in Morpheus, the project aim was for improvement in supply chain management, help companies 
+innovate, improve and redevelop their products. By collecting as much data by tracking their products, 
+pipeline information in the production line and the demand for their products. I was primarily shadowing 
+a senior big data engineer, during the implementation of Hadoop clusters on Hortonworks sandbox and the 
+configuration of Hadoop services such as Hive, Sqoop, flume and Oozie. 
+
+My experience was followed by writting scripts for automating the process of loading data into HDFS, 
+data validation using JUnit libraries and testing functionality of the pipeline. Maintenance of the system
+by identification of potential errors and poor performance. Performing Hive queries, semi-structured data
+collection using Flume into HDFS 
+
+
+
+Kafa architecture
+-----------------
+Producers : Push data to brokers
+Brokers   : Receive data and store them in topics
+Consumers : Retrieve information from topics 
+Topics    : All Kafka messages are organized into topics 
+Zookeeper : Keep track of these components and their activities
+
+*Topic balancing
+  -Partition leadership balance
+    -Each replica has one broker acting as the leader for the partition 
+    -Leader is more loaded than replicas 
+  -Partition spread
+    -When adding nodes to cluster
+    -rebalance existing topics with new ones
+
+Work environment
+----------------
+Team: two data engineers, tester, senior engineer and analytics
+DevOps culture: Development and opeartions are no longer separated, working across the entire application 
+lifecycle, from development and test to deployment to operations. 
+  -Quality assurance
+  -Practices to automate processes 
+
+Continuous integration: Developers regularly merge their code changes into a central repository, automated 
+builds and tests are run. Both an automation component and a cultural component of early integration, 
+resulting in fixing issues early, improved quality and reduced time to validate and release software.
+  -A continuous integration service automatically builds and runs unit tests on new code pushed
+  -Source control --> Build --> Staging --> Production
+
+

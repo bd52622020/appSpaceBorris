@@ -1,0 +1,69 @@
+
+------------------------------------------------------------------------------------------------
+                                      Docker
+------------------------------------------------------------------------------------------------
+
+1)What is docker
+----------------
+Docker is a tool that enables the deployment, shipping and running of applications in isolated 
+containers.
+
+2)What are containers and VMs
+-----------------------------
+They share a similar goal of isolation an application and its dependencies into a self contained
+unit that can be used anywhere, containers remove the need of physical hardware. The difference
+between containers and VMs can be found in their architectural approach.
+
+3)Container
+-----------
+A container provides system-level virtualization by abstracting the "user space",unlike a VM 
+which provides hardware virtualization. Containers share the host system's kernel with other 
+containers, each container gets its own isolated user space to allow multiple containers to 
+run on a single machine and the only parts created from scratch are the bins and libs making 
+containers lightweight.
+
+4)Why docker
+------------
+Docker had made containers available in order to quicky build and test portable aplications, 
+allowing developers to package an application in their host machine and then run onmodified 
+on any public cloud, private cloud or bare metal environment. "Build once, run everywhere"
+
+Docker containers are fast and ligthweight since they are sandboxed environments running on the 
+kernel, they take fewer resources. Compared to VMs which have to boot up a full virtual operating
+system everytime.
+
+Docker allows the application's functionality to be broken down into individual containers. An
+example is using a Postgres database running in one container and your Redis server in another.
+Docker allows easy connection between containers to create an application, making it easy to 
+scale or update components independantly.
+
+5)Docker engine
+---------------
+Docker engine is the layer in which Docker runs, a ligthweight runtime and tooling software that
+manages containers, images and builds running natively on linux systems.
+
+Docker daemon: Runs in the host computer, executes the commands sent to the Docker Client like 
+building, running and distributing your containers.
+
+Docker client: Client that communicates with the Docker daemon to execute commnads, using it as
+the UI for communicating to the Docker client and passing your instructions to the Docker Daemon.
+
+REST API: For interacting with the Docker daemon remotely.
+
+6)Docker image
+--------------
+Package/template used to create containers, containers are running images of containers.
+
+7)Commands
+----------
+-docker run <name>  ---> Start a container 
+-docker ps          ---> List containers 
+-docker ps -a       ---> Previous used containers
+-docker stop <name> ---> Stop container
+-docker rm <name>   ---> Remove container
+-docker images      ---> List of images
+-docker rmi <name>  ---> Delete image
+-docker pull <name> ---> Download image
+
+-docker exec <name> <execution> --> Execute command inside
+

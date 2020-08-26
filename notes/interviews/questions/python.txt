@@ -1,0 +1,16 @@
+
+----------------------------------------------------------------------------------------------------
+                                              Python
+----------------------------------------------------------------------------------------------------
+
+Concepts
+--------
+Python has several programming paradigms such as array-oriented programming, object-oriented 
+programming and asynchronous programming. Functional programming is particularly important for Big 
+data, allows to run code in parallel, making it easier to run on many CPUs and different machines.
+
+Functional programming
+----------------------
+Data should be manipulated by functions without maintaining any external state. Avoiding global 
+variables and returning new data. The use of anonymous functions, using lambda, makes it possible
+to have short piece of functionality in place.

@@ -1,0 +1,93 @@
+
+----------------------------------------------------------------------------------------------------
+                                              Hadoop
+----------------------------------------------------------------------------------------------------
+
+What is Hadoop
+--------------
+Hadoop is a distributed platform to process large datasets, Hadoop is composed of HDFS which is used
+for distributed data storage and MapReduce which is a processing framework to input/ouput data out
+of HDFS. Hadoop's advantages comes from horizontal scalability, the ability to increase processing/
+storage by adding commodity hardware to a cluster. Hadoop as a distributed, uses YARN in order to 
+effectively manage the resources available and schedule processes. Master slave architecture.
+
+Hadoop ecosystem
+----------------
+The Hadoop architecture can be broken down into functional layers, HDFS as a distributed storage 
+layer, YARN for resource management, MapReduce/Spark/Tez as processing frameworks and application 
+programming interface API such as HBase, Solr, Hive and pig. Zookeeper is used in a Hadoop cluster 
+to coordinate tasks across a cluster.
+
+HDFS
+----
+Each node in a Hadoop cluster has its own disk space, memory, bandwidth and processing. The data is 
+converted into data blocks, replicated and stored across the cluster. The HDFS master node (NameNode)
+keeps metadata of individual data blocks and its replicas. The DataNodes process and store data 
+blocks.
+
+NameNode: Data is abstracted into data blocks, the file metadata including file name, permissions, 
+IDs, location and number of replicas are stored in a fs-image on the NameNode local memory.
+
+Secondary NameNode: Serves as the primary backup, backing up the current fs-image instance and edit
+logs from the NameNode. The fs-image can then be retrieved and restored in the primary NameNode.
+
+Standby NameNode: High availability feature to avoid any downtime in case of failure, maintaining 
+two running NameNodes. The standby NameNode additionally carries out the check-pointing process and 
+thus is not compatible with the secondary NameNode.
+
+Zookeeper: Lightweight tool supporting high availability and redundancy. Namenode maintains an active
+session with the Zookeeper daemon. In case a NameNode falters, the zookeeper daemon detects the 
+failure and carries out the failover processs to a new NameNode.
+
+DataNode: Using a background process to store individual blocks of data on slave servers. HDFS stores
+three copies of blocks on separate DataNodes by deafult, using a rack-aware placement policy. The 
+datanode communicates and accepts instructions from the NameNode, reporting the status and health of 
+the data blocks. The NameNode can request the DataNode to create additional replicas, remove them or
+change the number of data blocks present on the node.
+
+Rack aware policy
+-----------------
+HDFS as a distributed storage system, has two goals, to maintain high availability and replication.
+Data blocks are distributed not only on different DataNodes but on nodes located on different server
+racks, ensuring that failure of an entire rack does not terminate all data replicas.
+
+  -The first data block replica is placed on the same node as the client
+  -Second replica is automatically placed on a random DataNode on a different rack
+  -Third replica is placed in a separate DataNode on the same rack as the replica 
+  -Additional replicas are stored on random DataNodes 
+  -Only one replica per node 
+  -Limit of two replicas per server rack
+
+YARN
+----
+Yet another resource negiciator, default cluster manager for Hadoop. YARN can be found between the 
+HDFS storage layer and the MapReduce processing engine, providing a generic interface to implement 
+new processing engines for various data types.
+
+  -Resource manager: The daemon controls all the processing resources in a Hadoop cluster, its 
+  primary task is to designate resources to individual applications on slave nodes and maintain a
+  global overview of processes, requests, schedules and assigned resources.
+
+  -NodeManager: The NameNode acts as a slave to the ResourceManager, its main aim is to track 
+  processing-resources data on its slave node and send regular reports to the ResourceManager.
+  
+  -Containers: The processing in Hadoop are always deployed in containers, using memory, system files
+  and processing space. The generic container can run any requested custom resource on any system, 
+  if the request is within the limits of what's acceptable, the ResourceManager approves deploys the
+  container.
+
+  -Application Master: An application master can be found in every container, sends messages to the 
+  ResourceManager about its current status and the state of the application it monitors. The resource
+  manager add/removes resources if they are no longer needed or need more. Oversees the full 
+  lifecycle of an application, from requesting the containers from RM to submitting container lease
+  requests to the NodeManager.
+
+  -JobHistory Server:
+
+  
+  
+  
+  
+
+
+

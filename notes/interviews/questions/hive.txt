@@ -1,0 +1,42 @@
+
+-----------------------------------------------------------------------------------------------------
+                                                Hive
+-----------------------------------------------------------------------------------------------------
+
+1)What is Hive
+--------------
+Apache hive is a warehouse software for ETL purposes and managing large distributed data sets, Hive
+was built on top of HDFS but can also use other storage systems such as HBase. Hive enables SQL 
+developers to use a similar language called HiveQL to perform queries and Hive then translater the
+queries into map/reduce jobs.
+
+Hive abstracts the complexity of Hadoop by providing an interface where users can submit SQL queries,
+allowing schema flexibility with evolution and tables can be partitioned and bucketed. There are
+JDBC/ODBC drivers available to access Hive, the drivers use Thrift to communicate with the drivers.
+
+2)Metastore
+-----------
+The Hive metastore enables you to apply a table structure to the data, with the Hive table you can 
+define the columns, rows and data types. All the information about the Hive tables is stored in the 
+metastore and becomes part of the Hize architecture. Other applications such as Spark can then access
+the data in the metastore.
+
+3)Use cases
+-----------
+Hive is integrated with Hadoop, intended for long sequential scans, queries in Hive have a very high
+latency. Hive is less appropriate for applications that need very fast response times, Hive is read
+based thus un-fit for transaction processing. Hive is suited for data warehousing tasks such as ETL,
+reporting and data analysis including SQL like access. Ad-hoc queries at run time for creating 
+reports 
+
+4)Hive architecture
+-------------------
+Metastore:
+
+Driver:
+
+Compiler:
+
+Optimizer:
+
+Executor:

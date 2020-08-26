@@ -1,0 +1,23 @@
+
+------------------------------------------------------------------------------------------------
+                                          Kibana
+------------------------------------------------------------------------------------------------
+
+1)ELK stack
+-----------
+Combination of ElasticSearch, Logstash and Kibana for log analysis.
+ElasticSearch: An apache Lucene based search engine
+Logstash: Tool for collecting and monitoring logs from remote machines, data pipeline  
+Kibana: Data exploration and visualization tool, used for log & time series analytic 
+
+2)Overview
+----------
+Data collection from Syslogs, logs files, Kafka queues and Logstash will create a pipeline to
+send the data to ElasticSearch. ElasticSearch will store the data and then Kibana can be used to
+make queries in ElasticSearch and represent the queries in graphs.
+
+3)Kibana
+--------
+-Enables the searching and integration with data in ElasticSearch
+-Allows performing advanced analytics and creation of reports
+-Enables creation and sharing of dynamic dashboards that get updated in realtime
