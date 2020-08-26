@@ -38,13 +38,23 @@ processed using EMR spark everytime there was a new batch of data, the data woul
 and aggregated before storage. The data would then go into Redshift and the data would be available for
 analytical surposes.
 
-4)Allianz
+4)Allianz: Data developer
 ---------
-Cloudera 
+The company was implementing a Cloudera cluster, the insurance company needed the data available primarily
+for auditing purposes
+Cloudera
 -Importing real-time logs to HDFS usign Flume
+-Involved in writing incremental imports into Hive tables
+-Managing and scheduling batch jobs using Oozie
+-Transfered data between a Hadoop ecosystem and structured data storage with Sqoop
 
 
-5)Cigna
+5)Cigna: Hadoop developer
 -------
 Hortonworks Ambari 
+-Developed scripts to automate the workflow, processes and generate reports 
+-Spark SQL for data validation
+-Scala scripts 
+-
+
 
