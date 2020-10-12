@@ -17,7 +17,7 @@ Client library:
 Master Server:
   -Assigns a region to Region Servers working together with Zookeeper
   -Responsible for load balancing, distributing the load between all the servers available
-  -Responsible for schema changes in the creationg og Hbase tables and column families
+  -Responsible for schema changes in the creation of Hbase tables and column families
   -Interface for creating, deleting and updating tables
 
 HBase region servers:
@@ -46,3 +46,55 @@ Zookeeper:
   -Zookeeper is used by HBase as a coordinator service to keep track of the state in the cluster
   -Tracks if servers are alive, available and if there are server failures 
   -Network partitions and client communication with regions through Zookeeper as an interface
+  -Provides distributed synchronization
+
+3)Types of filter
+-----------------
+Filters are used to get specific data from a HBase table
+  -Column value filter
+  -Column value comparators
+  -KeyValue metadata filters
+  -RowKey filters
+
+4)HBase and RDBMS
+-----------------
+HBase does not have in-built authentication/permission mechanism. With one HMaster node there is a single
+point of failure.
+
+5)Writing into HBase
+--------------------
+The HBase client does not write directly into HFile, the client writes to WAL (Write Access Log) and then
+is accessed by the Memstore which flushes the data into permanent memory from time to time.
+
+6)Compaction in HBase
+---------------------
+As data is written to HBase, many HFiles get created as more and more data come through. Compaction is the
+process of merging these HFiles to one file and discarding the old file.
+
+  -Major compaction: All the HFiles of a column are merged and a single HFile is created and the 
+  deleted HFiles are discarded and it is generally triggered manually.
+
+  -Minor compaction: The adjacent small HFiles are merged to create a single HFile without removing 
+  the deleted HFiles and the files chosen are randomly chosen.
+
+7)Cell in HBase
+---------------
+It is the smallest unit of a HBase table which holds a piece of data in the form of a tuple.
+{row, column, version}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

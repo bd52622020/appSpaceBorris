@@ -19,7 +19,7 @@ Cluster:
 Cloudera manager console:
 
 Data warehouse: Services runs on Kubernetes, ability to scala up/down.
-  -Data warehouse optimization 
+  -Data warehouse optimization
   -Mix and match analytics
   -Hive, Impala
   -Database catalog: Instance of Hive metastore, including references to the cloud storage
@@ -30,8 +30,8 @@ Data warehouse: Services runs on Kubernetes, ability to scala up/down.
 
 Clousera:
   -Ambari: UI
-    
-    
+
+
 Hortonworks:
   -Ambari: UI
     -Services
@@ -47,12 +47,12 @@ Hortonworks:
     -hadoop:
       -Configure home
       -Add properties in config files
-      -Xml files 
-      -Hive 
-        -Configure environment 
+      -Xml files
+      -Hive
+        -Configure environment
         -Modified the xml file
   -Python:
     -PySpark application
     -Scripting to automate tasks
-    -Kafka, pandas, numpy libraries 
+    -Kafka, pandas, numpy libraries
 

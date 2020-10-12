@@ -1,0 +1,16 @@
+----------------------------------------------------------------------------------------
+                          CDH - Cloudera Distribution Hadoop
+----------------------------------------------------------------------------------------
+
+What is CDH
+-----------
+Commercial Hadoop distribution, packed with features and designed to streamline the 
+deployment of Hadoop. CDH provides a scalable, flexible and integrated platform that
+allows to easily manage increasing volumes and variety of data.
+
+Features
+--------
+  -Impala query engine for SQL like Hadoop.
+  -Cloudera management console 
+
+

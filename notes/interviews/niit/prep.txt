@@ -1,0 +1,50 @@
+
+------------------------------------------------------------------------------------------------------
+                                                  Prep
+------------------------------------------------------------------------------------------------------
+
+Lambda
+------
+Serverless service
+
+Events: 
+
+Handler:
+  -Event 
+  -Object
+
+RegexExpresion
+Create cluster
+  -ephemeral:
+    -Step functions
+  -Continuous;
+    -Always running 
+
+-------------------------------
+Development: 1 node -- 1 worker 
+Quality assurance: 5 nodes  
+Production: 40 Nodes
+  -Auto scaling group
+    -Load balancer: Requests 
+      -Application: Program
+    -CLoud watch: 
+      -Performance 
+      -Metrics
+-Logs ---> S3 buckets ---> usually ---> Log encryption
+-Security:
+  -EC2 key pair 
+  -Kerberos
+-Cloud formation:
+  -Template:
+    -json
+    -yalm
+-------------------------------
+Dynamo DB
+-Hybrid: NoSql
+  -Partition, sharding. Horizontally and vertically 
+  -Scaling group
+  -Simple key 
+  -No foreign key 
+
+
+

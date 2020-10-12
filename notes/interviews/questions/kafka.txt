@@ -85,5 +85,91 @@ records into Kafka topics within the broker and a consumer pulls records off a K
 management of the brokers in a cluster is performed by Zookeeper and there can be multiple 
 instances of Zookeeper running with a recommened of 3 to 5.
 
+10)High throughput
+------------------
+Kafka achives high throughput by its architecture, the Kafka cluster, producer and consumer. In 
+In the Kafka cluster there are many brokers, these brokers have many partitions which is the unit 
+that is distributed to brokers and is also used to achieve parallelism. To increase higher throughput
+you need to increase more producer/broker/consumers.
+
+Optimized the access pass of a single partition, the data is stored in a high level data structure
+or commit log. The commit log is an append only system with each message being placed sequentially 
+with a unique offset ID. A consumer can read from multiple points in the offsets and continue reading
+data sequentially, these sequential approach allows the system to achieve effective caching to 
+optimize performance.
+
+Bashing: Typically during sending messages over Kafka, instead of trying to send a 
+single message RPC request, it tries to buffer as many mesages as possible in the cache and either
+enough messages has been accumulated or a specific time period has passed. Sending/Receiving those 
+batch messages, there is the need to flush those messages to disk for persistence but it is typically
+done periodically using batch.
+
+Compression: Typically specified in the producer side, compressing those batch messages into a unit 
+providing better performance, stored in a compressed format into disk and when it needs to be read 
+the message is decompressed.
+ 
+11)Reliability and durability
+-----------------------------
+Redundancy is achieved by replication, when a topic is created there is a certain amount of replicas
+Unlike quorum based replication that can only tolerate a minority number of failures, Kafka saves
+the data in an actual copy to tolerate failure. 
+
+Replication: When a topic is created with replicas, those replicas need to be assigned to brokers,
+spreading the replicas evenly across all the brokers to avoid data loss in case of broker failure.
+In Kafka the replicas are strongly consistent, meaning that they are identical to the original at any
+given point in time. To achieve this, one of the replicas will become the leader and the rest will 
+be follower. The producer to publish a message will communicate with the leader and the follower will
+only copy the follower. The leader waits until the followers have commited the messages before it
+declares that it has been successfully commited.
+
+  -The producer can choose the receive acknowledgement when a message has been produced, with no
+  acknoledgement, only the leader and waiting for all partitions to commit the message. There is a 
+  trade-off between efficiency and reliability.
+  -The consumer will only be able to read the messages that have been successfully commited.
+  -The leader has more load compared to followers, to achieve balance, the leaders will be distributed
+  across all the brokers as evenly as possible.
+
+Replication Protocol: ISR (In-Sync replicas), replicas reads from the leader's log file. A replica
+is considered in-sync with the leader as long as it keeps reading from the end of the leader's log 
+within a time-frame.
+
+Follower failure: Reduce replicas from set, having fewer replicas but the producer will continue to
+produce messages because it does no longer creates a error message of under-replicaed messages. When 
+the follower comes back, it finds the leader and starts to catch up the messages and only until the
+replica is caught back then it will be join the in-sync replica set.
+
+Leader failure: Figure out a new leader, the broker get elected by selecting an in-sync replica set.
+Only counting replicas that are up to date so no data loss will happen.
+
+Unclean leader election: When a new leader gets elected but does not have all the messages up to date
+but due to lack of other options, brokers with incomplete data will be elected as leaders and there
+will be some data loss. In order to avoid data loss, you can dissable the settings and the system 
+will wait for an in-sync replica set to comeback but you lose high availability.
+
+Guarantee replicas: mean-in-sync will not allow messages to be commited untill the number of replicas
+is meet.
+
+Leader election: Console chord controller, in a Kafka cluster, one of the brokers is a court 
+controller. It monitors the liveness of each broker, acting on moving the leaders to other brokers.
+Communicating the new leader and new in-sync replicas with other Brokers. IF the Broker will the 
+controller fails, a new Broker will elected to serve that function.
+
+12)Compacted topic
+------------------
+In situations when messages have the same key, after a round with compaction, the topic will only be
+retaining those messages whose key is the last message.   
+ Commit log: Each messages has an offset, key and value
+  -Offset
+  -Key
+  -Value
 
 
+13)Commit log
+-------------
+Each commit log is divided into segments, each segment stores a non-overlapping but consecutive range
+of offsets, each segment is composed of three parts. The first part is the block file, the offset 
+index and the time step index.
+
+14)Protocols
+-Pull protocol
+-Protocol 

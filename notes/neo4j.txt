@@ -1,0 +1,14 @@
+
+
+-relationships for records
+-Link together
+    -Relationships
+    -Graphical database
+    -Cypher queries
+    -SQL
+
+-Nodes --> represent an entity
+    -Can be connected with a relationship
+
+-Spark graphx
+

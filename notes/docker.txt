@@ -67,3 +67,10 @@ Package/template used to create containers, containers are running images of con
 
 -docker exec <name> <execution> --> Execute command inside
 
+8)Namespace
+-----------
+Limit what a process can see, created with syscalls.
+
+9)Controlgroups
+---------------
+Limits the resources that the container have access and number of processes.
